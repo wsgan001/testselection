@@ -1,0 +1,128 @@
+\section{Related Work}
+\label{sec:related}
+
+%Our previous work~\cite{hu10:model} demonstrated an approach
+%to represent a policy and its properties as
+%corresponding finite state machine (FSM) model and temporal
+%logics (e.g., computation tree logic), respectively, using SMV specification language~\cite{cimatti02:nusmv2}.
+
+Our previous work developed policy testing approaches for policy
+structural coverage~\cite{martin06:defining}, request
+generation~\cite{martin07:automated}, and mutation
+testing~\cite{martin07:fault}.
+Our previous
+work~\cite{hu07:conformance} also proposed a generic model-based
+conformance checking approach for access control policies written in
+XACML.
+These pieces of work do not rely on properties for generating
+test requests to detect a fault in a policy. 
+Our previous work~\cite{martin08:assessing} developed an approach
+for measuring the quality of policy properties in policy
+verification. Given user user-specified
+properties, the quality of properties are measured
+based on fault-detection capability.
+While these approach focus on test request generation, in this paper, our technique targets at 
+test selection (among existing system tests) for policy evolution. 
+
+
+Related Work here!!
+\Comment{
+Our previous work~\cite{hu10:model,hu08:property} presented
+model checking to verify various policies such as role-based
+access control policies~\cite{ferraiolo92:role}.
+Our previous work translates policies into specifications
+in NuSMV~\cite{cimatti02:nusmv2}. NuSMV verifies the specifications against properties. 
+Based on our previous work, we developed a tool, called ACPT\footnote{http://csrc.nist.gov/groups/SNS/acpt/index.html},
+to verify and test access control policies.
+However, our previous work does not detect conflicts
+or redundancies between two policies, one major
+focus of our current work. Moreover, our previous
+work does not recommend any combinations (to the policy
+authors) that can be recommended by our current work. 
+
+There exist tools to verify XACML policies. These tools require XACML policies in formal specification languages such as Alloy~\cite{jackson01:micromodularity}. Hughes et al.~\cite{hughes04:automated} proposed an approach to translate XACML policies to a model specified in the Alloy language~\cite{jackson01:micromodularity}. Then, the Alloy Analyzer verifies whether the model satisfies the given properties. %Zhang et al.~\cite{zhang05:evaluating} developed a model-checking tool to translate XACML policies into policies specified in \Intro{RW} languages~\cite{zhang04:synthesis}. Then, the tool verify policies in \Intro{RW} languages. 
+Kolovski et al.~\cite{kolovski07:analyzing} converted XACML policies into specifications in  description logics (DL) and adopted existing DL verification tools to verify the specifications. Fisler et al.~\cite{fisler05:verification} developed a Binding Decision Diagram (BDD) based  verification tool, called Margrave, to verify XACML policies. Margrave parses XACML policies into the BDD structure. Moreover, Margrave supports change-impact analysis to report which decisions are changed after policy modification.
+Similar to these previous approaches, our approach focuses on modeling and verifying policies via a symbolic model checking. Moreover, our approach verifies whether two policies may include conflicts and redundancies via a symbolic model checking. 
+While these previous approaches do not help combining two policies, our approach recommends combinations of two policies that could satisfy user-specified properties. 
+
+
+%\textbf{Policy Combinations/Integration.}
+%Bonatti et al.~\cite{Bonatti2} proposed combining sub-policies based on 2-valued algebra. 
+Backes et al.~\cite{backes04algebra} proposed a 3-valued algebra to combine sub-policies considering privacy policies. They defined relations of combination with three operators: conjunction, disjunction, and scoping. Li at el.~\cite{Ninghui2009} proposed an algebra for combining sub-policies. They introduced new combining algorithms such as weak majority or strong majority. For example, in the case of the strong majority combining algorithms, at least 2/3 rules evaluated against a request should be evaluated to the same decision. Since the decision is the majority, the decision is returned as a final decision. They proposed algebras to generalize their combining algorithms.
+%Mazzoleni et al.~\cite{Mazzoleni2006} proposed policy integration that can be applied to XACML policies. In their approach, policy authors can specify conditions to represent how their policies can be integrated with other policies. Their integration approach is based on analysis of two policies to be integrated. Policy authors measure similarity of two policies and integrate the policies based on given condition.
+Our approach is different from these previous approaches, since
+our approach combines policies through property verification.
+Based on the results, our approach recommends combinations (of two policies) that could satisfy the user-specified properties.
+}
+
+
+
+
+
+
+
+\Comment{
+%\textbf{Policy Change Impact Analysis}
+%\textbf{Policy Conflict and Redundancy}
+%\textbf{Verification in NuSMV for other projects}
+
+%interaction, but runtime ...more general stuff to do it.
+
+\textbf{Policy Verification.}
+There are verification tools available for XACML
+policies. Hughes et
+al.~\cite{hughes04:automated}
+proposed an approach
+to verify XACML policies by
+translating the policies to the Alloy
+language~\cite{jackson01:micromodularity}.
+Then, they use Alloy Analyze to verify properties
+against the translated policies. 
+Zhang et
+al.~\cite{zhang05:evaluating} developed a model-checking tool
+to verify policies specified in
+\Intro{RW} languages~\cite{zhang04:synthesis}, which can be converted to
+XACML.
+Kolovski et
+al.~\cite{kolovski07:analyzing} formalize XACML policies with
+description logics (DL), which are a decidable fragment of
+first-order logic, and exploit existing DL verifiers to conduct
+policy verification.
+Schaad and Moffett~\cite{schaad02:lightweight} leverage
+Alloy~\cite{jackson01:micromodularity} to check that role-based
+access-control policies do not allow roles to be assigned to users
+in ways that violate SoD constraints.
+Similar to previous research work, our work also model and verify policies
+via model checking. However, we extend
+our work to detect conflict and redundancy via a symbolic checker.
+
+
+\textbf{Policy Combinations/Integration.}
+Bonatti et al.~\cite{Bonatti2} proposed combining sub-policies based on 2-valued algebra. Backes et al.~\cite{backes04algebra} proposed a 3-valued algebra to combine sub-policies considering privacy policies. They defined relations of combination with three operators: conjunction, disjunction, and scoping. Li at el.~\cite{Ninghui2009} proposed an algebra for combining sub-policies. They also introduce new combining algorithms such as weak majority or strong majority. For example, in case of the strong majority combining algorithms, at least 2/3 rules evaluated against a request should return the same decision. As the decision is majority, the decision is returned as a final decision. They propose algebras to generalize their combining algorithms. Moreover, they propose combinations of sub-policies, which may return policy evaluation errors and obligations.
+Mazzoleni et al.~\cite{Mazzoleni2006} proposed policy integration that can be applied to XACML policies. In their approach, policy authors can specify conditions to represent how their policies can be integrated with other policies. Their integration approach is based on analysis of two policies to be integrated. Policy authors measure similarity of two policies and integrate the policies based on given condition.
+We also propose that a methodology to combine two policies using property verification.
+We next describe a methodology to recommend the combinations (of two policies) that could satisfy user-specified properties.
+
+\textbf{Policy Testing.}
+
+Our previous work~\cite{hu10:model} demonstrated an approach
+to represent a policy and its properties as
+corresponding finite state machine (FSM) model and temporal
+logics (e.g., computation tree logic), respectively, using SMV specification language~\cite{cimatti02:nusmv2}.
+
+Our previous work developed policy testing approaches for policy
+structural coverage~\cite{martin06:defining}, request
+generation~\cite{martin07:automated}, and mutation
+testing~\cite{martin07:fault}.
+% Our previous
+%work~\cite{hu07:conformance} also proposed a generic model-based
+%conformance checking approach for access control policies written in
+%XACML.
+These pieces of work do not rely on properties for generating
+test requests to detect a fault in a policy. 
+Our previous work~\cite{martin08:assessing} developed an approach
+for measuring the quality of policy properties in policy
+verification. Given user user-specified
+properties, the quality of properties are measured
+based on fault-detection capability.
+}

@@ -1,0 +1,316 @@
+\section{Example}
+\label{sec:example}
+
+In this section, we illustrate our approach using an example. Our approach takes Java program interacting
+with a security dedicated component, called PDP, which loaded with access control policies specified
+in XACML. For regression testing of access control policies, our approach involved with two versions of access control policies and select test cases (from existing test suites) to reveal behavioral differences (if any exist) of access control policies. 
+
+This section describes an example from the ASMS example, which sales auction to set and find bidder for the system. The source code includes ## system tests, and total LOC is . 
+
+We modified the original access control policies by changing several rules' decisions and adding new rules. The example uses Java programs and XACML access control policies. Figure 1 shows that policy decision point (PDP) is invoked when Java program code to interacts with ac
+Method calls in Method addPropertyChangeListener and the companion ?eld support are PEP introduced call policy decision point (PDP), which evaluates a request from database to receive a decision from access control policies.
+
+Our approach does not only deal with unit tests and system
+tests which are involved with testing behaviors of integrated software components.
+Moreover, while our approach analyzes ORBAC access control policies in XACML in this paper, which are
+loaded in Sun's PDP, our approach can be applicable to any policy models (such as RBAC, ABAC, Workflow) which specified in any policy specification languages with interact with programs using dedicated security mechanisms such as a PDP.
+
+PDP. Formulate a request in XACML. State information is formulated. a request. 
+%As a rule, system testing takes, as its input, all of the "integrated" software components that have successfully passed integration testing and also the software system itself integrated with any applicable hardware system(s). is not easy to take.
+
+%The test cases on execution detects behavioral differences (if any exist) between the two versions of program under test. 
+
+\begin{figure}[t]
+\begin{CodeOut}
+\begin{alltt}
+
+2.1 System Test Driver
+2.2. src code in Test input and output for access control policies
+
+1. Test System Code
+	call
+	 method call which request send
+	 return request..
+	 
+2. Called (Method) under Test.. PDP.
+
+3. PDP call Code Method
+ \end{alltt}
+\end{CodeOut}
+\Caption{\label{fig:intstack}An integer stack implementation}
+\end{figure}
+
+This PDP is dedicated function to evaluate a request. As shown the
+above, a request (s, a, o, r) is evaluated against policies.
+
+
+\begin{figure}[t]
+    \centering
+        \includegraphics[width=8cm, keepaspectratio]{fig/mtbdds_example}
+    \caption{Overview of \CodeIn{eXpress}}
+    \label{fig:approach}
+    
+\end{figure}
+
+2.3. flow grams (differnt verision)
+
+Code Changes...
+
+Harrold et al. [8] present the ?rst regression test selection technique for Java. They de?ne a control-?ow representation referred to as Java Interclass Graph (JIG) which extends traditional CFGs. The extensions account for features such as as inheritance, dynamic binding, exceptions, synchronization, and analysis of subsystems.
+
+Rule Pmtbdds are built using augment-rule.
+
+Margrave uses mtbdds (multi-terminal binary decision diagrams) as the underlying representation of access-control
+policies. mtbdds are a form of decision diagram that map
+bit vectors over a set of variables to a ?nite set of results [4,
+7]. 
+
+
+Figure 1 shows an example of an mtbdd representing a
+simple security policy in which faculty can assign grades and
+students can receive grades. The mtbdd has ?ve variables
+(faculty, student, receive, assign, and grades). Each combination of boolean values over these variables maps to one
+of three policy results (permit, deny, or not-applicable); the
+results are denoted by the terminals of the mtbdd. We refer
+to mtbdds with these three terminals as “policy mtbdds”
+or Pmtbdds (though as we will see in section 4.3, we will
+need a fourth terminal). Given an assignment of boolean
+values to the variables, traversing a Pmtbdd from the root
+to a terminal according to the variable values indicates the
+result of the policy under that assignment.
+
+
+One charater is combining algo
+the other one is multi-valued requests... to infer...
+
+Policies can be viewed as
+
+
+%policy-speci?c operations as we encounter them.
+%Margrave uses one variable for each attribute-value pair
+%that is mentioned in the xacml policy. The variables for the
+%policy shown in ?gure 1 would correspond to role=faculty,
+%role=student, action=receive, action=assign, and ?nally resource=grade (the association between attributes, such as
+%role, with values, such as faculty, is stated in the xacml policy). Margrave creates mtbdds for the individual rules, then
+%combines these with mtbdd-combining algorithms that implement the xacml rule- and policy-combining algorithms.
+%In the implementation, Margrave views the policy constants permit and deny as rules; an operation called augmentrule takes a boolean condition on the variables and a rule
+%and constrains the rule to also require the given condition.
+%Rule Pmtbdds are built using augment-rule.
+
+2.3. flow grams (code change what else it is...not only AC)
+
+The idea is quite simple actually. When an auction sale is open. The state of the sale object changes. Then when the PEP built the call to the PDP, it just request what is the sate of the sale.
+
+Here is an example of the code of PEP corresponding to the saleClosed constraint:
+
+ 
+
+    ServiceUtils.checkSecurity(connectedPerson, SalesSecurityModel.EVALUATEBUYER_METHOD,
+
+                    new UserAccount(), ContextManager.getSaleContext(mark.getSale()));
+
+ 
+
+So, this request computes the salecontext (open or closed) and according to this the PDP will know what rule is applicable.
+
+
+I can explain these conditions:
+asms subject
+>> SaleClosed, SaleOpenedMajor, SaleOpenedMinor
+ 
+Conditions These are related to the auction sale: the rule is applicable when the auction sale session is closed; For the second one it is when the sale auction is accessible for only customers that are older than 18, or for
+All customer (saleopenedminor). This is because for the system there products that are handled that are forbidden for minors.
+ 
+lms subject
+WorkingDays, Holidays, MaintenanceDay
+vms subject
+WorkingDay, MaintenanceDay 
+ 
+These are related to temporal contexts. This means that some rules are applicable only during workingDay, on maintenanceDay (the day where the app is under maintenance) or holidays (for example students cannot
+Borrow books during holidays).
+
+2.1 Interaction based Regression Test Selection
+
+
+
+[Possible input space - limited to input space] [The separation of architecture does not use it…So, value assigned there is not impacted to each other…But, the return value returned from third party tool impacts on the evaluation…]
+Each call site is expanded into a call node and a return node, and the call node is linked with the entry node of the called method. There are constraints before getting into a call. A request can include an input. 
+
+Change impact anlaysis to infer multi policy behaviors to infer it to multiple changes. If edge is not, and return values is not the accumulates all the information of such information.
+
+[Predicate Based Change Impact Analysis --- multi-valued requests…] We don't know constraints about it..? Okay? - multiple it…. All the possible constraints for it…
+Obligation + Delegation + condition 도 붙이기.
+그리고 후속타 return value 가 어떻게 가는지도 보기.
+[Context]' 그리고 다음 결과물이 어떤 영향을 미치는지도 봐야 된다…. Okay… 그렇지? 
+
+
+Here, we have PEP, and trace into a PDP through access control policies. Each call site is expanded into a call node and a return node, and the call node is linked with the entry node of the called method. There is a path edge between the call node and the return node to represent the path through the called method. For a method that is external to the analyzed classes, the JIG does not represent the intra-method control ?ow and a path edge is used to connect the entry node and the exit node of that method.
+
+[Not Edge --- Decision] One of features of access control policies. If we know that, the constraints are not given to the rule, which rule could be more precisely ……….. decision is evaluated. 
+
+After constructing the JIGs of P and P 0 , the technique identi?es dangerous edges - edges that may lead to behavioral differences - by performing a synchronous traversal of the JIGs. Given an edge e in P , the algorithm looks for an edge e 0 in P 0 which has the same label as e. If e 0 is found, the target nodes of e and e 0 are compared to decide.
+whether e and e 0 match. If e 0 is not found, or e 0 is found but e and e 0 do not match, e is deemed a dangerous edge. This processing is performed recursively, starting from the main method and from each class initialization method. When testing a program P , the JIG edge coverage of a test suite T is recorded in a coverage matrix, with one row per edge and one column per test case. Testing of P 0 is done by rerunning test cases from T that exercise dangerous edges.
+
+
+
+
+
+
+
+
+
+%System testing of software or hardware is testing conducted on a complete, integrated system to evaluate the system's compliance with its specified requirements. System testing falls within the scope of black box testing, and as such, should require no knowledge of the inner design of the code or logic. [1]
+%As a rule, system testing takes, as its input, all of the "integrated" software components that have successfully passed integration testing and also the software system itself integrated with any applicable hardware system(s). The purpose of integration testing is to detect any inconsistencies between the software units that are integrated together (called assemblages) or between any of the assemblages and the hardware.
+%Whole developers. Such tests we are handling. 
+
+
+\Comment{
+% Darko has shortened the implementation by changing that "pop" never
+% decreases the array.
+\begin{figure}[t]
+\begin{CodeOut}
+\begin{alltt}
+\textbf{public} \textbf{class} \textbf{IntStack} \{
+  \textbf{private} \textbf{int}[] store;
+  \textbf{private} \textbf{int} size;
+ 
+ 	public final void testModifySale() {
+		Person seller2 = new Person("said","elhou","said.elhou@tb","PrOgRaMmEuR","brest France",23,new Seller());
+		Sale sale;
+		seller.setPersonId(1);//to be sur that the owner exist on db
+		sale1.setOwner(seller);//the seller is the owner
+		
+		try{
+			sale = service.createSale(sale1, buyer);//connected person is an administrator -> 'OK'
+			//the sale was created
+			assertTrue(sale.getSaleId() !=0);
+			assertSame(sale,sale1);
+			assertFalse(sale.getForMajor());//the sale is for all type of buyers
+			
+			service.modifySale(sale, seller2);//not same sale's seller
+			
+			fail("Should have gotten SecuritPolicyViolationException");
+		}
+		catch(BSException e){
+			fail("BSException : Should not have been thrown");
+		}
+		catch (SecuritPolicyViolationException e1){
+			// ok
+		}
+		
+  \textbf{private} \textbf{static} \textbf{final} \textbf{int} INITIAL_CAPACITY = 10;
+  \textbf{public} \textbf{IntStack}() \{
+    \textbf{this}.store = \textbf{new} \textbf{int}[INITIAL_CAPACITY];
+    \textbf{this}.size = 0;
+  \}
+  \textbf{public} \textbf{void} push(\textbf{int} value) \{
+    \textbf{if} (\textbf{this}.size == \textbf{this}.store.length) \{
+      \textbf{int}[] store = \textbf{new} \textbf{int}[\textbf{this}.store.length * 2];
+      \textbf{System}.arraycopy(\textbf{this}.store, 0, store, 0, \textbf{this}.size);
+      \textbf{this}.store = store;
+    \}
+    \textbf{this}.store[\textbf{this}.size++] = value;
+  \}
+  \textbf{public} \textbf{int} pop() \{
+    \textbf{return} \textbf{this}.store[--\textbf{this}.size];
+  \}
+  \textbf{public} \textbf{boolean} isEmpty() \{
+    \textbf{return} (\textbf{this}.size == 0);
+  \}
+  \textbf{public} \textbf{boolean} equals(\textbf{Object} other) \{
+    \textbf{if} (!(other \textbf{instanceof} \textbf{IntStack})) \textbf{return} \textbf{false};
+    \textbf{IntStack} s = (\textbf{IntStack})other;
+    \textbf{if} (\textbf{this}.size != s.size) \textbf{return} \textbf{false};
+    \textbf{for} (\textbf{int} i = 0; i < \textbf{this}.size; i++)
+      \textbf{if} (\textbf{this}.store[i] != s.store[i]) \textbf{return} \textbf{false};
+    \textbf{return} \textbf{true};
+  \}
+\}
+\end{alltt}
+\end{CodeOut}
+\Caption{\label{fig:intstack}An integer stack implementation}
+\end{figure}
+
+\begin{figure}[t]
+\begin{CodeOut}
+\begin{alltt}
+  \hspace{0.5cm}\textbf{public final void} testModifySale(\textbf{int }x, \textbf{int[] } y)\{
+1 \hspace{1.0cm} \textbf{int} Person seller2 = new Person("said","elhou","said.elhou@tb","PrOgRaMmEuR","brest France",23,new Seller());
+2 \hspace{1.0cm} Sale sale;
+3 \hspace{1.5cm} seller.setPersonId(1);//to be sur that the owner exist on d
+4 \hspace{2.0cm} sale1.setOwner(seller);//the seller is the owner
+5 \hspace{2.5cm} try{
+6 \hspace{2.0cm} sale = service.createSale(sale1, buyer);//connected person is an administrator -> 'OK'
+7 \hspace{2.5cm} service.modifySale(sale, seller2);//not same sale's seller
+8 \hspace{2.0cm} fail("Should have gotten SecuritPolicyViolationException");
+			fail("Should have gotten SecuritPolicyViolationException");
+		}
+		catch(BSException e){
+			fail("BSException : Should not have been thrown");
+		}
+		catch (SecuritPolicyViolationException e1){
+			// ok
+		}
+
+%9 \hspace{2.5cm} \textbf{return} x;
+%10\hspace{2.0cm} \textbf{if}(x == 110)
+%11\hspace{2.5cm} x = j+2; //x = 2*j+1
+%12\hspace{2.0cm} \textbf{if}(x>110) 
+%13\hspace{2.5cm} \textbf{return} x;
+%14\hspace{1.5cm} \}
+%15\hspace{1.0cm} \}
+%16\hspace{1.0cm} \textbf{return} x;
+%  \hspace{0.5cm}\}
+\end{alltt}
+\end{CodeOut}
+\caption{Test Code}
+\label{fig:example}
+\end{figure}
+
+
+
+
+%\begin{lstlisting}
+%C:\projects\2011\LuxemPolicy\ASMSOrBAC\src\com\sales\test\security\TestSaleService.java
+%
+%	public final void testModifySale() {
+%		Person seller2 = new Person("said","elhou","said.elhou@tb","PrOgRaMmEuR","brest France",23,new Seller());
+%		Sale sale;
+%		seller.setPersonId(1);//to be sur that the owner exist on db
+%		sale1.setOwner(seller);//the seller is the owner
+%		
+%		try{
+%			sale = service.createSale(sale1, buyer);//connected person is an administrator -> 'OK'
+%			//the sale was created
+%			assertTrue(sale.getSaleId() !=0);
+%			assertSame(sale,sale1);
+%			assertFalse(sale.getForMajor());//the sale is for all type of buyers
+%			
+%			service.modifySale(sale, seller2);//not same sale's seller
+%			
+%			fail("Should have gotten SecuritPolicyViolationException");
+%		}
+%		catch(BSException e){
+%			fail("BSException : Should not have been thrown");
+%		}
+%		catch (SecuritPolicyViolationException e1){
+%			// ok
+%		}
+%	}
+%\end{lstlisting}
+}
+
+
+
+\Comment{
+We will use the bean program from the AspectJ example package [2] as a running example. We modi?ed the orig nal program by adding several advices to represent more general advice interactions. The example uses aspects to implement an event ?ring mechanism. Figure 1 shows a class Point and a corresponding class Demo with a propertyChange method which is to be invoked when a property change event is ?red. Method addPropertyChangeListener and the companion ?eld support are introduced in Point by aspect BoundPoint, shown in Figure 2.
+
+2.1 JIG-Based Regression Test Selection
+
+Harrold et al. [8] present the ?rst regression test selection technique for Java. They de?ne a control-?ow representation referred to as Java Interclass Graph (JIG) which extends traditional CFGs. The extensions account for features such as as inheritance, dynamic binding, exceptions, synchronization, and analysis of subsystems. A JIG contains a CFG for each method that is internal to the set of classes under analysis. Each call site is expanded into a call node and a return node, and the call node is linked with the entry node of the called method. There is a path edge between the call node and the return node to represent the path through the called method. For a method that is external to the analyzed classes, the JIG does not represent the intra-method control ?ow and a path edge is used to connect the entry node and the exit node of that method. For a virtual call, depending on the run-time type of the receiver object, the call is bound to different methods. Details of the representation of external method calls, exceptions, and synchronization can be found in [8]. After constructing the JIGs of P and P 0 , the technique identi?es dangerous edges ? edges that may lead to behavioral differences ? by performing a synchronous traversal of the JIGs. Given an edge e in P , the algorithm looks for an edge e 0 in P 0 which has the same label as e. If e 0 is found, the target nodes of e and e 0 are compared to decide whether e and e 0 match. If e 0 is not found, or e 0 is found but e and e 0 do not match, e is deemed a dangerous edge. This processing is performed recursively, starting from the main method and from each class initialization method. When testing a program P , the JIG edge coverage of a test suite T is recorded in a coverage matrix, with one row per edge and one column per test case. Testing of P 0 is done by rerunning test cases from T that exercise dangerous edges.
+
+2.2 AspectJ Semantic
+ A join point in AspectJ is a well-de?ned point in the execution that can be monitored ? e.g., a call to a method, method body execution, etc. For a particular join point, the textual part of the program executed during the time span of the join point is the shadow of the join point [3]. We classify shadows in two categories: statement shadows and
+body shadows. The statement shadow of a method call join point is the corresponding call site. The body shadow of a method execution join point is the body of that method. For example, in Figure 1, call sites p1.setX() in main and this.setX() in setRectangular are shadows of the join point of a call to Point.setX, and both are statement shadows. A pointcut is a set of join points that optionally exposes some of the values in the execution context. AspectJ de- ?nes several primitive pointcut designators; each one is either static (de?ning a set of join point shadows) or dynamic (de?ning a runtime condition). For example, static pointcuts are call and execution, and dynamic pointcuts are args, target, and c?ow. A combined pointcut is dynamic if one of its component pointcuts is dynamic; otherwise it is static. Example. In Figure 2, setterX contains all join points where Point.setX is called, and setterXonly contains only join points where setX is called and the call is not within the control ?ow of an execution of setRectangular. Both pointcuts are dynamic because they contain dynamic primitive pointcut designators. An advice declaration consists of an advice kind (before, after, around), a pointcut, and a body of code forming an advice. For an advice associated with a dynamic pointcut, the advice may or may not be invoked at a join point at run time, depending on the evaluation of the corresponding runtime condition. The compiler needs to construct a dynamic residue of runtime checks to be performed at the join point to determine whether the pointcut actually matches.
+} 
+ 

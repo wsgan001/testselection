@@ -1,0 +1,51 @@
+This is BibTeX, Version 0.99dThe top-level auxiliary file: C:\Users\JeeHyun\Desktop\Working Papers\ICST\ICST- test selection\test_selection_icst.aux
+The style file: plain.bst
+Database file #1: yangtse.bib
+Warning--string name "december" is undefined
+--line 354 of file yangtse.bib
+Database file #2: yangtse2.bib
+Repeated entry---line 4 of file yangtse2.bib
+ : @inproceedings{mouelhi09:tranforming
+ :                                     ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 11 of file yangtse2.bib
+ : @inproceedings{kalam03:orBac
+ :                             ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 28 of file yangtse2.bib
+ : @misc{anderson04:rbacxacml
+ :                           ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 155 of file yangtse2.bib
+ : @article{ferraiolo01:proposed
+ :                              ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 235 of file yangtse2.bib
+ : @inproceedings{hu07:conformance
+ :                                ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 350 of file yangtse2.bib
+ : @inproceedings{martin08:assessing
+ :                                  ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 360 of file yangtse2.bib
+ : @inproceedings{martin07:automated
+ :                                  ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 371 of file yangtse2.bib
+ : @inproceedings{martin07:fault
+ :                              ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 380 of file yangtse2.bib
+ : @inproceedings{martin06:defining
+ :                                 ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 510 of file yangtse2.bib
+ : @misc{oasis05:xacml
+ :                    ,
+I'm skipping whatever remains of this entry
+Warning--I didn't find a database entry for ""
+Warning--I didn't find a database entry for "testcase"
+Warning--I didn't find a database entry for "sunxacml"
+Warning--to sort, need author or key in oasis05:xacml
+(There were 10 error messages)

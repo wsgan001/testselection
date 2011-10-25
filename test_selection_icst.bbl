@@ -1,0 +1,75 @@
+\begin{thebibliography}{10}
+
+\bibitem{oasis05:xacml}
+{OASIS eXtensible Access Control Markup Language (XACML)}.
+\newblock \url{http://www.oasis-open.org/committees/xacml/}, 2005.
+
+\bibitem{kalam03:orBac}
+A.~{Abou El Kalam}, R.~El Baida, P.~Balbiani, S.~Benferhat, F.~Cuppens,
+  Y.~Deswarte, A.~Mi\`ege, C.~Saurel, and G.~Trouessin.
+\newblock {Organization Based Access Control}.
+\newblock In {\em Proc. 4th IEEE International Workshop on Policies for
+  Distributed Systems and Networks (Policy 2003)}, pages 196--205, 2003.
+
+\bibitem{anderson04:rbacxacml}
+Annie Anderson.
+\newblock {XACML} profile for role based access control ({RBAC}).
+\newblock OASIS Committee Draft 01, 2004.
+
+\bibitem{ferraiolo01:proposed}
+David~F. Ferraiolo, Ravi Sandhu, Serban Gavrila, D.~Richard Kuhn, and Ramaswamy
+  Chandramouli.
+\newblock Proposed {NIST} standard for role-based access control.
+\newblock {\em ACM Trans. Inf. Syst. Secur.}, 4(3):224--274, 2001.
+
+\bibitem{hu07:conformance}
+Vincent~C. Hu, Evan Martin, JeeHyun Hwang, and Tao Xie.
+\newblock Conformance checking of access control policies specified in {XACML}.
+\newblock In {\em Proc. 1st IEEE International Workshop on Security in Software
+  Engineering (IWSSE)}, 2007.
+
+\bibitem{martin08:assessing}
+Evan Martin, JeeHyun Hwang, Tao Xie, and Vincent Hu.
+\newblock Assessing quality of policy properties in verification of access
+  control policies.
+\newblock In {\em Proc. Annual Computer Security Applications Conference
+  (ACSAC)}, pages 163--172, 2008.
+
+\bibitem{martin07:automated}
+Evan Martin and Tao Xie.
+\newblock Automated test generation for access control policies via
+  change-impact analysis.
+\newblock In {\em Proc. 3rd International Workshop on Software Engineering for
+  Secure Systems (SESS)}, pages 5--11, 2007.
+
+\bibitem{martin07:fault}
+Evan Martin and Tao Xie.
+\newblock A fault model and mutation testing of access control policies.
+\newblock In {\em Proc. 16th International Conference on World Wide Web (WWW)},
+  pages 667--676, 2007.
+
+\bibitem{martin06:defining}
+Evan Martin, Tao Xie, and Ting Yu.
+\newblock Defining and measuring policy coverage in testing access control
+  policies.
+\newblock In {\em Proc. 8th International Conference on Information and
+  Communications Security (ICICS)}, pages 139--158, 2006.
+
+\bibitem{mouelhi09:tranforming}
+Tejeddine Mouelhi, Yves Le~Traon, and Benoit Baudry.
+\newblock Transforming and selecting functional test cases for security policy
+  testing.
+\newblock In {\em Proc. 2nd International Conference on Software Testing,
+  Verification, and Validation (ICST 2009)}, 2009.
+
+\bibitem{Myers:1979:AST:539883}
+Glenford~J. Myers.
+\newblock {\em Art of Software Testing}.
+\newblock John Wiley \& Sons, Inc., New York, NY, USA, 1979.
+
+\bibitem{Rothermel:1996:ART:235681.235682}
+Gregg Rothermel and Mary~Jean Harrold.
+\newblock Analyzing regression test selection techniques.
+\newblock {\em IEEE Trans. Softw. Eng.}, 22:529--551, August 1996.
+
+\end{thebibliography}

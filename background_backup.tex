@@ -1,0 +1,132 @@
+\section{Background}
+\label{sec:background}
+
+This section describe background of XACML policies, policy models, and model checking.
+
+
+\begin{figure}[t]%{t}
+%\begin{figure}[firstnumber=100]
+\begin{CodeOut}
+\begin{alltt}
+ 1 <Policy PolicyId="\textbf{Library Policy}" RuleCombAlgId="\textbf{Permit-overrides}">
+ 2  <Target/>
+ 3    <Rule RuleId="\textbf{1}" Effect="\textbf{Permit}">
+ 4      <Target>
+ 5        <Subjects><Subject> \textbf{BORROWER} </Subject></Subjects>
+ 6        <Resources><Resource> \textbf{BOOK} </Resource></Resources>
+ 7        <Actions><Action> \textbf{BORROWERACTIVITY} </Action></Actions>
+ 8      </Target>
+ 9	    <Condition>
+10        <AttributeValue> \textbf{WORKINGDAYS} </AttributeValue>
+11      </Condition>
+12    </Rule>
+13    <Rule RuleId="\textbf{2}" Effect="\textbf{Deny}">
+14      <Target>
+15        <Subjects><Subject> \textbf{BORROWER} </Subject></Subjects>
+16        <Resources><Resource> \textbf{BOOK} </Resource></Resources>
+17        <Actions><Action> \textbf{BORROWERACTIVITY} </Action></Actions>
+18      </Target>
+19	    <Condition>
+20        <AttributeValue> \textbf{HOLIDAYS} </AttributeValue>
+21      </Condition>
+22    </Rule>
+23    <Rule RuleId="\textbf{3}" Effect="\textbf{Permit}">
+24      <Target>
+25        <Subjects><Subject> \textbf{SECRETARY} </Subject></Subjects>
+26        <Resources><Resource> \textbf{BOOK} </Resource></Resources>
+27        <Actions><Action> \textbf{FIXBOOK} </Action></Actions>
+28      </Target>
+29	    <Condition>
+30        <AttributeValue> \textbf{MAINTENANCEDAY} </AttributeValue>
+31      </Condition>
+32    </Rule>
+33      <!-- A final, "fall-through" rule that always Denies -->
+34    <Rule RuleId="\textbf{FinalRule}" Effect="\textbf{Deny}"/>
+35 </policy>
+\end{alltt}
+\end{CodeOut}
+\vspace*{-3.0ex} \caption{An example policy specified in XACML}
+ \label{fig:example}
+\end{figure}
+\subsection{XACML Policies}
+
+XACML (eXtensible Access Control Markup
+Language)~\cite{oasis05:xacml} is a language specification standard
+%designed by OASIS.
+published by Organization for the Advancement of Structured
+Information Standards (OASIS).
+An XACML access control specification consists of a policy set and a
+policy combining algorithm.
+
+
+XACML supports for various policy models such as Role Based Access Control (RBAC)~\cite{anderson04:rbacxacml,ferraiolo01:proposed} and organization-based access control (OrBAC)~\cite{kalam03:orBac}. For RBAC and OrBAC, various job functions are associated to roles (e.g., staff or employee) that a user possesses. Permissions or denials to take an action on certain objects are assigned to specific roles (instead of users). OrBAC supports for 
+extra features such as role, activity (i.e., action), and view (i.e., object) hierarchy. Figure~\ref{fig:example} is an OrBAC policy example since this example expresses roles such as ``Secretary'' and ``Borrower'' are associated with subject attributes and policy decisions are made through specific roles.
+
+
+Let $Conditions$ be the set of the environmental context
+such as working days or holidays, a file size, and a user's task authorization level. 
+Let $S$, $O$, $A$, and $C$ denote all the subjects,
+objects, actions, and  $Conditions$, respectively, in an access control system.
+
+An XACML policy consists of a \Intro{policy set}, which consists
+of \Intro{policy sets} and \Intro{policies}. A \Intro{policy} consists
+of a sequence of \Intro{rules}, each of which
+specifies under what conditions $C$ subject $S$ is allowed or denied
+to perform action $A$ (e.g., read) on certain object (i.e., resources) $O$ in a system.
+
+A rule $R$ is of the following form:
+\begin{center}
+$R$ $\subseteq$ $S$ $\times$ $A$ $\times$ $O$ $\times$ $C$ $\longrightarrow$ $Dec$
+\end{center}
+where $Dec$ denotes a decision, which is either permit or deny.
+A user's request is evaluated against a policy.
+A request matches with a rule if the request satisfies the rule's
+attributes. Then the rule's decision can be returned.
+
+For R1 = 
+Formally, a request $Q$ in the following form matches $R$:
+\begin{center}
+$Q$ $\subseteq$ $S_q$ $\times$ $A_q$ $\times$ $O_q$ $\times$ $C_q$ where $S_q$ $\subseteq$ $S$, $A_q$ $\subseteq$ $A$, $O_q$ $\subseteq$ $O$, and $C_q$ $\subseteq$ $C$.
+\end{center}
+
+
+More than one rule in a policy may be applicable to a given request.
+The \Intro{rule combining algorithm} is used to combine multiple
+rule decisions into a single decision. There are four standard rule
+combining algorithms: \CodeIn{deny-overrides}, \CodeIn{permit-overrides}, \CodeIn{first
+applicable}, and \CodeIn{only-one-applicable}. The
+\Intro{deny-overrides algorithm} returns \CodeIn{Deny} if any rule
+evaluation returns \CodeIn{Deny} or no rule is applicable. The
+\Intro{permit-overrides algorithm} returns \CodeIn{Permit} if any
+rule evaluation returns \CodeIn{Permit}. Otherwise, the algorithm
+returns \CodeIn{Deny}.
+The \Intro{first-applicable algorithm} returns whatever the
+evaluation of the first applicable rule returns. The
+\Intro{only-one-applicable} algorithm returns the decision of the only
+applicable rule if there is only one applicable rule, and returns
+error otherwise.
+
+Figure~\ref{fig:example} shows an example policy specified
+in XACML. The example policy consists of three XACML rules used in our real-life library access
+control policy subject, called $LSM$~\cite{mouelhi09:tranforming}.
+Note that we simplified XML formats to reduce
+space for this example.
+Lines 3-12 describe a rule that \CodeIn{borrower} is Permitted for \CodeIn{book} \CodeIn{borroweractivity} (e.g., borrowing books) in \CodeIn{working days}.
+Lines 13-22 describe
+a rule that \CodeIn{borrower} is Denied for \CodeIn{book} \CodeIn{borroweractivity} in \CodeIn{holidays}.
+Lines 23-32 describe
+a rule that \CodeIn{secretary} is Permitted for \CodeIn{book} \CodeIn{fixing} in \CodeIn{maintenance day}.
+As these rules are combined using the permit-overrides
+algorithm, the \Intro{permit-overrides algorithm} returns the
+\CodeIn{Permit} if a request matches at least one of
+rules with permit decisions. For example, if rules 2 and 3 are applicable to a request, the decision
+evaluated from rule 3 is given higher priority than that of rule 2.
+
+
+\subsection{Regression Testing + PDP + PEP}
+
+
+
+
+
+

@@ -1,0 +1,147 @@
+\section{Experiment}\label{sec:experiment}
+
+We carried out our evaluation on a desktop PC, running Windows 7 with Intel Core i5, 2410 Mhz processor, and 4 GB of RAM. 
+We have implemented test selection techniques and mutant generation in Java.
+We generate mutants by changing rules
+in access control policies To simulate regression in access control policies.
+We used three types of mutants injected in the policies; the first one
+is RMR (Rule Removal), RA (Rule Addition), and CRE (Change Rule Effect)
+mutants. [ToDo: citation and explain more] In our mutants, we only change rules in access control policies,
+we do not simulate regression in test code in subjects.
+To measure the efficiency of our three techniques, we conducted evaluation as follows. 
+We compared elapsed time to analyze test-rule correlation analysis,
+change impact analysis, and test selection by each technique.
+For the first two techniques, we require test-rule correlation analysis
+and change impact analysis, which should be done before actual test selection.
+We compare also selected tests by our three techniques to
+compare that all of these techniques return the same tests for regression.
+The objective of this evaluation is to investigate how our approach impacts performance for subjects and safety
+to select all tests for regression.
+
+
+%\textbf{Detection: -- selection detection two Type} evaluated result inconsistency and number of reqs (in case of dependency) or failure trace info
+  
+
+\begin{table*}[tbp]
+  \centering
+  	\caption{Subjects}    
+    \begin{tabular}{|l|r|r|r|r|r|r|}
+    \hline
+          & LOC   & \# of Test Methods & \# of Security Test Methods & \# of Covered Rules & \# of Not-covered Rules & \% of Covered Rules \\\hline\hline
+    LMS   & 3749  & 46    & 29    & 42    & 0     & 100 \\\hline
+    VMS   & 3734  & 52    & 10    & 13    & 106   & 12 \\\hline
+    ASMS  & 7836  & 93    & 91    & 109   & 21    & 83 \\\hline
+		\end{tabular}%
+  \label{tab:subj}%
+%\end{table}%
+%
+%\begin{table*}[tbp]
+  \centering
+  \caption{Access control policies in our subjects}
+    \begin{tabular}{|l|r|r|r|r|r|r|r|}
+ 		\hline
+     & ~\# Subjects~ & ~\# Actions~ & ~\# Resources~ & ~\# Conditions~ & ~\# Explicit Rules~ & ~\# Implicit Rules~ & ~\# Total Rules~ \\\hline\hline
+    LMS   & 6     & 10    & 3     & 4     & 42    & 678   & 720 \\\hline
+    VMS   & 7     & 15    & 3     & 3     & 106   & 839   & 945 \\\hline
+    ASMS~  & 8     & 11    & 5     & 4     & 129   & 1631  & 1760 \\\hline
+ 
+    \end{tabular}%
+  \label{tab:subjectpolicies}%
+\end{table*}%
+
+\subsection{Subjects}
+The subjects include three real-life Java programs each which
+interact with access control policies \cite{testcase}. We next describe
+our three subjects.
+\begin{itemize}	
+\item Library Management System (LMS) provides web services to manage books in a public library.
+\item Virtual Meeting System (VMS) provides web conference services. VMS allows users to organize
+online meetings in a distributed platform.
+\item Auction Sale Management System (ASMS) allows users to buy or sell items on line. A seller initiates an auction by submitting a description of an item she wants to sell with its expected minimum price. Users then participate in bidding process by
+bidding the item. For the bidding on the item, users have enough money in her account before bidding.
+\end{itemize}
+
+Table~\ref{tab:subj} shows information in our subjects. [ToDo: explain more]
+Table~\ref{tab:subjectpolicies} shows information in our subjects. [ToDo: explain more]
+Our subjects are equipped with Sun PDP \cite{sunxacml}, which is
+a popularly used PDP to evaluate requests.
+Policies in LMS,VMS, and ASMS contain a total of 720, 945, and 1760 rules, respectively.
+%Moreover, to compare performance improvement over existing PDPs,
+%we adopt XEngine (instead of Sun PDP) in our subjects to evaluate requests.
+%XEngine is a novel policy evaluation engine, which transforms the hierarchical tree structure of the XACML policy to a flat structure
+%to improve request processing time. XEngine also handles various combining algorithms supported by XACML.
+ 
+
+
+\subsection{Objectives and Measures}
+In the evaluation, we intend to answer the following
+research questions:
+\begin{itemize}
+
+
+	\item RQ1: How many of test cases in a test suite (from an existing test suite) selected by our test selection techniques? This question helps to show that our techniques can reuse ZZ\% of a test suite. We also compare our approach with random test select technique to show how effectively our approach selects test suite to cover changed policy behaviors.
+	
+	\item RQ2: Do our protest selections are safe? This question helps to show that our techniques select all tests, which shows only and all test cases to reveal changed behaviors in access control policies.
+	
+	\item RQ3: What are elapsed time for our techniques to conduct test selection by given subjects? This question helps to compare performance of our techniques by measuring
+	efficiency with regards to elapsed time.
+			
+	\item RQ4: How higher we can achieve additional policy coverage ratio by our test augmentation technique?  This question helps to show that our technique can generate/augment test suite to cover 100\% of changed policy behaviors. We also compare our approach with random test generation technique to show how effectively our approach augment test suite to cover not-coverted changed policy beahviors.
+			
+%	How many of test cases in a test suite (from an existing test suite) selected by our test selection technique? This question helps to show that our technique can reuse number of a test suite. We also compare our approach with random test select technique to show how effectively our approach selects test suite to cover M.
+%RQ1: How many of test cases in a test suite (from an existing test suite) selected by our test selection technique? This question helps to show that our technique can reuse __ % of a test suite. We also compare our approach with random test select technique to show how effectively our approach selects test suite to cover M.
+%RQ2: How higher we can achieve additional policy coverage ratio by our test augmentation technique?  This question helps to show that our technique can generate/augment test suite to cover 100\% of M. We also compare our approach with random test generation technique to show how effectively our approach augment test suite to cover M.
+
+%	\item RQ4: Safe? compare three ones or compare all of test cases to find whether it was complete and safe?
+%	
+%	\item RQ2: Performance Comparision of these three ones?
+%	
+%	\item RQ3: How higher we can achieve additional policy coverage ratio by our test augmentation technique?  This question helps to show that our technique can generate/augment test suite to cover 100\% of M. We also compare our approach with random test generation technique to show how effectively our approach augment test suite to cover M.
+	
+\end{itemize}
+
+\subsection{Metrics}
+
+We use following 4 metrics in our evaluation.
+\begin{itemize}
+	\item Policy coverage information for changed policy behaviors.
+	\item Number of test cases reused by the test selection technique.
+	\item Elapsed time of test-rule correlation, change impact analysis, and test selection.
+	\item Number of test cases generated by the test augmentation technique. 
+\end{itemize}
+	
+[ToDo: explain more]
+
+% Table generated by Excel2LaTeX from sheet 'Sheet1'
+
+
+%Metrics # of code
+%Metrics # of rules in a policy
+%Metrics # of system tests
+%	seucrity tests
+%	selected tests
+
+
+%In our evaluation, we measure request processing time by evaluating randomly
+%generated requests developed by our previous work~\cite{Xengine}.
+%In particular, for multiple PDPs, our approach fetches a PEP with a corresponding
+%PDP for a given request at run time. Therefore, request processing time includes
+%both fetching time and request evaluation time.
+
+
+%\begin{figure*}[h!]
+%  \centering
+%  \subfloat[LMS]{\label{fig:gull}\includegraphics[width=0.33\textwidth]{LMS.pdf}}                
+%  \subfloat[VMS]{\label{fig:VMS}\includegraphics[width=0.33\textwidth]{VMS.pdf}}
+%  \subfloat[ASMS]{\label{fig:ASMS}\includegraphics[width=0.33\textwidth]{ASMS.pdf}}
+%  \caption{Request Processing Time for our subjects LMS, VMS and ASMS}
+%  \label{fig:processing time}
+%\end{figure*}
+
+%\subsection{Performance Improvement Results}\label{subsec:performanceimprovement}
+%
+%We generated the resulting sub-policies for all the splitting criteria defined in Section~\ref{subsec:SplittingCriteria}.
+%For each splitting criteria, we have conducted systems tests to generate requests that trigger all the PEPs in the evaluation. 
+%The test generation step leads to the execution of all combination of possible requests described in our previous work \cite{testcase}.  
+%The process of tests generation is repeated for ten times in order to avoid the impact of randomness.
+%We applied this process to each splitting criterion and calculated evaluation time on average of a system under tests.
