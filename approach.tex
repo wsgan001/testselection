@@ -7,7 +7,7 @@ As manually selecting system tests for regression testing is tedious and error-p
 select system tests for regression in policy evolution. Among existing system tests, the objective is to select
 all system tests for regressing testing as follows.
 Our approach takes two versions of program code, which interact with $v_1$ (original) and $v_2$ (new) access control policies, respectively. Our approach takes existing system tests as an input; these tests invoke methods in program code.
-Our approach analyzes given program code and polices to selects \emph{only} system tests for regression testing in case of policy evolution. Among given system tests, our selected system tests invoke methods to reveal changed policy behaviors between $v_1$ and $v_2$.
+Our approach analyzes given program code and polices to select \emph{only} system tests for regression testing in case of policy evolution. Among given system tests, our selected system tests invoke methods to reveal changed policy behaviors between $v_1$ and $v_2$.
 
 While we select all of system tests for regression, our test selection techniques cannot guarantee sufficiency of regression testing (i.e., whether  tests are sufficient to reveal all of changed policy behaviors). We have developed a technique to automatically augment new system
 tests to satisfy sufficiency as follows. We measure sufficiency of regressing testing with our selected system tests based on rule coverage criteria~\cite{}. For not-covered changed policy behaviors (i.e., rules), our approach automatically generates system tests to cover such behaviors.
@@ -45,17 +45,17 @@ We next describe our proposed three test selection techniques and test augmentat
 
 Our first proposed technique uses mutation analysis to select system tests as follows.
 First step is to set up rule-test correlation.
-Given a policy $P$, we creates its rule-decision-change (RDC) mutant policy $Pr_i$ by changing decision (e.g., Permit to Deny) of rule r$_i$ in turn. An example mutant policy is shown in Figure~\ref{fig:rdcexample}. The mutant policy mutates Rule 1's decision in the original example policy in Figure~\ref{fig:example}; original Rule 1's decision Permit is changed to Deny. The technique find affected tests for this rule decision change. 
-The technique execute system tests $T$ on program code for $P$ and $Pr_i$, respectively. To detect changed policy behaviors, the technique monitors responses of evaluated requests formulated from system tests $ST$. When the technique find system tests, which evaluate different policy decisions against $P$ and $P'$, respectively, our technique 
-We correlate rule r$_i$ and $ST$.
+Given a policy $P$, we creates its rule-decision-change (RDC) mutant policy $Pr_i$ by changing decision (e.g., Permit to Deny) of rule r$_i$ in turn. An example mutant policy is shown in Figure~\ref{fig:rdcexample}. The mutant policy mutates Rule 1's decision in the original example policy in Figure~\ref{fig:example}; original Rule 1's decision Permit is changed to Deny. The technique finds affected tests for this rule decision change. 
+The technique executes system tests $T$ on program code for $P$ and $Pr_i$, respectively. To detect changed policy behaviors, the technique monitors responses of evaluated requests formulated from system tests $ST$. When the technique find system tests, which evaluate different policy decisions against $P$ and $P'$, respectively, our technique 
+correlates rule r$_i$ and $ST$.
 We continue our technique until we find each rule's correlated system test cases in turn.
 
 Second step is to select system tests for regression on $P$ and its modified policy $P_m$.
 Our technique conducts change impact analysis of $P$ and $P_m$ to find which rules' decision are changed.
 We select system tests correlated with such decision changed rules.
 
-While the technique can quickly select system selects in the second step, the technique requires rule-test setup (in the first step), which could be costly in terms of execution times. Given n rules in $P$, we execute $T$ for 2$\times$n times. 
-AS the first step is applied for only existing rules $R$ in $P$, our technique requires addition of rule-test
+While the technique can quickly select system tests in the second step, the technique requires rule-test setup (in the first step), which could be costly in terms of execution times. Given n rules in $P$, we execute $T$ for 2$\times$n times. 
+As the first step is applied for only existing rules $R$ in $P$, our technique requires addition of rule-test
 correlation for newly added rules $R_n$ where $R_n$ $\notin$ $R$ in $P_m$. 
 In addition, if a new system test is introduced, we execute this test for 2$\times$n times.
 However, an important benefit is that we are enabled to conduct rule-test set-up once before encountering policy changes in terms of correlated rules. 
@@ -92,7 +92,7 @@ by system tests. Our intuition is that system tests may interact only small numb
 instead of a whole rules in the policy. Therefore, we require correlation of system tests for only such small number of rules.
 
 First step is to set up rule-test correlation.
-The technique execute system tests $T$ on program code for $P$. The technique monitors which rules in a policy are evaluated with
+The technique executes system tests $T$ on program code for $P$. The technique monitors which rules in a policy are evaluated with
 requests formulated from system tests $ST$. Our technique correlates rule r$_i$ and $ST$.
 We continue our technique until we find correlated system test cases with rules in a policy.
 
@@ -101,7 +101,7 @@ Our technique conducts change impact analysis of $P$ and $P_m$ to find which rul
 We select system tests correlated with such decision changed rules.
 
 Both the two techniques are white-box testing, where access control policies are available.
-An important benefit of this technique is to reduce cost in terms of mutation analysis and execution times. This technique does not require generating mutant by changing rule's decision in turn. Moreover, the technique can significantly reduce execution times.
+An important benefit of this technique is to reduce cost in terms of mutation analysis and execution times. This technique does not require generating mutants by changing rule's decision in turn. Moreover, the technique can significantly reduce execution time.
 While the technique can quickly select system selects in the second step, the technique requires rule-test setup (in the first step), which could be costly in terms of execution times. Consider that requests $rs$ are formulated from system tests interact only n$_1$ rules (n$_1$ $\leq$ n) in a policy.
 We execute $T$ only once. Our technique requires addition of rule-test
 correlation for newly added rules $R_n$ where $R_n$ $\notin$ $R$ in $P_m$ as the same with the previous technique.
@@ -111,11 +111,11 @@ correlation for newly added rules $R_n$ where $R_n$ $\notin$ $R$ in $P_m$ as the
 
 To reduce such correlation setup efforts in the previous techniques, we develop
 a technique, which does not require correlation setup. 
-Our approach execute system tests $T$ on program code for $P$. Our approach records all requests issued to policy decision point (PDP) for each system test case. For test selection, our technique evaluate all issued requests against $P$ and $P_m$, respectively.
+Our approach executes system tests $T$ on program code for $P$. Our approach records all requests issued to policy decision point (PDP) for each system test case. For test selection, our technique evaluates all issued requests against $P$ and $P_m$, respectively.
 Our technique selects requests (with corresponding system test cases) to evaluate different decisions for two different policy versions 
 
 Our previous two techniques require correlation rule-test setup. The techniques analyze two versions of policies statically or dynamically 
-under test to find which rules' are changed. However, these technique requires correlation setup.
+under test to find which rules' are changed. However, these technique require correlation setup.
 For this approach, we execute all of system test cases for only once. For additional system tests, we
 execute the tests only once. An important benefit is that, we don't require that access control policies are available as the preceding two
 approaches. For security reasons, developers may not want to reveal their access control policies.

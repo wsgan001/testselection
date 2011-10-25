@@ -3,18 +3,22 @@
 \section{Background}
 \label{sec:background}
 \subsection{Policy-based Software Systems: PEP-PDP separation}
-Policy-based software systems are regulated by access control policies that specify the different actions that subjects are allowed to perform on system resources. 
-The policy is enforced by one or multiple Policy Enforcement Points (PEP) at the application level. A given PEP receives a subject access request and 
-sends it to a Policy decision Point (PDP) that evaluates access control requests against policy rules. The evaluation is done by resolving all the rules in the policy. 
-Current access control implementations follow a design strategy that separates between the PEP and the PDP, this separation is advocated mainly for two reasons:
-\begin{itemize}
-\item Specifying the policy independently from the application enables to save time, cost and effort during the maintenance phase. 
-Developers have not to update the application code whenever a policy update is required.
-\item When the policy is not hard-coded into the application, it can be standardized and transported through many different systems.
-\end{itemize}
-Access control policies can be specified by many languages like EPAL \cite{epal} or XACML \cite {oasis05:xacml}. 
-In what follows, we consider XACML polices written in XACML language.
-
+Policy-based software systems are regulated by access control policies that specify the different actions that subjects are allowed to perform on system resources. 
+The policy is enforced by one or multiple Policy Enforcement Points (PEP) at the application level. A given PEP receives a subject access request and 
+sends it to a Policy decision Point (PDP) that evaluates access control requests against policy rules. The evaluation process involves resolving all the rules in the policy. 
+Current access control implementations follow a design strategy that separates between the PEP and the PDP, this separation is advocated mainly for two reasons:
+
+\begin{itemize}
+\item Specifying the policy independently from the program code enables to save time, cost and effort during the maintenance phase since developers have not 
+to update the application code whenever a policy update is required.
+\item When the policy is not hard-coded into the application, it can be specified in a standardized language and transported through many different systems platforms.
+\end{itemize}
+
+Access control policies can be specified by many languages like EPAL \cite{epal} or XACML \cite {oasis05:xacml}. 
+In what follows, we consider XACML polices written in XACML language.
+
+
+
 %%%% Figure here
 
 %%%% Figure here
@@ -137,28 +141,30 @@ program to the expected output that meets its functional and non functional requ
 this activity is gaining more and more interest in the research field and raising a big research question like how to establish a certain trade-off between budget, 
 time and quality. 
 
-Software is subject to changes occuring at the design stage or in later stages at the deployment or maintenance phases. These changes are 
-usually supposed to meet changes in the requirements or to overcome errors that can be detected in later stages of software life cycle. 
+Software is subject to changes occuring at the design stage or in later stages at the deployment or maintenance phases. These changes are 
+usually supposed to meet changes in the requirements or to overcome errors that can be detected in later stages of software life cycle. 
+
 The research field that is interested in retesting the system to verify that the new changes have not altered the initial system behavior is regression testing. 
 
 Rothermel et al. \cite{Rothermel:1996:ART:235681.235682} define regression testing like the following 
-like the following: ``Given a program $P$, a modified version $P'$, 
-and a set $T$ of test cases used previously to test $P$, regression analysis and testing techniques attempt to make use of a subset of $T$ to 
-gain sufficient confidence in the correctness of $P'$ with respect to behaviors from $P$ retained in $P'$''.
-The main objective of regression testing is to reduce the costs from rerunning initial test cases that have been performed before the deployment 
-of the software product, while maintaining a high capability of selected tests to detect potential errors that are induced by changes.
+like the following: ``Given a program $P$, a modified version $P'$, and a set $T$ of test cases used previously to test $P$, regression analysis and testing 
+techniques attempt to make use of a subset of $T$ to gain sufficient confidence in the correctness of $P'$ with respect to behaviors from $P$ retained in $P'$''.
+The main objective of regression testing is to reduce the costs from rerunning initial test cases that have been performed before the deployment 
+of the software product, while maintaining a high capability of selected tests to detect potential errors that are induced by changes.
 
-\subsubsection{Regression testing: Test selection and augmentation}
+
+\subsubsection{Regression testing: Test selection and augmentation}
 Regression test selection techniques involve two aspects that are usually considered conjointly:
 \begin{itemize}
-\item The first aspect is the regression test selection problem which aims at minimizing the number of tests that have to be considered 
-Rothermel et al. \cite{Rothermel:1996:ART:235681.235682} have provided in their work a survey on techniques that have been used in this field. 
-The regression test selection technique is called safe when the selected tests among the initial test suite enable to detect 100\% of the faults.
-\item The second aspect is augmentation techniques and aims at adding new tests to the initial Test Suite to cover changed parts.
+\item The first aspect is the regression test selection problem which aims at minimizing the number of tests that have to be considered 
+Rothermel et al. \cite{Rothermel:1996:ART:235681.235682} have provided in their work a survey on techniques that have been used in this field. 
+The regression test selection technique is called safe when the selected tests among the initial test suite enable to detect 100\% of the faults.
+\item The second aspect is augmentation techniques and aims at adding new tests to the initial Test Suite to cover changed parts.
 \end{itemize}
 
-\subsubsection{Regression testing in the context of software policy-based systems}
-In this work, we consider regression testing in the context of software policy-based systems. We aim to verify that the changed parts of the policy have not 
+\subsubsection{Regression testing in the context of software policy-based systems}
+
+In this work, we consider regression testing in the context of software policy-based systems. We aim to verify that the changed parts of the policy have not 
 impacted the access control mechanisms implemented in the system.
 
 
