@@ -83,6 +83,35 @@ However, an important benefit is that we are enabled to conduct rule-test set-up
  \label{fig:rdcexample}
 \end{figure}
 
+\begin{algorithmic}
+\begin{algorithm}[t]
+\caption{Test Selection via Mutation Analysis Algorithm}
+\STATE{\textit{TestSelection1}($P$, $P_{m}$, $T$): $T'$}
+\STATE \textbf{Input:} XACML Policy $P$, modified policy $P_{m}$, Initial Sytem Test Cases $T$
+\STATE \textbf{Output:} $T' \subseteq T$ where $T'$ is the subset of $T$ selected for use in regression testing $P_{m}$
+\STATE {$T'$=\O{}}
+\STATE /*Rule-test set-up phase*/
+\FOR {each rule $r_{i}$ in Policy $P$}
+\STATE {$T_{r_{i}}$=\O{}} where $T_{r_{i}} \subseteq T$ are the tests correlated to $r_{i}$ 
+\STATE {/*We mutate the policy $P$ by creating a rule-decision change (RDC) on $r_{i}$ to get $P_{r_{i}}$*/}
+\STATE {$P_{r_{i}} \xleftarrow[RDC(r_{i})]{} P$}
+\STATE {Execute $T$ with $P_{r_{i}}$}
+\FOR {each $t$ in $T$}
+\STATE Let $E(t)$ be the test execution result, $E(t)={Success, Failure}$
+\IF{$E(t) \leftarrow$ Failure} 
+\STATE $T_{r_{i}} \leftarrow T_{r_{i}} \cup t$
+\ENDIF
+\ENDFOR
+\STATE Map($r_{i}$,$T_{r_{i}}$)
+\ENDFOR
+\STATE /*Test selection phase*/
+\STATE $\{r_{m}\}_{i=1..m} \leftarrow diff(P,P_{m})$
+\FOR {Each rule $r_{i}$ in $\{r_{m}\}_{i=1..m}$}
+\STATE {$T' \leftarrow T' \cup T_{r_{i}}$}
+\ENDFOR
+\STATE return $T'$
+\end{algorithm}
+\end{algorithmic}
 
 \subsection{Test Selection via System Test Execution}
 
@@ -90,28 +119,49 @@ Our previous technique finds correlation of all of existing rules $N$ in a given
 such correlation setup efforts, we develop a technique to correlate only rules, which can be evaluated
 by system tests. Our intuition is that system tests may interact only small number of rules in a policy
 instead of a whole rules in the policy. Therefore, we require correlation of system tests for only such small number of rules.
-
 First step is to set up rule-test correlation.
 The technique executes system tests $T$ on program code for $P$. The technique monitors which rules in a policy are evaluated with
 requests formulated from system tests $ST$. Our technique correlates rule r$_i$ and $ST$.
 We continue our technique until we find correlated system test cases with rules in a policy.
-
 Second step is the same with the previous technique. This step is to select system tests for regression on $P$ and its modified policy $P_m$.
 Our technique conducts change impact analysis of $P$ and $P_m$ to find which rules' decision are changed.
 We select system tests correlated with such decision changed rules.
-
 Both the two techniques are white-box testing, where access control policies are available.
 An important benefit of this technique is to reduce cost in terms of mutation analysis and execution times. This technique does not require generating mutants by changing rule's decision in turn. Moreover, the technique can significantly reduce execution time.
 While the technique can quickly select system selects in the second step, the technique requires rule-test setup (in the first step), which could be costly in terms of execution times. Consider that requests $rs$ are formulated from system tests interact only n$_1$ rules (n$_1$ $\leq$ n) in a policy.
 We execute $T$ only once. Our technique requires addition of rule-test
 correlation for newly added rules $R_n$ where $R_n$ $\notin$ $R$ in $P_m$ as the same with the previous technique.
 
+\begin{algorithmic}
+\begin{algorithm}[t]
+\caption{Test Selection via System Test Execution}
+\STATE{\textit{TestSelection2}($P$, $P_{m}$, $T$): $T'$}
+\STATE \textbf{Input:} XACML Policy $P$, modified policy $P_{m}$, Initial Sytem Test Cases $T$
+\STATE \textbf{Output:} $T' \subseteq T$ where $T'$ is the subset of $T$ selected for use in regression testing $P_{m}$
+\STATE {$T'$=\O{}}
+\STATE /*Rule-test set-up phase*/
+\FOR {Each test case $t$ in $T$}
+\STATE {Execute $t$ with $P$}
+\STATE $MAP_{1}$=Map($t$,$\{r_{p}\}_{i=1..p}$) where $\{r_{p}\}_{i=1..p}$ are the rules in $P$ that are triggered by $t$
+\ENDFOR
+\STATE Generate a mapping rule/test from $MAP_{1}$
+\STATE $MAP_{2}$=Map($r_{i}$,$T_{r_{i}}) \leftarrow MAP_{1}$
+\STATE /*Test selection phase*/
+\STATE $\{r_{m}\}_{i=1..m} \leftarrow diff(P,P_{m})$
+\FOR {Each rule $r_{i}$ in $\{r_{m}\}_{i=1..m}$}
+\STATE {$T' \leftarrow T' \cup T_{r_{i}}$}
+\ENDFOR
+\STATE return $T'$
+\end{algorithm}
+\end{algorithmic}
 
 \subsection{Test Selection via Play Back}
 
 To reduce such correlation setup efforts in the previous techniques, we develop
 a technique, which does not require correlation setup. 
-Our approach executes system tests $T$ on program code for $P$. Our approach records all requests issued to policy decision point (PDP) for each system test case. For test selection, our technique evaluates all issued requests against $P$ and $P_m$, respectively.
+Our approach executes system tests $T$ on program code for $P$. Our approach records all requests issued to policy decision point (PDP) for each 
+system test case. 
+For test selection, our technique evaluates all issued requests against $P$ and $P_m$, respectively.
 Our technique selects requests (with corresponding system test cases) to evaluate different decisions for two different policy versions 
 
 Our previous two techniques require correlation rule-test setup. The techniques analyze two versions of policies statically or dynamically 
@@ -120,6 +170,24 @@ For this approach, we execute all of system test cases for only once. For additi
 execute the tests only once. An important benefit is that, we don't require that access control policies are available as the preceding two
 approaches. For security reasons, developers may not want to reveal their access control policies.
 
+\begin{algorithmic}
+\begin{algorithm}[t]
+\caption{Test Selection via Play Back}
+\STATE{\textit{TestSelection3}($P$, $P_{m}$, $T$): $T'$}
+\STATE \textbf{Input:} XACML Policy $P$, modified policy $P_{m}$, Initial Sytem Test Cases $T$
+\STATE \textbf{Output:} $T' \subseteq T$ where $T'$ is the subset of $T$ selected for use in regression testing $P_{m}$
+\STATE {$T'$=\O{}}
+\STATE {$R_{T'}$=\O{}} where $R_{T'}$ are the requests corresponding to $T'$ 
+\STATE {Execute system requests $R$}
+\FOR {each request $Re$ in $R$}
+\IF {$decision(Re/_{P}) \neq decision(Re/_{P_{m})}$}
+\STATE {$R_{T'} \leftarrow R_{T'} \cup Re$}
+\ENDIF
+\ENDFOR
+\STATE {$T' \leftarrow R_{T'}$}
+\STATE return $T'$
+\end{algorithm}
+\end{algorithmic}
 
 
 \subsection{Test Augmentation}
