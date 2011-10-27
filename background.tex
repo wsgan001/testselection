@@ -7,23 +7,17 @@ Policy-based software systems are regulated by access control policies that spec
 The policy is enforced by one or multiple Policy Enforcement Points (PEP) at the application level. A given PEP receives a subject access request and 
 sends it to a Policy decision Point (PDP) that evaluates access control requests against policy rules. The evaluation process involves resolving all the rules in the policy. 
 Current access control implementations follow a design strategy that separates between the PEP and the PDP, this separation is advocated mainly for two reasons:
-
 \begin{itemize}
-\item Specifying the policy independently from the program code enables to save time, cost and effort during the maintenance phase since developers have not 
-to update the application code whenever a policy update is required.
+\item Specifying the policy independently from the program code enables to save time, cost and effort during the maintenance phase since developers are not required 
+to update the application code at each policy update.
 \item When the policy is not hard-coded into the application, it can be specified in a standardized language and transported through many different systems platforms.
 \end{itemize}
-
-Access control policies can be specified by many languages like EPAL \cite{epal} or XACML \cite {oasis05:xacml}. 
+Access control policies can be specified in many languages like EPAL \cite{epal} or XACML \cite {oasis05:xacml}. 
 In what follows, we consider XACML polices written in XACML language.
 
 
-
-%%%% Figure here
-
-%%%% Figure here
 \subsection{XACML Policies}
-This section describe background of XACML policies, policy models, and model checking.
+This section describes the background in the field of XACML policies, policy models, and regression testing.
 \begin{figure}[t]%{t}
 %\begin{figure}[firstnumber=100]
 \begin{CodeOut}
@@ -68,15 +62,16 @@ This section describe background of XACML policies, policy models, and model che
 \vspace*{-3.0ex} \caption{An example policy specified in XACML}
  \label{fig:example}
 \end{figure}
-XACML (eXtensible Access Control Markup
-Language)~\cite{oasis05:xacml} is a language specification standard
+XACML (eXtensible Access Control Markup Language)~\cite{oasis05:xacml} is a language specification standard
 %designed by OASIS.
-published by Organization for the Advancement of Structured
-Information Standards (OASIS).
-An XACML access control specification consists of a policy set and a
-policy combining algorithm.
-XACML supports for various policy models such as Role Based Access Control (RBAC)~\cite{anderson04:rbacxacml,ferraiolo01:proposed} and organization-based access control (OrBAC)~\cite{kalam03:orBac}. For RBAC and OrBAC, various job functions are associated to roles (e.g., staff or employee) that a user possesses. Permissions or denials to take an action on certain objects are assigned to specific roles (instead of users). OrBAC supports for 
-extra features such as role, activity (i.e., action), and view (i.e., object) hierarchy. Figure~\ref{fig:example} is an OrBAC policy example since this example expresses roles such as ``Secretary'' and ``Borrower'' are associated with subject attributes and policy decisions are made through specific roles.
+published by the Organization for the Advancement of Structured Information Standards (OASIS).
+An XACML access control specification consists of a policy set and a policy combining algorithm.
+XACML supports various policy models such as Role Based Access Control (RBAC)~\cite{anderson04:rbacxacml,ferraiolo01:proposed} and Organization-Based Access 
+Control (OrBAC)~\cite{kalam03:orBac}. For RBAC and OrBAC, various job functions are associated to roles (e.g., staff or employee) that a user possesses. 
+Permissions or denials to take an action on certain objects are assigned to specific roles (instead of users). OrBAC supports 
+extra features such as role, activity (i.e., action), and view (i.e., object) hierarchy. Figure~\ref{fig:example} is an OrBAC policy example where 
+roles such as ``Secretary'' and ``Borrower'' are associated with subject attributes and policy decisions are made through 
+specific roles.
 Let $Conditions$ be the set of the environmental context
 such as working days or holidays, a file size, and a user's task authorization level. 
 Let $S$, $O$, $A$, and $C$ denote all the subjects,
@@ -95,8 +90,6 @@ where $Dec$ denotes a decision, which is either permit or deny.
 A user's request is evaluated against a policy.
 A request matches with a rule if the request satisfies the rule's
 attributes. Then the rule's decision can be returned.
-
-For R1 = 
 Formally, a request $Q$ in the following form matches $R$:
 \begin{center}
 $Q$ $\subseteq$ $S_q$ $\times$ $A_q$ $\times$ $O_q$ $\times$ $C_q$ where $S_q$ $\subseteq$ $S$, $A_q$ $\subseteq$ $A$, $O_q$ $\subseteq$ $O$, and $C_q$ $\subseteq$ $C$.
@@ -118,39 +111,33 @@ evaluation of the first applicable rule returns. The
 \Intro{only-one-applicable} algorithm returns the decision of the only
 applicable rule if there is only one applicable rule, and returns
 error otherwise.
-Figure~\ref{fig:example} shows an example policy specified
-in XACML. The example policy consists of three XACML rules used in our real-life library access
+Figure~\ref{fig:example} shows a policy specified
+in XACML. The policy consists of three XACML rules used in our real-life library access
 control policy subject, called $LSM$~\cite{mouelhi09:tranforming}.
 Note that we simplified XML formats to reduce
 space for this example.
-Lines 3-12 describe a rule that \CodeIn{borrower} is Permitted for \CodeIn{book} \CodeIn{borroweractivity} (e.g., borrowing books) in \CodeIn{working days}.
-Lines 13-22 describe
-a rule that \CodeIn{borrower} is Denied for \CodeIn{book} \CodeIn{borroweractivity} in \CodeIn{holidays}.
-Lines 23-32 describe
-a rule that \CodeIn{secretary} is Permitted for \CodeIn{book} \CodeIn{fixing} in \CodeIn{maintenance day}.
-As these rules are combined using the permit-overrides
-algorithm, the \Intro{permit-overrides algorithm} returns the
-\CodeIn{Permit} if a request matches at least one of
-rules with permit decisions. For example, if rules 2 and 3 are applicable to a request, the decision
+Lines 3-12 describe a rule that \CodeIn{borrower} is permitted to \CodeIn{borroweractivity} (e.g., borrowing books) \CodeIn{book} in \CodeIn{working days}.
+Lines 13-22 describe a rule that \CodeIn{borrower} is denied to \CodeIn{borroweractivity} \CodeIn{book} in \CodeIn{holidays}.
+Lines 23-32 describe a rule that \CodeIn{secretary} is permitted to \CodeIn{fixing} for \CodeIn{book} in \CodeIn{maintenance day}.
+As these rules are combined using the permit-overrides algorithm, the \Intro{permit-overrides algorithm} returns the \CodeIn{Permit} if
+ a request matches at least one of rules with permit decisions. For example, if rules 2 and 3 are applicable to a request, the decision
 evaluated from rule 3 is given higher priority than that of rule 2.
 
 
 \subsection{Regression Testing}
 Software testing \cite{Myers:1979:AST:539883} refers to the activity of generating Tests Cases to verify the conformity of output results provided by a 
 program to the expected output that meets its functional and non functional requirements. With the increasing complexity of software systems, 
-this activity is gaining more and more interest in the research field and raising a big research question like how to establish a certain trade-off between budget, 
+this activity is gaining more and more interest in the research field and aiming to establish a certain trade-off between budget, 
 time and quality. 
 
 Software is subject to changes occuring at the design stage or in later stages at the deployment or maintenance phases. These changes are 
 usually supposed to meet changes in the requirements or to overcome errors that can be detected in later stages of software life cycle. 
-
-The research field that is interested in retesting the system to verify that the new changes have not altered the initial system behavior is regression testing. 
-
-Rothermel et al. \cite{Rothermel:1996:ART:235681.235682} define regression testing like the following 
-like the following: ``Given a program $P$, a modified version $P'$, and a set $T$ of test cases used previously to test $P$, regression analysis and testing 
+Regression testing refers to the research field that is interested in retesting the system to verify that the new changes have not altered 
+the initial system behavior. As highlighted by Rothermel et al in \cite{Rothermel:1996:ART:235681.235682}, regression testing is defined like the following: 
+``Given a program $P$, a modified version $P'$, and a set $T$ of test cases used previously to test $P$, regression analysis and testing 
 techniques attempt to make use of a subset of $T$ to gain sufficient confidence in the correctness of $P'$ with respect to behaviors from $P$ retained in $P'$''.
-The main objective of regression testing is to reduce the costs from rerunning initial test cases that have been performed before the deployment 
-of the software product, while maintaining a high capability of selected tests to detect potential errors that are induced by changes.
+The main objectives of regression testing is to reduce the costs from rerunning initial test cases that have been performed before the deployment 
+of the software product, and to maximize the capability of selected tests to detect potential errors that are induced by changes.
 
 
 \subsubsection{Regression testing: Test selection and augmentation}
@@ -164,10 +151,15 @@ The regression test selection technique is called safe when the selected tests a
 
 \subsubsection{Regression testing in the context of software policy-based systems}
 
-In this work, we consider regression testing in the context of software policy-based systems. We aim to verify that the changed parts of the policy have not 
+In this work, we consider regression testing in the context of policy-based software systems. We aim to verify that the changed parts of the policy have not 
 impacted the access control mechanisms implemented in the system.
+ portions to be validated.
 
 
+
+
+The figure 1 \ref {} illustrates the overall scenario
+ADD schema
 
 
 

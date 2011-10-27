@@ -71,6 +71,7 @@
 % \documentclass[conference]{../sty/IEEEtran}
 
 \usepackage{amssymb}
+\usepackage{amsmath}
 \setcounter{tocdepth}{3}
 \usepackage{graphicx}
 
@@ -88,6 +89,8 @@
 \usepackage{url}
 \usepackage{graphicx} % remove it due to duplication with an existing one
 \usepackage{latexsym}
+\usepackage{algorithmic}
+
 \usepackage{psfrag}
 \usepackage{comment}
 \usepackage{lineno}
@@ -107,6 +110,8 @@
 %\newcommand{\redbold}[1]{ \textbf{\color{red}{#1}}
 %\newcommand{\FixJeeHyun}[1]{{\large\textbf{FIXJeeHyun}}\color{red}{#1}\color{black}{}{\large\textbf{FIXJeeHyun}}}
 %\newcommand{\CommentJeeHyun}[1]{{\large\textbf{COMMENTJeeHyun}}#1{\large\textbf{COMMENTJeeHyun}}}
+
+ 
 
 
 
@@ -368,11 +373,6 @@
 % http://www.ctan.org/tex-archive/macros/latex/contrib/misc/
 % Read the url.sty source comments for usage information. Basically,
 % \url{my_url_here}.
-
-
-
-
-
 % *** Do not adjust lengths that control margins, column widths, etc. ***
 % *** Do not use packages that alter fonts (such as pslatex).         ***
 % There should be no need to do such things with IEEEtran.cls V1.6 and later.
@@ -457,16 +457,17 @@ developers may modify policies according to evolving requirements.
 %For example, new security requirements include new security concerns to be added into a policy.
 %Developers may change policies without changing program code related to actual system functionality.
 In order to increase confidence that the modification of policies is correct and does not introduce unexpected behavior, developers conduct regression testing.
-For regression testing, rerunning all of existing system test cases is costly and time-consuming, especially for large-scale systems. In order to reduce the cost of regression 
+%For regression testing, rerunning all of existing system test cases is costly and time-consuming, especially for large-scale systems.%
+In order to reduce the cost of regression 
 testing, we develop a safe regression-test-selection approach, which selects every test case that may reveal a fault in program code impacted by policy changes. 
 Our approach develops three techniques: the first one is based on mutation analysis (that converts each rule's decision in turn and executes and finds test cases related to each rule), 
 the second one is based on coverage analysis (that records which rules are evaluated by executing each test case), and the third one is based on evaluated decisions of requests 
-issued from test cases. However, if existing test cases may not sufficiently cover all of rules $Rs$ of the policy impacted by the changes, our selected test cases may not achieve 
-sufficient coverage on $Rs$. To address this issue, we develop a test augmentation technique, which complements our test-selection techniques by generating additional test cases 
-to cover not-covered-impacted-rules by existing test cases.
-We evaluate our approach on three real world Java programs interacting with policies. Our evaluation results show that our test selection techniques find XX test cases from an 
-existing test cases, which covers only XX\% of impacted rules on average. Our evaluation results show that our test augmentation technique generate additional test cases to cover 
-100\% of the impacted rules.
+issued from test cases. % However, if existing test cases may not sufficiently cover all of rules $Rs$ of the policy impacted by the changes, our selected test cases may not achieve 
+%sufficient coverage on $Rs$. To address this issue,
+ We develop a test augmentation technique, which complements our test-selection techniques by generating additional test cases 
+to cover not-covered-impacted-rules by existing test cases. We evaluate our approach on three real world Java programs interacting with policies. 
+Our evaluation results show that our test selection techniques find XX test cases from an existing test cases, which covers only XX\% of impacted rules on average. 
+Our evaluation results show that our test augmentation technique generate additional test cases to cover 100\% of the impacted rules.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -474,17 +475,7 @@ access control policy evolution; regression testing; test selection; test augmen
 \end{IEEEkeywords}
 
 
-% For peer review papers, you can put extra information on the cover
-% page as needed:
-% \ifCLASSOPTIONpeerreview
-% \begin{center} \bfseries EDICS Category: 3-BBND \end{center}
-% \fi
-%
-% For peerreview papers, this IEEEtran command inserts a page break and
-% creates the second title. It will be ignored for other modes.
 \IEEEpeerreviewmaketitle
-
-
 \input{intro} % 80% done
 \input{background}
 %%\input{example}
@@ -498,8 +489,6 @@ access control policy evolution; regression testing; test selection; test augmen
 %\bibliographystyle{latex8}
 \bibliographystyle{plain}
 \bibliography{yangtse,yangtse2}
-
-% that's all folks
 \end{document}
 
 
