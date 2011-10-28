@@ -127,38 +127,36 @@ evaluated from rule 3 is given higher priority than that of rule 2.
 \subsection{Regression Testing}
 Software testing \cite{Myers:1979:AST:539883} refers to the activity of generating Tests Cases to verify the conformity of output results provided by a 
 program to the expected output that meets its functional and non functional requirements. With the increasing complexity of software systems, 
-this activity is gaining more and more interest in the research field and aiming to establish a certain trade-off between budget, 
-time and quality. 
-
-Software is subject to changes occuring at the design stage or in later stages at the deployment or maintenance phases. These changes are 
+this activity is gaining more and more interest in the research field and aiming to establish a trade-off between cost, time and quality. 
+%%%%link%%%%
+Software is subject to changes that occur at the design stage or in later stages at the deployment or maintenance phases. These changes are 
 usually supposed to meet changes in the requirements or to overcome errors that can be detected in later stages of software life cycle. 
 Regression testing refers to the research field that is interested in retesting the system to verify that the new changes have not altered 
-the initial system behavior. As highlighted by Rothermel et al in \cite{Rothermel:1996:ART:235681.235682}, regression testing is defined like the following: 
+the initial system behavior. As highlighted by Rothermel et al in \cite{Rothermel:1996:ART:235681.235682}, regression testing is defined like the 
+following: 
 ``Given a program $P$, a modified version $P'$, and a set $T$ of test cases used previously to test $P$, regression analysis and testing 
-techniques attempt to make use of a subset of $T$ to gain sufficient confidence in the correctness of $P'$ with respect to behaviors from $P$ retained in $P'$''.
-The main objectives of regression testing is to reduce the costs from rerunning initial test cases that have been performed before the deployment 
-of the software product, and to maximize the capability of selected tests to detect potential errors that are induced by changes.
-
+techniques attempt to make use of a subset of $T$ to gain sufficient confidence in the correctness of $P'$ with respect to behaviors from $P$ retained 
+in $P'$''. The main objectives of regression testing is to reduce the costs from rerunning initial test cases and to maximize the capability of 
+selected tests to detect potential errors that may be induced by changes.
 
 \subsubsection{Regression testing: Test selection and augmentation}
-Regression test selection techniques involve two aspects that are usually considered conjointly:
+Regression test selection techniques involves two issues:
 \begin{itemize}
-\item The first aspect is the regression test selection problem which aims at minimizing the number of tests that have to be considered 
+\item The first issue is the regression test selection problem which aims at minimizing the number of tests that have to be considered 
 Rothermel et al. \cite{Rothermel:1996:ART:235681.235682} have provided in their work a survey on techniques that have been used in this field. 
 The regression test selection technique is called safe when the selected tests among the initial test suite enable to detect 100\% of the faults.
-\item The second aspect is augmentation techniques and aims at adding new tests to the initial Test Suite to cover changed parts.
+\item The second aspect is test-suite augmentation which checks the adequacy of existing tests for the incoming changes
+and aims at adding new tests to the initial Test Suite to cover introduced modifications.
 \end{itemize}
 
 \subsubsection{Regression testing in the context of software policy-based systems}
 
-In this work, we consider regression testing in the context of policy-based software systems. We aim to verify that the changed parts of the policy have not 
-impacted the access control mechanisms implemented in the system.
- portions to be validated.
-
-
-
-
-The figure 1 \ref {} illustrates the overall scenario
+In this work, we consider regression testing in the context of policy-based software systems and propose to verify that the changed parts of 
+the policy have not impacted the access control mechanisms implemented in the system.
+Testing policy-based software system requires the deployment of test cases that trigger the rules in the policy.
+Whenever a policy $P$ is updated to a policy $P'$, the changed rules need to be tested to validate that they do not introduce a negative impact 
+on the initial implementation of access control mechanisms. 
+The figure \ref {} illustrates the overall scenario of regression testing applied to policy-based software systems\\
 ADD schema
 
 
