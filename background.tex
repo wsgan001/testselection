@@ -13,55 +13,68 @@ to update the application code at each policy update.
 \item When the policy is not hard-coded into the application, it can be specified in a standardized language and transported through many different systems platforms.
 \end{itemize}
 Access control policies can be specified in many languages like EPAL \cite{epal} or XACML \cite {oasis05:xacml}. 
-In what follows, we consider XACML polices written in XACML language.
+In this paper, we consider XACML polices described in Section~\ref{sec:xacmlpolicies}.
 
 
-\subsection{XACML Policies}
+\subsection{XACML Policies} \label{sec:xacmlpolicies}
 This section describes the background in the field of XACML policies, policy models, and regression testing.
-\begin{figure}[t]%{t}
-%\begin{figure}[firstnumber=100]
-\begin{CodeOut}
-\begin{alltt}
- 1 <Policy PolicyId="\textbf{Library Policy}" RuleCombAlgId="\textbf{Permit-overrides}">
- 2  <Target/>
- 3    <Rule RuleId="\textbf{1}" Effect="\textbf{Permit}">
- 4      <Target>
- 5        <Subjects><Subject> \textbf{BORROWER} </Subject></Subjects>
- 6        <Resources><Resource> \textbf{BOOK} </Resource></Resources>
- 7        <Actions><Action> \textbf{BORROWERACTIVITY} </Action></Actions>
- 8      </Target>
- 9	    <Condition>
-10        <AttributeValue> \textbf{WORKINGDAYS} </AttributeValue>
-11      </Condition>
-12    </Rule>
-13    <Rule RuleId="\textbf{2}" Effect="\textbf{Deny}">
-14      <Target>
-15        <Subjects><Subject> \textbf{BORROWER} </Subject></Subjects>
-16        <Resources><Resource> \textbf{BOOK} </Resource></Resources>
-17        <Actions><Action> \textbf{BORROWERACTIVITY} </Action></Actions>
-18      </Target>
-19	    <Condition>
-20        <AttributeValue> \textbf{HOLIDAYS} </AttributeValue>
-21      </Condition>
-22    </Rule>
-23    <Rule RuleId="\textbf{3}" Effect="\textbf{Permit}">
-24      <Target>
-25        <Subjects><Subject> \textbf{SECRETARY} </Subject></Subjects>
-26        <Resources><Resource> \textbf{BOOK} </Resource></Resources>
-27        <Actions><Action> \textbf{FIXBOOK} </Action></Actions>
-28      </Target>
-29	    <Condition>
-30        <AttributeValue> \textbf{MAINTENANCEDAY} </AttributeValue>
-31      </Condition>
-32    </Rule>
-33      <!-- A final, "fall-through" rule that always Denies -->
-34    <Rule RuleId="\textbf{FinalRule}" Effect="\textbf{Deny}"/>
-35 </policy>
-\end{alltt}
-\end{CodeOut}
-\vspace*{-3.0ex} \caption{An example policy specified in XACML}
- \label{fig:example}
+
+\begin{figure}[t]
+    \centering
+        \includegraphics[width=3.7in]{example_policy.eps}
+        \vspace{-5pt}
+    \caption{\label{fig:example}An example policy specified in XACML}
+    \vspace{-10pt}
+%    \vspace{+3pt}
 \end{figure}
+%
+%\begin{figure*}[t]%{t}
+%%\begin{figure}[firstnumber=100]
+%\begin{CodeOut}
+%%\tiny % Too samll
+%\begin{alltt}
+% 
+% 1 <Policy PolicyId="\textbf{Library Policy}" RuleCombAlgId="\textbf{Permit-overrides}">
+% 2  <Target/>
+% 3    <Rule RuleId="\textbf{1}" Effect="\textbf{Permit}">
+% 4      <Target>
+% 5        <Subjects><Subject> \textbf{BORROWER} </Subject></Subjects>
+% 6        <Resources><Resource> \textbf{BOOK} </Resource></Resources>
+% 7        <Actions><Action> \textbf{BORROWERACTIVITY} </Action></Actions>
+% 8      </Target>
+% 9	    <Condition>
+%10        <AttributeValue> \textbf{WORKINGDAYS} </AttributeValue>
+%11      </Condition>
+%12    </Rule>
+%13    <Rule RuleId="\textbf{2}" Effect="\textbf{Deny}">
+%14      <Target>
+%15        <Subjects><Subject> \textbf{BORROWER} </Subject></Subjects>
+%16        <Resources><Resource> \textbf{BOOK} </Resource></Resources>
+%17        <Actions><Action> \textbf{BORROWERACTIVITY} </Action></Actions>
+%18      </Target>
+%19	    <Condition>
+%20        <AttributeValue> \textbf{HOLIDAYS} </AttributeValue>
+%21      </Condition>
+%22    </Rule>
+%23    <Rule RuleId="\textbf{3}" Effect="\textbf{Permit}">
+%24      <Target>
+%25        <Subjects><Subject> \textbf{SECRETARY} </Subject></Subjects>
+%26        <Resources><Resource> \textbf{BOOK} </Resource></Resources>
+%27        <Actions><Action> \textbf{FIXBOOK} </Action></Actions>
+%28      </Target>
+%29	    <Condition>
+%30        <AttributeValue> \textbf{MAINTENANCEDAY} </AttributeValue>
+%31      </Condition>
+%32    </Rule>
+%33      <!-- A final, "fall-through" rule that always Denies -->
+%34    <Rule RuleId="\textbf{FinalRule}" Effect="\textbf{Deny}"/>
+%35 </policy>
+%\end{alltt}
+%\end{CodeOut}
+%\vspace*{-3.0ex} \caption{An example policy specified in XACML}
+% \label{fig:example}
+%\end{figure*}
+
 XACML (eXtensible Access Control Markup Language)~\cite{oasis05:xacml} is a language specification standard
 %designed by OASIS.
 published by the Organization for the Advancement of Structured Information Standards (OASIS).
@@ -69,13 +82,16 @@ An XACML access control specification consists of a policy set and a policy comb
 XACML supports various policy models such as Role Based Access Control (RBAC)~\cite{anderson04:rbacxacml,ferraiolo01:proposed} and Organization-Based Access 
 Control (OrBAC)~\cite{kalam03:orBac}. For RBAC and OrBAC, various job functions are associated to roles (e.g., staff or employee) that a user possesses. 
 Permissions or denials to take an action on certain objects are assigned to specific roles (instead of users). OrBAC supports 
-extra features such as role, activity (i.e., action), and view (i.e., object) hierarchy. Figure~\ref{fig:example} is an OrBAC policy example where 
+extra features such as role, activity (i.e., action), and view (i.e., object) hierarchy.
+Figure~\ref{fig:example} is an OrBAC policy example where 
 roles such as ``Secretary'' and ``Borrower'' are associated with subject attributes and policy decisions are made through 
 specific roles.
+
 Let $Conditions$ be the set of the environmental context
 such as working days or holidays, a file size, and a user's task authorization level. 
 Let $S$, $O$, $A$, and $C$ denote all the subjects,
 objects, actions, and  $Conditions$, respectively, in an access control system.
+
 An XACML policy consists of a \Intro{policy set}, which consists
 of \Intro{policy sets} and \Intro{policies}. A \Intro{policy} consists
 of a sequence of \Intro{rules}, each of which
@@ -111,6 +127,7 @@ evaluation of the first applicable rule returns. The
 \Intro{only-one-applicable} algorithm returns the decision of the only
 applicable rule if there is only one applicable rule, and returns
 error otherwise.
+
 Figure~\ref{fig:example} shows a policy specified
 in XACML. The policy consists of three XACML rules used in our real-life library access
 control policy subject, called $LSM$~\cite{mouelhi09:tranforming}.
@@ -129,35 +146,46 @@ Software testing \cite{Myers:1979:AST:539883} refers to the activity of generati
 program to the expected output that meets its functional and non functional requirements. With the increasing complexity of software systems, 
 this activity is gaining more and more interest in the research field and aiming to establish a trade-off between cost, time and quality. 
 %%%%link%%%%
+
 Software is subject to changes that occur at the design stage or in later stages at the deployment or maintenance phases. These changes are 
 usually supposed to meet changes in the requirements or to overcome errors that can be detected in later stages of software life cycle. 
 Regression testing refers to the research field that is interested in retesting the system to verify that the new changes have not altered 
-the initial system behavior. As highlighted by Rothermel et al in \cite{Rothermel:1996:ART:235681.235682}, regression testing is defined like the 
+the initial system behavior. As highlighted by Rothermel et al. in \cite{Rothermel:1996:ART:235681.235682}, regression testing is defined like the 
 following: 
 ``Given a program $P$, a modified version $P'$, and a set $T$ of test cases used previously to test $P$, regression analysis and testing 
 techniques attempt to make use of a subset of $T$ to gain sufficient confidence in the correctness of $P'$ with respect to behaviors from $P$ retained 
-in $P'$''. The main objectives of regression testing is to reduce the costs from rerunning initial test cases and to maximize the capability of 
+in $P'$''.
+
+The main objectives of regression testing is to reduce the costs from rerunning initial test cases and to maximize the capability of 
 selected tests to detect potential errors that may be induced by changes.
+%\subsubsection{Regression testing: Test selection and augmentation}
+%Regression test selection techniques involves two issues:
+%\begin{itemize}
+%\item The first issue is the regression test selection problem which aims at minimizing the number of tests that have to be considered 
+%Rothermel et al. have provided in their work a survey on techniques that have been used in this field. 
+%The regression test selection technique is called safe when the selected tests among the initial test suite enable to detect 100\% of the faults.
+%\item The second aspect is test-suite augmentation which checks the adequacy of existing tests for the incoming changes
+%and aims at adding new tests to the initial Test Suite to cover introduced modifications.
+%\end{itemize}
+%\subsubsection{Regression testing in the context of software policy-based systems}
 
-\subsubsection{Regression testing: Test selection and augmentation}
-Regression test selection techniques involves two issues:
-\begin{itemize}
-\item The first issue is the regression test selection problem which aims at minimizing the number of tests that have to be considered 
-Rothermel et al. \cite{Rothermel:1996:ART:235681.235682} have provided in their work a survey on techniques that have been used in this field. 
-The regression test selection technique is called safe when the selected tests among the initial test suite enable to detect 100\% of the faults.
-\item The second aspect is test-suite augmentation which checks the adequacy of existing tests for the incoming changes
-and aims at adding new tests to the initial Test Suite to cover introduced modifications.
-\end{itemize}
-
-\subsubsection{Regression testing in the context of software policy-based systems}
-
-In this work, we consider regression testing in the context of policy-based software systems and propose to verify that the changed parts of 
-the policy have not impacted the access control mechanisms implemented in the system.
-Testing policy-based software system requires the deployment of test cases that trigger the rules in the policy.
-Whenever a policy $P$ is updated to a policy $P'$, the changed rules need to be tested to validate that they do not introduce a negative impact 
-on the initial implementation of access control mechanisms. 
-The figure \ref {} illustrates the overall scenario of regression testing applied to policy-based software systems\\
-ADD schema
+To the best of our knowledge, there is no prior research
+work on regression testing with regards to policy changes in policy-based software systems.
+To help developers reduct cost in testing for such systems,
+we propose novel test selection and argumentation approach. 
+%We next describe our regression testing by policy changes.
+%while existing work (e.g., \cite{Rothermel:1996:ART:235681.235682})
+%considers only program changes.
+%\textbf{Regression testing in the context of software policy-based systems.}
+%In this paper, we consider regression testing in the context of policy-based software systems.
+In order to test policy-based software system,
+developers deploy test cases that trigger the rules in the policy.
+Our approach selects test cases by verifying that the changed parts of 
+the policy do not reveal unexpected behaviors in a given system.
+Whenever a policy $P$ is updated to a new policy $P'$,
+existing test cases impacted by the policy changes need to be tested to validate that the policy changes do not introduce a negative impact on the initial implementation of a system.
+\FixJeeHyun{The figure \ref {} illustrates the overall scenario of regression testing applied to policy-based software systems\\
+ADD schema}
 
 
 

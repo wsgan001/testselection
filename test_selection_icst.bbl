@@ -1,5 +1,9 @@
 \begin{thebibliography}{10}
 
+\bibitem{epal}
+{IBM, Enterprise Privacy Authorization Language (EPAL), Version 1.2 }.
+\newblock http://www.w3.org/Submission/2003/SUBM-EPAL- 20031110, 2003.
+
 \bibitem{oasis05:xacml}
 {OASIS eXtensible Access Control Markup Language (XACML)}.
 \newblock \url{http://www.oasis-open.org/committees/xacml/}, 2005.
@@ -9,7 +13,7 @@ A.~{Abou El Kalam}, R.~El Baida, P.~Balbiani, S.~Benferhat, F.~Cuppens,
   Y.~Deswarte, A.~Mi\`ege, C.~Saurel, and G.~Trouessin.
 \newblock {Organization Based Access Control}.
 \newblock In {\em Proc. 4th IEEE International Workshop on Policies for
-  Distributed Systems and Networks (Policy 2003)}, pages 196--205, 2003.
+  Distributed Systems and Networks (Policy 203)}, June 2003.
 
 \bibitem{anderson04:rbacxacml}
 Annie Anderson.
@@ -21,6 +25,13 @@ David~F. Ferraiolo, Ravi Sandhu, Serban Gavrila, D.~Richard Kuhn, and Ramaswamy
   Chandramouli.
 \newblock Proposed {NIST} standard for role-based access control.
 \newblock {\em ACM Trans. Inf. Syst. Secur.}, 4(3):224--274, 2001.
+
+\bibitem{fisler05:verification}
+Kathi Fisler, Shriram Krishnamurthi, Leo~A. Meyerovich, and Michael~Carl
+  Tschantz.
+\newblock Verification and change-impact analysis of access-control policies.
+\newblock In {\em Proc. 27th International Conference on Software Engineering
+  (ICSE )}, pages 196--205, 2005.
 
 \bibitem{hu07:conformance}
 Vincent~C. Hu, Evan Martin, JeeHyun Hwang, and Tao Xie.
