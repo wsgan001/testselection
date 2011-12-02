@@ -6,7 +6,7 @@ all test cases for regressing testing as follows.
 
 Our approach takes two versions of program code, which interact with $v_1$ (original) and $v_2$ (new) access control policy, 
 respectively. The existing test cases are taken an input; these tests invoke methods in program code.
-We analyze given program code and polices to select \emph{only} test cases for regression testing in case of policy evolution. 
+We analyze given program code and policies to select \emph{only} test cases for regression testing in case of policy evolution. 
 Among given test cases, our selected test cases invoke methods to reveal changed policy behaviors between $v_1$ and $v_2$.
 
 Our test selection techniques cannot guarantee sufficiency of regression 
@@ -175,9 +175,9 @@ requests formulated from test cases $T$. Then, we establish correlation between 
 %Once these rules are identified, we use the mapping established in the preliminary step to select the subset of 
 %test cases which are correlated with changed rules.
 \textbf{Test Selection.}
-Once the mapping test-rule is established, we proceed test select step described in the first approach by 
-conducting change impact analysis of $P$ and $P_m$ to find which rules' decision are changed. Mapped tests to those rules constitutes
-the subset of regression test selection.
+Once the mapping test-rule is established, we proceed test selection step described in the first approach with
+the results of change impact analysis of $P$ and $P_m$. The results include information to show which rules' decision are changed.
+This test selection maps test cases with those rules to constitutes the subset of existing test cases.
 
 Algorithm~\ref{alg:coverageanalysis} describes our algorithm used for the technique.
 An important benefit of this technique is to reduce cost in terms of mutation analysis and execution times. This technique does not 

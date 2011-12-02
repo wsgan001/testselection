@@ -111,8 +111,8 @@ we measure test coverage with selected and new augmented test cases.
 
 
 \subsection{Subjects}
-The subjects include three real-life Java programs each which
-interact with access control policies \cite{testcase}. We next describe
+The subjects include three real-life Java programs each, which
+interacts with access control policies \cite{testcase}. We next describe
 our three subjects.
 \begin{itemize}	
 \item Library Management System (LMS) provides web services to manage books in a public library.
@@ -128,7 +128,7 @@ Sun PDP is popularly used PDP to evaluate requests.
 Table~\ref{tab:subj} summarizes the basic statistics of our subjects. The first column shows the subject names.
 Columns 2-5 show the lines of code (``LOC''), the numbers of total test cases (``\# Total''), security test cases (``\# Security Tests''),
 rules covered with existing test cases (``\# Cov''), rules not-covered with existing test cases (``\# Not-Cov''), and the percentage
-of rule coverage (``\% Cov''), respectively. For coverage, we refer rules are explicitedly specified rules.
+of rule coverage (``\% Cov''), respectively. For coverage, we refer rules are explicitly specified rules.
 In addition, over all of existing test cases, we distinguish security test cases, which issue
 more than one request to the PDP from test cases without interaction of policies.
 
@@ -156,7 +156,7 @@ In the evaluation, we intend to answer the following research questions:
 	
 	\item RQ2: What are elapsed time for our techniques to conduct test selection by given subjects? This question helps to compare performance of our techniques by measuring efficiency with regards to elapsed time.
 			
-	\item RQ3: How higher we can achieve additional policy coverage ratio by our test augmentation technique?  This question helps to show that our technique can generate/augment test suite to cover 100\% of changed policy behaviors. We also compare our approach with random test generation technique to show how effectively our approach augment test suite to cover not-coverted changed policy beahviors.
+	\item RQ3: How higher we can achieve additional policy coverage ratio by our test augmentation technique?  This question helps to show that our technique can generate/augment test suite to cover 100\% of changed policy behaviors. We also compare our approach with random test generation technique to show how effectively our approach augment test suite to cover not-coverted changed policy behaviors.
 				
 \end{itemize}
 
@@ -235,12 +235,12 @@ To answer $RQ1$,
 we measure how many test cases are reduced for regression testing.
 The goal of this research question is to show the reduction in the number of test cases that
 are selected using our techniques. The reduction in the number
-of test cases are the same across our three techniques.
+of test cases is the same across our three techniques.
 Figure~\ref{fig:reduction} shows the results of test reduction for the three subjects.
 We observe that 82\%-97\% of test reduction for a modified version with 5 policy changes.
 We observe that 51\%-83\% of test reduction for a modified version with 25 policy changes.
 Such test reduction may reduce a significant cost in terms of test execution time
-for regression testing. We found that all of our test techniques shows the same
+for regression testing. We found that all of our test techniques show the same
 set of selected test cases to show that all of our techniques can detect every
 test case impacted policy changes.
 
@@ -289,12 +289,12 @@ We denote our modified version of a policy as ``Regression - N'' where
 $N$ denotes the number of changes injected into the policy.
 ``\# CT'' is equal or less than $N$ because our injected changes may not introduce
 policy behavior changes at the final modified version of the policy. For example, if one changes
-one rule with $CRE$ and again changes the rule with $CRE$. As the results, the rule do not impact
+one rule with $CRE$ and again changes the rule with $CRE$. As the results, the rule does not impact
 on policy changes.
 
 In Table~\ref{tab:cov-results}, we observe that our selected test cases
-cover 31.71-36.23\% of changed policy beahviors. The result show
-that about 70\% of changed policy beahviors (i.e., rules impacted by policy changes) are not covered.
+cover 31.71-36.23\% of changed policy behaviors. The result show
+that about 70\% of changed policy behaviors (i.e., rules impacted by policy changes) are not covered.
 We apply our test augmentation technique to add new test cases
 to cover such not-covered-rules.
 

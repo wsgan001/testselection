@@ -451,6 +451,8 @@ $^3$\small{Security, Reliability and Trust Interdisciplinary Research Center, Sn
 % make the title area
 \maketitle
 
+%DSN Submitted Abstract
+%As security requirements of software often change, developers may modify access control policies (policies in short) according to evolving requirements. In order to increase confidence that the modification of policies is correct, developers conduct regression testing. However, rerunning all of existing system test cases is often costly and time-consuming. To address this issue, we develop a regression-test-selection approach, which selects every test case that may reveal faults caused by policy changes. However, existing test cases may not cover all of rules in policies impacted by policy changes. To address this issue, we develop a test augmentation technique by generating additional test cases to cover not-covered-impacted-rules by existing test cases. We evaluate our approach on three Java programs each interacting with policies. Our evaluation results show that our test selection techniques reduce a significant number of test reductions efficiently and our test augmentation technique is effective to generate additional test cases. 
 
 \begin{abstract}
 As security requirements of software often change during development and maintenance,
@@ -459,16 +461,22 @@ developers may modify policies according to evolving requirements.
 %Developers may change policies without changing program code related to actual system functionality.
 In order to increase confidence that the modification of policies is correct and does not introduce unexpected behavior, developers conduct regression testing.
 For regression testing, rerunning all of existing system test cases is costly and time-consuming, especially for large-scale systems.
-In order to reduce the cost of regression 
-testing, we fist develop a regression-test-selection approach, which selects every test case that may reveal a fault caused by policy changes. 
-Our approach develops three techniques: the first one is based on mutation analysis (that converts each rule's decision in turn and executes and finds test cases related to each rule), 
+In order to address this issue, we propose an efficient regression-test-selection approach, which selects every test case that may reveal a fault caused by policy changes. 
+Our approach includes three techniques: the first one is based on mutation analysis (that converts each rule's decision in turn and executes and finds test cases related to each rule), 
 the second one is based on coverage analysis (that records which rules are evaluated by executing each test case), and the third one is based on evaluated decisions of requests 
 issued from test cases.
-However, existing test cases may not cover all of rules in policies impacted by policy changes.
-To address this issue, we develop a test augmentation technique by generating additional test cases 
-to cover not-covered-impacted-rules by existing test cases.
+However, selected test cases may not evaluate (i.e., cover) all of modified policy behaviors,
+which refer to rules in a policy impacted by policy change.
+To address this issue, we propose a test augmentation technique.
+The technique modifies existing test cases 
+to generate additional test cases
+to cover not-covered-impacted-rules with existing test cases.
 We evaluate our approach on three real world Java programs interacting with policies. 
-Our evaluation results show that our test selection techniques find XX test cases from an existing test cases, which covers only XX\% of impacted rules on average. 
+Our evaluation results show that our test selection techniques achieve
+82\%-97\% and 51\%-83\% of test reduction for a modified version with 5 and 25 policy changes,
+respectively.
+%5 rules change.
+%find XX test cases from existing test cases, which covers only XX\% of impacted rules on average. 
 Our evaluation results show that our test augmentation technique generate additional test cases to cover 100\% of the impacted rules.
 \end{abstract}
 
@@ -480,6 +488,7 @@ access control policy evolution; regression testing; test selection; test augmen
 \IEEEpeerreviewmaketitle
 \input{intro} % 80% done
 \input{background}
+
 %%\input{example}
 \input{approach}
 

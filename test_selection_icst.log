@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.11 (MiKTeX 2.9 64-bit) (preloaded format=latex 2011.6.21)  28 NOV 2011 22:00
+This is pdfTeX, Version 3.1415926-1.40.11 (MiKTeX 2.9 64-bit) (preloaded format=latex 2011.6.21)  1 DEC 2011 19:29
 entering extended mode
 **test_selection_icst.tex
 
@@ -413,12 +413,7 @@ LaTeX Font Info:    Font shape `OMS/pcr/m/n' in size <9> not available
 nia_created\intro.tex" [1
 
 
-]
-Underfull \hbox (badness 1661) in paragraph at lines 97--104
-[][]\OT1/ptm/m/n/10 In our ap-proach, we de-velop three au-to-mated test-
- []
-
-)
+])
 ("C:\Users\JeeHyun\Desktop\Working Papers\_ ICST - DSN\_ DSN - testselection_do
 nia_created\background.tex"
 File: example_policy.eps Graphic file (type eps)
@@ -427,12 +422,12 @@ Overfull \hbox (23.48752pt too wide) in paragraph at lines 24--26
  [][][] 
  []
 
-
+[2]
 Underfull \hbox (badness 3780) in paragraph at lines 78--89
 [][]\OT1/ptm/m/n/10 XACML (eX-ten-si-ble Ac-cess Con-trol Markup Lan-
  []
 
-[2]
+
 Underfull \hbox (badness 2158) in paragraph at lines 115--130
 [][]\OT1/ptm/m/n/10 More than one rule in a pol-icy may be ap-pli-ca-
  []
@@ -485,7 +480,7 @@ Overfull \hbox (22.02261pt too wide) in paragraph at lines 179--191
 
 File: reduction.eps Graphic file (type eps)
 <reduction.eps> [7]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 2913) has occurred while \output is active []
 
  [8])
 ("C:\Users\JeeHyun\Desktop\Working Papers\_ ICST - DSN\_ DSN - testselection_do
@@ -522,14 +517,17 @@ nia_created\test_selection_icst.aux")
 
 LaTeX Warning: There were undefined references.
 
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
  ) 
 Here is how much of TeX's memory you used:
  5645 strings out of 494054
  81772 string characters out of 3148620
- 175286 words of memory out of 3000000
+ 176150 words of memory out of 3000000
  8826 multiletter control sequences out of 15000+200000
  36658 words of font info for 103 fonts, out of 3000000 for 9000
  718 hyphenation exceptions out of 8191
- 27i,18n,32p,911b,628s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 27i,18n,32p,1080b,628s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on test_selection_icst.dvi (9 pages, 93456 bytes).
+Output written on test_selection_icst.dvi (9 pages, 94180 bytes).

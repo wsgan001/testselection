@@ -4,14 +4,14 @@ Our implementation (written in Java) includes five components: regression simula
 and test argumentation. To simulate regression in access control policies, 
 we used three types of mutants injected in the policies; the first one
 is RMR (Rule Removal), RA (Rule Addition), and CRE (Change Rule Effect)
-mutants. The regression simulator analyze a policy and inject one
+mutants. The regression simulator analyzes a policy and injects one
 of such changes. For RMR, given a randomly selected rule in a policy $P$,
 the regression simulator removes the rule. For CRE,
 given a randomly selected rule in a policy $P$, the regression simulator changes
 the decision of the rule.
 For $RA$, the regression simulator adds a randomly generated
 rule with random attributes collected from $P$ in a random place.
-The simulator can inject more than one types of changes to $P$ for simulating
+The simulator can inject more than one type of changes to $P$ for simulating
 regression on $P$.
 
 For test selection based on mutation analysis technique,
