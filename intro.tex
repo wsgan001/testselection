@@ -1,15 +1,14 @@
 \section{Introduction} \label{sec:introduction}
  
-Access control is one of the privacy and security mechanisms that authorize only legitimate users for access to critical information. 
+Access control is one of the privacy and security mechanisms that authorizes only legitimate users for access to critical information. 
 Access control is governed by access control policies (policies in short), each of which includes a set of rules to specify 
-which subjects are permitted or denied to access which resources in which conditions.
-To facilitate specify and maintain policies separately from entangled code, system developers specify and enforce policies independently from actual functionality (i.e., business logic) of a system.
+which subjects are permitted or denied to access which resources in which conditions. To facilitate specify and maintain policies separately from entangled code, 
+system developers specify and enforce policies independently from actual functionality (i.e., business logic) of a system.
 
 In the system, program code, which represents the actual functionality,
 interacts with a policy through a security component, called policy decision point (PDP).
-Consider that the program code 
-consists of methods $Ms$ including policy enforcement points (PEPs).
-PEPs are functionality that requires decisions (e.g., permit or deny) whether a given subject can have access on critical information.
+Consider that the program code consists of methods $Ms$ including policy enforcement points (PEPs).
+PEPs are functionalities that require decisions (e.g., permit or deny) whether a given subject can have access on critical information.
 
 Typically, PEPs in $Ms$ formulate an access request that specifies that a subject would like to have access on 
 critical information. The PEPs next submit the request to a PDP, which evaluates the request against the policy
@@ -17,13 +16,12 @@ and determines whether the request should be permitted or denied. Finally, the P
 decision to PEPs to proceed.
 
 As security requirements of software often change during development and maintenance,
-developers may modify policies according to the requirements.
-In order to increase confidence that the modification of policies is correct and
+developers may modify policies to comply with requirements. In order to increase confidence that the modification of policies is correct and
 does not introduce unexpected behavior, developers periodically conduct regression testing.
 For example, new security requirements include new security concerns to be added into a policy.
 Developers may change policies without changing program code related to actual system functionality.
 In such a situation, validating and verifying program code and policies together after policy changes
-increase confidence of correct behaviors of a given system.
+increases confidence of correct behaviors of a given system.
 
 
 In this paper, we focus on the regression testing problem in the context of policy evolution.
@@ -33,7 +31,7 @@ The typical regression testing for program code interacting with a policy is as 
 Given a program code and a policy $P$, the developers prepare initial system test cases, where
 each test case maps to rules (in the policy) exercised by the test case. Given $P$ and its modified
 policy $P'$, the developers compare impacts of $P$ and $P'$ to
-reveal different policy behaviors, which are ``dangerous'' portion to be validated with
+reveal different policy behaviors, which are ``dangerous'' portions to be validated with
 test cases. For validating this ``dangerous'' portion, the developers often select only test cases (from test cases for $P$), which exercise the dangerous
 portions of $P'$.
 
@@ -52,9 +50,8 @@ In order to address the issue, we propose a regression-test-selection approach, 
 reveal different behaviors in program code impacted by policy changes.
 In general, our approach automatically compares an original 
 policy $P$ and its modified policy $P'$ to detect different policy behaviors. In the policy context, different policy 
-behavior refers that, given a request, its evaluated decisions (for $P$  and  $P'$, respectively) are different.
-These different policy behaviors are dangerous portions to be validated.
-As a policy consists of rules, we refer such dangerous portions as rules impacted by policy change
+behaviors refer that, given a request, its evaluated decisions (for $P$ and $P'$, respectively) are different.
+These different policy behaviors are dangerous portions to be validated. As a policy consists of rules, we refer such dangerous portions as rules impacted by policy changes. 
 We next find test cases to reveal such policy changes.
 
 
@@ -70,7 +67,7 @@ and finds test cases related to each rule), the second one is based on coverage 
 which rules are evaluated by executing each test case), and the third one is based on evaluated 
 decisions of requests issued from test cases. Our approach next selects only test cases to execute program code impacted by policy changes.
 
-While test-selection techniques are useful for selecting test cases for program code impacted by policy changes, these test cases may not sufficiently cover all of rules in the policy impacted by the changes.
+While test-selection techniques are useful for selecting test cases for program code impacted by policy changes, these test cases may not sufficiently cover all the rules in the policy impacted by the changes.
 We develop a test-augmentation technique, which complements our test-selection techniques.
 We first use the regression-test-selection approach before using the test-augmentation technique to achieve
 additional policy coverage for not-covered-impacted-rules $N_r$ by existing test cases.

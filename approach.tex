@@ -5,7 +5,7 @@ tests selection for regression in policy evolution. Among existing test cases, t
 all test cases for regressing testing as follows.
 
 Our approach takes two versions of program code, which interact with $v_1$ (original) and $v_2$ (new) access control policy, 
-respectively. The existing test cases are taken an input; these tests invoke methods in program code.
+respectively. The existing test cases are taken as an input; these tests invoke methods in program code.
 We analyze given program code and policies to select \emph{only} test cases for regression testing in case of policy evolution. 
 Among given test cases, our selected test cases invoke methods to reveal changed policy behaviors between $v_1$ and $v_2$.
 
@@ -126,7 +126,7 @@ test cases which are correlated with changed rules.
 
 Algorithm~\ref{alg:mutationanalysis} describes our algorithm used for the technique.
 While the technique can quickly select test cases, the technique requires rule-test correlation setup 
-(in the preliminary step), which could be costly in terms of execution times. Given n rules in $P$, we execute $T$ for 2$\times$n times. 
+(in the preliminary step), which could be costly in terms of execution time. Given n rules in $P$, we execute $T$ for 2$\times$n times. 
 As the preliminary step is applied for only existing rules $R$ in $P$, our technique requires addition of rule-test
 correlation for newly added rules $R_n$ where $R_n$ $\notin$ $R$ in $P_m$. 
 In addition, if a new system test is introduced, we execute this test for 2$\times$n times.
@@ -138,7 +138,7 @@ changes in terms of correlated rules.
 Our previous technique finds correlation of all of existing rules $N$ in a given policy with the test cases. To reduce
 such correlation setup efforts, we develop a technique to correlate only rules, which can be evaluated (i.e., covered)
 by test cases. Our intuition is that test cases may interact only with a small number of rules in a policy
-instead of a whole rules in the policy. We next describe rule-test correlation step.
+instead of all the rules in the policy. We next describe rule-test correlation step.
 %We do not describe test selection step, which is identical to the preceding technique.
 
 
@@ -176,13 +176,13 @@ requests formulated from test cases $T$. Then, we establish correlation between 
 %test cases which are correlated with changed rules.
 \textbf{Test Selection.}
 Once the mapping test-rule is established, we proceed test selection step described in the first approach with
-the results of change impact analysis of $P$ and $P_m$. The results include information to show which rules' decision are changed.
-This test selection maps test cases with those rules to constitutes the subset of existing test cases.
+the results of change impact analysis of $P$ and $P_m$. The results include information to show which rules' decision have changed.
+This test selection maps test cases with those rules to constitute the subset of existing test cases.
 
 Algorithm~\ref{alg:coverageanalysis} describes our algorithm used for the technique.
-An important benefit of this technique is to reduce cost in terms of mutation analysis and execution times. This technique does not 
+An important benefit of this technique is to reduce cost in terms of mutation analysis and execution time. This technique does not 
 require generating mutants by changing rule's decision in turn. Moreover, the technique can significantly reduce execution time.
-While the technique can quickly select system selects in the second step, the technique requires rule-test correlation setup (in the preliminary step), 
+While the technique can quickly select system tests in the second step, the technique requires rule-test correlation setup (in the preliminary step), 
 which could be costly in terms of execution time. Consider that requests $Rs$ are formulated from test cases interact 
 only n$_1$ rules (n$_1$ $\leq$ n) in a policy.
 We execute $T$ only once. Our technique requires addition of rule-test
@@ -228,9 +228,7 @@ to reveal their access control policies.
 
 
 \subsection{Test Augmentation}
-[TBD: More detailed technical description is needed]
-
-While test-selection techniques are useful for selecting test cases for program code impacted by policy changes, these test cases may not sufficiently cover all of rules in the policy impacted by the changes.
+While test-selection techniques are useful for selecting test cases for program code impacted by policy changes, these test cases may not sufficiently cover all the rules in the policy impacted by the changes.
 We develop a test augmentation technique, which complements our test-selection techniques by generating additional test cases to 
 cover not-covered-impacted-rules $N_r$ by existing test cases.
 

@@ -409,13 +409,13 @@
 %line 4: Email: name@xyz.com}
 %}
 
-\author{
-JeeHyun Hwang$^1$ \hspace*{0.15in} Tao Xie$^1$\hspace*{0.15in} Donia El Kateb$^2$ \hspace*{0.15in} Tejeddine Mouelhi$^2$  \hspace*{0.15in} Yves Le Traon$^2$\\
-$^1$\small{Department of Computer Science, North Carolina State University, Raleigh, USA}\\
-$^2$\small{Laboratory of Advanced Software SYstems (LASSY), University of Luxembourg, Luxembourg}\\
-$^3$\small{Security, Reliability and Trust Interdisciplinary Research Center, SnT, University of Luxembourg}\\
-\small{\texttt{jhwang4@ncsu.edu}}\hspace*{0.3in}\small{\texttt{xie@csc.ncsu.edu}}\hspace*{0.3in}\small{\texttt{\{donia.elkateb,tejeddine.mouelhi,yves.letraon\}@uni.lu}}\\
-}
+%\author{
+%JeeHyun Hwang$^1$ \hspace*{0.15in} Tao Xie$^1$\hspace*{0.15in} Donia El Kateb$^2$ \hspace*{0.15in} Tejeddine Mouelhi$^3$  \hspace*{0.15in} Yves Le Traon$^3$\\
+%$^1$\small{Department of Computer Science, North Carolina State University, Raleigh, USA}\\
+%$^2$\small{Laboratory of Advanced Software SYstems (LASSY), University of Luxembourg, Luxembourg}\\
+%$^3$\small{Security, Reliability and Trust Interdisciplinary Research Center, SnT, University of Luxembourg}\\
+%\small{\texttt{jhwang4@ncsu.edu}}\hspace*{0.3in}\small{\texttt{xie@csc.ncsu.edu}}\hspace*{0.3in}\small{\texttt{\{donia.elkateb,tejeddine.mouelhi,yves.letraon\}@uni.lu}}\\
+%}
 
 % conference papers do not typically use \thanks and this command
 % is locked out in conference mode. If really needed, such as for
@@ -455,8 +455,7 @@ $^3$\small{Security, Reliability and Trust Interdisciplinary Research Center, Sn
 %As security requirements of software often change, developers may modify access control policies (policies in short) according to evolving requirements. In order to increase confidence that the modification of policies is correct, developers conduct regression testing. However, rerunning all of existing system test cases is often costly and time-consuming. To address this issue, we develop a regression-test-selection approach, which selects every test case that may reveal faults caused by policy changes. However, existing test cases may not cover all of rules in policies impacted by policy changes. To address this issue, we develop a test augmentation technique by generating additional test cases to cover not-covered-impacted-rules by existing test cases. We evaluate our approach on three Java programs each interacting with policies. Our evaluation results show that our test selection techniques reduce a significant number of test reductions efficiently and our test augmentation technique is effective to generate additional test cases. 
 
 \begin{abstract}
-As security requirements of software often change during development and maintenance,
-developers may modify policies according to evolving requirements.
+As security requirements of software often change during development and maintenance, developers may modify policies according to evolving requirements.
 %For example, new security requirements include new security concerns to be added into a policy.
 %Developers may change policies without changing program code related to actual system functionality.
 In order to increase confidence that the modification of policies is correct and does not introduce unexpected behavior, developers conduct regression testing.
@@ -477,7 +476,7 @@ Our evaluation results show that our test selection techniques achieve
 respectively.
 %5 rules change.
 %find XX test cases from existing test cases, which covers only XX\% of impacted rules on average. 
-Our evaluation results show that our test augmentation technique generate additional test cases to cover 100\% of the impacted rules.
+Our evaluation results show that our test augmentation technique generates additional test cases to cover 100\% of the impacted rules.
 \end{abstract}
 
 \begin{IEEEkeywords}

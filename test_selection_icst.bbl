@@ -33,18 +33,17 @@ Kathi Fisler, Shriram Krishnamurthi, Leo~A. Meyerovich, and Michael~Carl
 \newblock In {\em Proc. 27th International Conference on Software Engineering
   (ICSE )}, pages 196--205, 2005.
 
+\bibitem{Margrave}
+Kathi Fisler, Shriram Krishnamurthi, Leo~A. Meyerovich, and Michael~Carl
+  Tschantz.
+\newblock Verification and change-impact analysis of access-control policies.
+\newblock In {\em ICSE}, pages 196--205, 2005.
+
 \bibitem{hu07:conformance}
 Vincent~C. Hu, Evan Martin, JeeHyun Hwang, and Tao Xie.
 \newblock Conformance checking of access control policies specified in {XACML}.
 \newblock In {\em Proc. 1st IEEE International Workshop on Security in Software
   Engineering (IWSSE)}, 2007.
-
-\bibitem{martin08:assessing}
-Evan Martin, JeeHyun Hwang, Tao Xie, and Vincent Hu.
-\newblock Assessing quality of policy properties in verification of access
-  control policies.
-\newblock In {\em Proc. Annual Computer Security Applications Conference
-  (ACSAC)}, pages 163--172, 2008.
 
 \bibitem{martin07:automated}
 Evan Martin and Tao Xie.

@@ -1,8 +1,9 @@
-This is BibTeX, Version 0.99dThe top-level auxiliary file: C:\Users\JeeHyun\Desktop\Working Papers\_ ICST - DSN\_ DSN - testselection_donia_created\test_selection_icst.aux
+This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
+The top-level auxiliary file: test_selection_icst.aux
 The style file: plain.bst
 Database file #1: yangtse.bib
 Warning--string name "december" is undefined
---line 388 of file yangtse.bib
+--line 775 of file yangtse.bib
 Database file #2: yangtse2.bib
 Repeated entry---line 4 of file yangtse2.bib
  : @inproceedings{mouelhi09:tranforming
@@ -36,10 +37,6 @@ Repeated entry---line 235 of file yangtse2.bib
  : @inproceedings{hu07:conformance
  :                                ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 350 of file yangtse2.bib
- : @inproceedings{martin08:assessing
- :                                  ,
-I'm skipping whatever remains of this entry
 Repeated entry---line 360 of file yangtse2.bib
  : @inproceedings{martin07:automated
  :                                  ,
@@ -60,4 +57,45 @@ Warning--I didn't find a database entry for "testcase"
 Warning--I didn't find a database entry for "sunxacml"
 Warning--to sort, need author or key in epal
 Warning--to sort, need author or key in oasis05:xacml
-(There were 13 error messages)
+You've used 14 entries,
+            2118 wiz_defined-function locations,
+            575 strings with 6600 characters,
+and the built_in function-call counts, 4994 in all, are:
+= -- 470
+> -- 236
+< -- 5
++ -- 95
+- -- 80
+* -- 316
+:= -- 773
+add.period$ -- 40
+call.type$ -- 14
+change.case$ -- 81
+chr.to.int$ -- 0
+cite$ -- 16
+duplicate$ -- 208
+empty$ -- 428
+format.name$ -- 80
+if$ -- 1090
+int.to.chr$ -- 0
+int.to.str$ -- 14
+missing$ -- 12
+newline$ -- 71
+num.names$ -- 24
+pop$ -- 122
+preamble$ -- 1
+purify$ -- 68
+quote$ -- 0
+skip$ -- 158
+stack$ -- 0
+substring$ -- 264
+swap$ -- 63
+text.length$ -- 5
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 54
+warning$ -- 2
+while$ -- 42
+width$ -- 16
+write$ -- 146
+(There were 12 error messages)

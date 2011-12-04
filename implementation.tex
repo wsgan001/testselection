@@ -1,7 +1,7 @@
 \section{Implementation} \label{sec:implementation}
 
 Our implementation (written in Java) includes five components: regression simulator, test-rule correlation, request-record, test selection,
-and test argumentation. To simulate regression in access control policies, 
+and test augmentation. To simulate regression in access control policies, 
 we used three types of mutants injected in the policies; the first one
 is RMR (Rule Removal), RA (Rule Addition), and CRE (Change Rule Effect)
 mutants. The regression simulator analyzes a policy and injects one
@@ -19,10 +19,10 @@ our test test-rule correlation mutates a given policy using rule decision change
 , executes all of test cases for each mutated policy, and monitors changed
 behaviors by comparing test results of the test cases with an original policy or its mutated policy.
 The component also automatically compares the testing results (on the policy and the mutated
-policies) and log killed mutant information if the results are inconsistent. We use
+policies) and logs killed mutant information if the results are inconsistent. We use
 such killed mutant information for rule-test correlation.
 For test selection based on coverage analysis technique,
-we executes  all of test cases once and monitors
+we execute  all of test cases once and monitors
 which rules are evaluated for each test case execution.We use such
 coverage information for rule-test correlation.
 
