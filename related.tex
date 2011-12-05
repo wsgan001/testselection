@@ -6,19 +6,17 @@
 %corresponding finite state machine (FSM) model and temporal
 %logics (e.g., computation tree logic), respectively, using SMV specification language~\cite{cimatti02:nusmv2}.
 
-Very few research works have been done on access control testing. 
-In ~\cite{martin06:defining}, the authors have defined a set of properties to test the policy implementation. They have used mutation 
-analysis to verify if a mutated policy still meet the predefined properties. When the predefined properties still hold when mutating the policy, 
-then there is a need to update test properties.
-In ~\cite{martin07:automated}, Based on change impact analysis detected with Margrave \cite{Margrave}, 
-the authors have developed a tool that generates test cases based on structural coverage.
-In ~\cite{martin07:fault}, the authors have proposed a set of mutation operators to test the policy implementation. The test is performed by the analysis 
+Very few research works have been done in the area of regression testing for policy-based software applications. 
+In~\cite{martin06:defining}, Martin et al. have proposed a framework to detect policies faults by analyzing requests-responses pairs, their tool 
+generates an appropriate set of requests to maximize fault capability coverage in the policy. The same authors have developed a tool ``Cirg'' presented in 
+~\cite{martin07:automated} that minimizes the test cases generated through the analysis of structural coverage of policies. 
+In~\cite{martin07:fault}, the authors have proposed a set of mutation operators to test the policy implementation. The test is performed by the analysis 
 of requests-responses whenever a rule in the policy is mutated.
-%In ~\cite{martin08:assessing}, 
-In ~\cite{hu07:conformance}, a generic model-based conformance checking approach for access control policies written in
-XACML. While these different approach focus on test request generation to test the policy implementation, in this paper, our technique targets at 
-test selection (among existing system tests) to test the implementation code in case of policy evolution. 
-
+In~\cite{hu07:conformance}, the authors have proposed a generic model-based conformance checking approach for access control policies written in
+XACML. While these different approaches focus on test request generation to test the policy implementation, in this paper, our technique focuses on 
+regression testing at the implementation level whenever the access control mechanism evolves. 
+In~\cite{mouelhi09:tranforming}, Mouelhi et al. have used transformed functional tests to security tests to test the access control mechanims, 
+they have used mutation testing to detect functional tests that can be used for security testing.
 
 
 \Comment{
