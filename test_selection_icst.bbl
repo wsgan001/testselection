@@ -8,6 +8,10 @@
 {OASIS eXtensible Access Control Markup Language (XACML)}.
 \newblock \url{http://www.oasis-open.org/committees/xacml/}, 2005.
 
+\bibitem{sun05:xacml}
+{Sun's XACML implementation}.
+\newblock \url{http://sunxacml.sourceforge.net/}, 2005.
+
 \bibitem{kalam03:orBac}
 A.~{Abou El Kalam}, R.~El Baida, P.~Balbiani, S.~Benferhat, F.~Cuppens,
   Y.~Deswarte, A.~Mi\`ege, C.~Saurel, and G.~Trouessin.
@@ -33,17 +37,18 @@ Kathi Fisler, Shriram Krishnamurthi, Leo~A. Meyerovich, and Michael~Carl
 \newblock In {\em Proc. 27th International Conference on Software Engineering
   (ICSE )}, pages 196--205, 2005.
 
-\bibitem{Margrave}
-Kathi Fisler, Shriram Krishnamurthi, Leo~A. Meyerovich, and Michael~Carl
-  Tschantz.
-\newblock Verification and change-impact analysis of access-control policies.
-\newblock In {\em ICSE}, pages 196--205, 2005.
-
 \bibitem{hu07:conformance}
 Vincent~C. Hu, Evan Martin, JeeHyun Hwang, and Tao Xie.
 \newblock Conformance checking of access control policies specified in {XACML}.
 \newblock In {\em Proc. 1st IEEE International Workshop on Security in Software
   Engineering (IWSSE)}, 2007.
+
+\bibitem{jackson01:micromodularity}
+Daniel Jackson, Ilya Shlyakhter, and Manu Sridharan.
+\newblock A micromodularity mechanism.
+\newblock In {\em Proc. joint meeting of the European Software Engineering
+  Conference and the ACM SIGSOFT Symposium on the Foundations of Software
+  Engineering (ESEC/FSE)}, pages 62--73, 2001.
 
 \bibitem{martin07:automated}
 Evan Martin and Tao Xie.

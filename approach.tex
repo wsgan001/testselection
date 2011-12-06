@@ -228,6 +228,7 @@ to reveal their access control policies.
 
 
 \subsection{Test Augmentation}
+\label{subsec:testaugmentation}
 While test-selection techniques are useful for selecting test cases for program code impacted by policy changes, these test cases may not sufficiently cover all the rules in the policy impacted by the changes.
 We develop a test augmentation technique, which complements our test-selection techniques by generating additional test cases to 
 cover not-covered-impacted-rules $N_r$ by existing test cases.
@@ -239,8 +240,21 @@ rules are evaluated during test case execution.
 For $N_r$, we next generate requests, which can cover $N_r$.
 We then analyze existing test cases to create test cases, which issue the requests
 to cover $N_r$ with minimal changes in test cases.
-For example, attribute change (e.g., subject role change from $Student$ to $Professor$) may cover $N_r$. We then verify that augmented test cases increase coverage of $N_r$.
+For example, attribute change (e.g., subject element change from $Student$ to $Professor$) may cover $N_r$. We then verify that augmented test cases increase coverage of $N_r$.
 %[TBD]
+
+%\textbf{Distance-based complexity: Besides the simple graph 
+%complexity, we extract distance-based complexity measures 
+%based on the shortest distance between all pairs of crash 
+%graph nodes using the Floyd-Warshalls algorithm  [7]. The 
+%initial distance between two connected nodes is set to 1. 
+%Then, we compute distance-based complexities such as 
+%eccentricity, density and radius. For example, the eccentricity 
+%of a node v is the greatest distance between v and any other 
+%node. We aggregate all eccentricities with minimum 
+%(=radius), maximum (=diameter) and average. Table III 
+%describes selected features, while detailed measures are 
+%described in [21].}
 
 
 

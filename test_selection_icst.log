@@ -1,18 +1,19 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2011.6.29)  4 DEC 2011 10:20
+This is pdfTeX, Version 3.1415926-1.40.11 (MiKTeX 2.9 64-bit) (preloaded format=latex 2011.6.21)  6 DEC 2011 01:12
 entering extended mode
- %&-line parsing enabled.
 **test_selection_icst.tex
-(./test_selection_icst.tex
+(C:\Users\JeeHyun\Desktop\testselection\test_selection_icst.tex
 LaTeX2e <2009/09/24>
-Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
-yphenation, farsi, arabic, croatian, bulgarian, ukrainian, russian, czech, slov
-ak, danish, dutch, finnish, french, basque, ngerman, german, german-x-2009-06-1
-9, ngerman-x-2009-06-19, ibycus, monogreek, greek, ancientgreek, hungarian, san
-skrit, italian, latin, latvian, lithuanian, mongolian2a, mongolian, bokmal, nyn
-orsk, romanian, irish, coptic, serbian, turkish, welsh, esperanto, uppersorbian
-, estonian, indonesian, interlingua, icelandic, kurmanji, slovenian, polish, po
-rtuguese, spanish, galician, catalan, swedish, ukenglish, pinyin, loaded.
-(./IEEEtran.cls
+Babel <v3.8l> and hyphenation patterns for english, afrikaans, ancientgreek, ar
+abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
+croatian, czech, danish, dutch, esperanto, estonian, farsi, finnish, french, ga
+lician, german, german-x-2009-06-19, greek, gujarati, hindi, hungarian, iceland
+ic, indonesian, interlingua, irish, italian, kannada, kurmanji, lao, latin, lat
+vian, lithuanian, malayalam, marathi, mongolian, mongolianlmc, monogreek, ngerm
+an, ngerman-x-2009-06-19, nynorsk, oriya, panjabi, pinyin, polish, portuguese, 
+romanian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swis
+sgerman, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, u
+senglishmax, welsh, loaded.
+(C:\Users\JeeHyun\Desktop\testselection\IEEEtran.cls
 Document Class: IEEEtran 2007/03/05 V1.7a by Michael Shell
 -- See the "IEEEtran_HOWTO" manual for usage information.
 -- http://www.michaelshell.org/tex/ieeetran/
@@ -23,7 +24,7 @@ Document Class: IEEEtran 2007/03/05 V1.7a by Michael Shell
 \@IEEEtrantmptoksA=\toks14
 LaTeX Font Info:    Try loading font information for OT1+ptm on input line 373.
 
-(/usr/share/texmf-texlive/tex/latex/psnfss/ot1ptm.fd
+("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1ptm.fd"
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
 -- Using 8.5in x 11in (letter) paper.
@@ -96,10 +97,10 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <24> not available
 \@IEEEtmpitemindent=\dimen116
 \c@IEEEbiography=\count90
 \@IEEEtranrubishbin=\box26
-) (/usr/share/texmf-texlive/tex/latex/amsfonts/amssymb.sty
+) ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amssymb.sty"
 Package: amssymb 2009/06/22 v3.00
 
-(/usr/share/texmf-texlive/tex/latex/amsfonts/amsfonts.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty"
 Package: amsfonts 2009/06/22 v3.00 Basic AMSFonts support
 \@emptytoks=\toks15
 \symAMSa=\mathgroup4
@@ -107,24 +108,24 @@ Package: amsfonts 2009/06/22 v3.00 Basic AMSFonts support
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 96.
 ))
-(/usr/share/texmf-texlive/tex/latex/amsmath/amsmath.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\ams\math\amsmath.sty"
 Package: amsmath 2000/07/18 v2.13 AMS math features
 \@mathmargin=\skip44
 
 For additional information on amsmath, use the `?' option.
-(/usr/share/texmf-texlive/tex/latex/amsmath/amstext.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\ams\math\amstext.sty"
 Package: amstext 2000/06/29 v2.01
 
-(/usr/share/texmf-texlive/tex/latex/amsmath/amsgen.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\ams\math\amsgen.sty"
 File: amsgen.sty 1999/11/30 v2.0
 \@emptytoks=\toks16
 \ex@=\dimen117
 ))
-(/usr/share/texmf-texlive/tex/latex/amsmath/amsbsy.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\ams\math\amsbsy.sty"
 Package: amsbsy 1999/11/29 v1.2d
 \pmbraise@=\dimen118
 )
-(/usr/share/texmf-texlive/tex/latex/amsmath/amsopn.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\ams\math\amsopn.sty"
 Package: amsopn 1999/12/14 v2.01 operator names
 )
 \inf@bad=\count91
@@ -165,34 +166,34 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
 LaTeX Info: Redefining \[ on input line 2666.
 LaTeX Info: Redefining \] on input line 2667.
 )
-(/usr/share/texmf-texlive/tex/latex/graphics/graphicx.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
-(/usr/share/texmf-texlive/tex/latex/graphics/keyval.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
 Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \KV@toks@=\toks21
 )
-(/usr/share/texmf-texlive/tex/latex/graphics/graphics.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
 Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 
-(/usr/share/texmf-texlive/tex/latex/graphics/trig.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\trig.sty"
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 )
-(/etc/texmf/tex/latex/config/graphics.cfg
-File: graphics.cfg 2009/08/28 v1.8 graphics configuration of TeX Live
+("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
+File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
 )
 Package graphics Info: Driver file: dvips.def on input line 91.
 
-(/usr/share/texmf-texlive/tex/latex/graphics/dvips.def
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\dvips.def"
 File: dvips.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
 ))
 \Gin@req@height=\dimen126
 \Gin@req@width=\dimen127
 )
-(/usr/share/texmf-texlive/tex/latex/psnfss/times.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\times.sty"
 Package: times 2005/04/12 PSNFSS-v9.2a (SPQR) 
 )
-(/usr/share/texmf-texlive/tex/latex/lineno/lineno.sty
+(C:\Users\JeeHyun\AppData\Roaming\MiKTeX\2.9\tex\latex\lineno\lineno.sty
 Package: lineno 2005/11/02 line numbers on paragraphs v4.41
 \linenopenalty=\count103
 \output=\toks22
@@ -210,17 +211,18 @@ Package: lineno 2005/11/02 line numbers on paragraphs v4.41
 \bframebox=\box29
 LaTeX Info: Redefining \\ on input line 3056.
 )
-(/usr/share/texmf-texlive/tex/latex/tools/verbatim.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\tools\verbatim.sty"
 Package: verbatim 2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
 \every@verbatim=\toks23
 \verbatim@line=\toks24
 \verbatim@in@stream=\read1
 )
-(/usr/share/texmf-texlive/tex/latex/multirow/multirow.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\multirow\multirow.sty"
 \bigstrutjot=\dimen133
-) (./macros.tex
-(/usr/share/texmf-texlive/tex/generic/epsf/epsf.sty
-This is `epsf.tex' v2.7.3 <23 July 2005>
+)
+(C:\Users\JeeHyun\Desktop\testselection\macros.tex
+(C:\Users\JeeHyun\AppData\Roaming\MiKTeX\2.9\tex\latex\epsf\epsf.sty
+This is `epsf.tex' v2.7.4 <14 February 2011>
 \epsffilein=\read2
 \epsfframemargin=\dimen134
 \epsfframethickness=\dimen135
@@ -230,39 +232,39 @@ This is `epsf.tex' v2.7.3 <23 July 2005>
 \epsfxsize=\dimen139
 \epsfysize=\dimen140
 \pspoints=\dimen141
-) (/usr/share/texmf-texlive/tex/latex/cite/cite.sty
-LaTeX Info: Redefining \cite on input line 285.
-LaTeX Info: Redefining \nocite on input line 356.
-Package: cite 2009/08/29  v 5.2
+) (C:\Users\JeeHyun\AppData\Roaming\MiKTeX\2.9\tex\latex\cite\cite.sty
+LaTeX Info: Redefining \cite on input line 302.
+LaTeX Info: Redefining \nocite on input line 373.
+Package: cite 2010/09/10  v 5.3
 )
-(/usr/share/texmf-texlive/tex/latex/ltxmisc/url.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\ltxmisc\url.sty"
 \Urlmuskip=\muskip11
 Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
 )
-(/usr/share/texmf-texlive/tex/latex/graphics/color.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\color.sty"
 Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
 
-(/etc/texmf/tex/latex/config/color.cfg
+("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\color.cfg"
 File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
 Package color Info: Driver file: dvips.def on input line 130.
 
-(/usr/share/texmf-texlive/tex/latex/graphics/dvipsnam.def
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\dvipsnam.def"
 File: dvipsnam.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
 ))
-(/usr/share/texmf-texlive/tex/latex/base/alltt.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\alltt.sty"
 Package: alltt 1997/06/16 v2.0g defines alltt environment
 ))
-(/usr/share/texmf-texlive/tex/latex/base/latexsym.sty
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\latexsym.sty"
 Package: latexsym 1998/08/17 v2.2e Standard LaTeX package (lasy symbols)
 \symlasy=\mathgroup6
 LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
 (Font)                  U/lasy/m/n --> U/lasy/b/n on input line 47.
 )
-(/usr/share/texmf-texlive/tex/latex/algorithms/algorithmic.sty
+(C:\Users\JeeHyun\AppData\Roaming\MiKTeX\2.9\tex\latex\algorithms\algorithmic.s
+ty
 Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
-
-(/usr/share/texmf-texlive/tex/latex/base/ifthen.sty
+ ("C:\Program Files\MiKTeX 2.9\tex\latex\base\ifthen.sty"
 Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
 )
 \c@ALC@unique=\count110
@@ -272,77 +274,89 @@ Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
 \ALC@tlm=\skip47
 \algorithmicindent=\skip48
 )
-(/usr/share/texmf-texlive/tex/latex/psfrag/psfrag.sty
+(C:\Users\JeeHyun\AppData\Roaming\MiKTeX\2.9\tex\latex\psfrag\psfrag.sty
 Package: psfrag 1998/04/11 v3.04 PSfrag (MCG)
 \pfg@pcount=\count114
 \pfg@scount=\count115
 \pfg@temp=\write3
 )
-(/usr/share/texmf-texlive/tex/latex/comment/comment.sty
+(C:\Users\JeeHyun\AppData\Roaming\MiKTeX\2.9\tex\latex\comment\comment.sty
 \CommentStream=\write4
 
 Excluding comment 'comment')
-(/usr/share/texmf-texlive/tex/latex/algorithm2e/algorithm2e.sty
-Package: algorithm2e 2005/10/04 v3.9 algorithms environments
+(C:\Users\JeeHyun\AppData\Roaming\MiKTeX\2.9\tex\latex\algorithm2e\algorithm2e.
+sty
+Package: algorithm2e 2008/00/00 v3.10 algorithms environments
 \c@AlgoLine=\count116
-
-(/usr/share/texmf-texlive/tex/latex/tools/xspace.sty
+ ("C:\Program Files\MiKTeX 2.9\tex\latex\tools\xspace.sty"
 Package: xspace 2006/05/08 v1.12 Space after command names (DPC,MH)
 )
+("C:\Program Files\MiKTeX 2.9\tex\latex\ltxmisc\relsize.sty"
+Package: relsize 2003/07/04 ver 3.1
+)
 ********************************************************
-Package `algorithm2e' Release 3.9 -- october 04 2005 --
+Package `algorithm2e' Release 4.01 -- december 14 2009 --
 - algorithm2e-announce@lirmm.fr mailing list for announcement about releases
 - algorithm2e-discussion@lirmm.fr mailing list for discussion about package
 subscribe by emailing sympa@lirmm.fr with 'subscribe <list> <firstname name>'
 - Author: Christophe Fiorio (fiorio@lirmm.fr)
 ********************************************************
 \skiptotal=\skip49
-\skiprule=\skip50
-\skiphlne=\skip51
-\skiptext=\skip52
-\skiplength=\skip53
-\algomargin=\skip54
-\skipalgocfslide=\skip55
+\skiplinenumber=\skip50
+\skiprule=\skip51
+\skiphlne=\skip52
+\skiptext=\skip53
+\skiplength=\skip54
+\algomargin=\skip55
+\skipalgocfslide=\skip56
 \algowidth=\dimen142
 \inoutsize=\dimen143
 \inoutline=\dimen144
+\interspacetitleruled=\dimen145
+\interspacealgoruled=\dimen146
+\interspacetitleboxruled=\dimen147
 \algocf@inoutbox=\box30
 \algocf@inputbox=\box31
-\AlCapSkip=\skip56
-\AlCapHSkip=\skip57
-\algocf@capbox=\box32
+\AlCapSkip=\skip57
+\AlCapHSkip=\skip58
+\algocf@nlbox=\box32
+\algocf@hangingbox=\box33
+\algocf@capbox=\box34
+\algoheightruledefault=\skip59
+\algoheightrule=\skip60
+\algotitleheightruledefault=\skip61
+\algotitleheightrule=\skip62
 \c@algocfline=\count117
-\c@algocf=\count118
-\algocf@algoframe=\box33
-\algocf@algobox=\box34
-) (/usr/share/texmf-texlive/tex/latex/listings/listings.sty
-\lst@mode=\count119
-\lst@gtempboxa=\box35
+\c@algocfproc=\count118
+\c@algocf=\count119
+\algocf@algoframe=\box35
+\algocf@algobox=\box36
+) (C:\Users\JeeHyun\AppData\Roaming\MiKTeX\2.9\tex\latex\listings\listings.sty
+\lst@mode=\count120
+\lst@gtempboxa=\box37
 \lst@token=\toks25
-\lst@length=\count120
-\lst@currlwidth=\dimen145
-\lst@column=\count121
-\lst@pos=\count122
-\lst@lostspace=\dimen146
-\lst@width=\dimen147
-\lst@newlines=\count123
-\lst@lineno=\count124
-\lst@maxwidth=\dimen148
+\lst@length=\count121
+\lst@currlwidth=\dimen148
+\lst@column=\count122
+\lst@pos=\count123
+\lst@lostspace=\dimen149
+\lst@width=\dimen150
+\lst@newlines=\count124
+\lst@lineno=\count125
+\lst@maxwidth=\dimen151
 
-(/usr/share/texmf-texlive/tex/latex/listings/lstmisc.sty
+(C:\Users\JeeHyun\AppData\Roaming\MiKTeX\2.9\tex\latex\listings\lstmisc.sty
 File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
-\c@lstnumber=\count125
-\lst@skipnumbers=\count126
-\lst@framebox=\box36
+\c@lstnumber=\count126
+\lst@skipnumbers=\count127
+\lst@framebox=\box38
 )
-(/usr/share/texmf-texlive/tex/latex/listings/listings.cfg
+(C:\Users\JeeHyun\AppData\Roaming\MiKTeX\2.9\tex\latex\listings\listings.cfg
 File: listings.cfg 2007/02/22 1.4 listings configuration
 ))
 Package: listings 2007/02/22 1.4 (Carsten Heinz)
 
-(./test_selection_icst.aux)
-\openout1 = `test_selection_icst.aux'.
-
+(C:\Users\JeeHyun\Desktop\testselection\test_selection_icst.aux)
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 388.
 LaTeX Font Info:    ... okay on input line 388.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 388.
@@ -355,7 +369,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 388.
 LaTeX Font Info:    ... okay on input line 388.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 388.
 LaTeX Font Info:    ... okay on input line 388.
-\c@lstlisting=\count127
+\c@lstlisting=\count128
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 452.
 
@@ -365,44 +379,44 @@ LaTeX Warning: No \author given.
 
 LaTeX Warning: No \author given.
 
-(./intro.tex
-LaTeX Font Info:    Try loading font information for U+msa on input line 10.
- (/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
+LaTeX Font Info:    Try loading font information for U+msa on input line 477.
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 10.
+LaTeX Font Info:    Try loading font information for U+msb on input line 477.
 
-(/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+lasy on input line 10.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 477.
 
-(/usr/share/texmf-texlive/tex/latex/base/ulasy.fd
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\ulasy.fd"
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
-) [1
+)
+(C:\Users\JeeHyun\Desktop\testselection\intro.tex [1
 
 
-]) (./background.tex
+])
+(C:\Users\JeeHyun\Desktop\testselection\background.tex
 File: example_policy.eps Graphic file (type eps)
-
-<example_policy.eps>
+ <example_policy.eps>
 Overfull \hbox (23.48752pt too wide) in paragraph at lines 24--26
- [][] 
+ [][][] 
  []
 
 
 Underfull \hbox (badness 3780) in paragraph at lines 78--89
-[]\OT1/ptm/m/n/10 XACML (eX-ten-si-ble Ac-cess Con-trol Markup Lan-
+[][]\OT1/ptm/m/n/10 XACML (eX-ten-si-ble Ac-cess Con-trol Markup Lan-
  []
 
 [2]
 LaTeX Font Info:    Try loading font information for OT1+pcr on input line 118.
 
- (/usr/share/texmf-texlive/tex/latex/psnfss/ot1pcr.fd
+ ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1pcr.fd"
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
 Underfull \hbox (badness 2158) in paragraph at lines 115--130
-[]\OT1/ptm/m/n/10 More than one rule in a pol-icy may be ap-pli-ca-
+[][]\OT1/ptm/m/n/10 More than one rule in a pol-icy may be ap-pli-ca-
  []
 
 
@@ -411,48 +425,47 @@ Underfull \hbox (badness 1931) in paragraph at lines 115--130
 le\OT1/ptm/m/n/10 . The \OT1/ptm/m/it/10 deny-
  []
 
-[3]) (./approach.tex
+[3]) (C:\Users\JeeHyun\Desktop\testselection\approach.tex
 File: example_mutant.eps Graphic file (type eps)
  <example_mutant.eps>
 Overfull \hbox (9.03374pt too wide) in paragraph at lines 47--49
- [][] 
+ [][][] 
  []
 
 
 Overfull \hbox (10.0pt too wide) detected at line 105
-[][]
+[][] 
  []
 
 [4]
 Overfull \hbox (10.0pt too wide) detected at line 165
-[][]
+[][] 
  []
 
 
 Overfull \hbox (10.0pt too wide) detected at line 208
-[][]
+[][] 
  []
 
-[5]) (./implementation.tex) (./experiment.tex [6]
-
-LaTeX Warning: Citation `testcase' on page 7 undefined on input line 115.
-
-
-LaTeX Warning: Citation `sunxacml' on page 7 undefined on input line 126.
-
-
-Overfull \hbox (22.02261pt too wide) in paragraph at lines 179--191
- [][][] 
- []
-
-File: reduction.eps Graphic file (type eps)
-<reduction.eps> [7]
+[5]) (C:\Users\JeeHyun\Desktop\testselection\implementation.tex)
+(C:\Users\JeeHyun\Desktop\testselection\experiment.tex
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [8])
-(./related.tex) (./conclusion.tex) (./test_selection_icst.bbl
+ [6]
+Overfull \hbox (22.02261pt too wide) in paragraph at lines 152--164
+ [][][][] 
+ []
+
+[7]
+File: reduction.eps Graphic file (type eps)
+ <reduction.eps> [8]
+File: augmenttypes.eps Graphic file (type eps)
+ <augmenttypes.eps>)
+(C:\Users\JeeHyun\Desktop\testselection\related.tex [9])
+(C:\Users\JeeHyun\Desktop\testselection\conclusion.tex)
+(C:\Users\JeeHyun\Desktop\testselection\test_selection_icst.bbl
 Underfull \hbox (badness 6412) in paragraph at lines 8--10
-[]\OT1/ptm/m/n/9 OASIS eX-ten-si-ble Ac-cess Con-trol Markup Lan-guage
+[][]\OT1/ptm/m/n/9 OASIS eX-ten-si-ble Ac-cess Con-trol Markup Lan-guage
  []
 
 
@@ -473,18 +486,14 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[9] (./test_selection_icst.aux)
-
-LaTeX Warning: There were undefined references.
-
- ) 
+[10] (C:\Users\JeeHyun\Desktop\testselection\test_selection_icst.aux) ) 
 Here is how much of TeX's memory you used:
- 5467 strings out of 493849
- 75561 string characters out of 1152846
- 176266 words of memory out of 3000000
- 8640 multiletter control sequences out of 15000+50000
+ 5606 strings out of 494054
+ 79826 string characters out of 3148620
+ 171563 words of memory out of 3000000
+ 8789 multiletter control sequences out of 15000+200000
  33717 words of font info for 90 fonts, out of 3000000 for 9000
- 717 hyphenation exceptions out of 8191
- 27i,18n,32p,1079b,611s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 718 hyphenation exceptions out of 8191
+ 27i,18n,32p,1080b,628s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on test_selection_icst.dvi (9 pages, 75344 bytes).
+Output written on test_selection_icst.dvi (10 pages, 94784 bytes).

@@ -15,7 +15,7 @@ The simulator can inject more than one type of changes to $P$ for simulating
 regression on $P$.
 
 For test selection based on mutation analysis technique,
-our test test-rule correlation mutates a given policy using rule decision change (RDU)
+our test test-rule correlation mutates a given policy using CRE
 , executes all of test cases for each mutated policy, and monitors changed
 behaviors by comparing test results of the test cases with an original policy or its mutated policy.
 The component also automatically compares the testing results (on the policy and the mutated
@@ -43,7 +43,14 @@ For the test selection based on recorded request evaluation,
 the component does not require change impact analysis. The test selection
 component log recorded requests to reveal different evaluated decision against $P$ and $P'$.
 
-The test argumentation component...
+The test argumentation component compares
+not-covered policy behaviors $r_1$s (i.e., represented by requests) with requests $r_2$s
+issued from existing test cases. The test argumentation computes
+similarity between $r_1$ and $r_2$ to decide applicability of modification for test
+argumentation. Given recommended test cases with high similarity score,
+we manually modify the test cased to cover not-covered policy behaviors. 
+If not applicable for modification, the component
+generates a test cases to issue such requests to cover not-covered policy behaviors. 
 
 
 
