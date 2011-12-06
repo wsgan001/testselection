@@ -1,21 +1,21 @@
 \section{Approach}
 \label{sec:approach}
-As manually selecting test cases for regression testing is tedious and error-prone, we have developed three techniques to automate 
-tests selection for regression in policy evolution. Among existing test cases, the objective is to select 
-all test cases for regressing testing as follows.
-
-Our approach takes two versions of program code, which interact with $v_1$ (original) and $v_2$ (new) access control policy, 
-respectively. The existing test cases are taken as an input; these tests invoke methods in program code.
-We analyze given program code and policies to select \emph{only} test cases for regression testing in case of policy evolution. 
+As manual selection of test cases for regression testing is tedious and error-prone, we have developed three techniques to automate 
+selection of test cases for regression testing in policy evolution.
+%Among existing test cases, the objective is to select 
+%all test cases for regressing testing as follows.
+Our approach takes two versions of a program that interact with $v_1$ (original) and $v_2$ (new) access control policy, 
+respectively. The existing test cases are taken as an input; these tests invoke methods in program.
+We analyze given program and policies to select \emph{only} test cases for regression testing in case of policy evolution. 
 Among given test cases, our selected test cases invoke methods to reveal changed policy behaviors between $v_1$ and $v_2$.
 
 Our test selection techniques cannot guarantee sufficiency of regression 
 testing (i.e., whether these tests are sufficient to reveal all of changed policy behaviors). We have developed a technique to 
-automatically augment new test cases to satisfy sufficiency as follows. We measure sufficiency of regressing testing with our 
+automatically augment new test cases to satisfy sufficiency. We measure sufficiency of regressing testing with our 
 selected test cases based on rule coverage criteria~\cite{martin06:defining}, which measures which rules in a policy are evaluated (i.e., covered) during test case execution. For not-covered changed policy behaviors (i.e., rules), 
 our approach automatically generates test cases to cover such behaviors.
 
-Formally, $C$ denotes a program code, which interacts with an access control policy $P$. $P_{m}$ is the modified version of $P$. 
+Formally, $C$ denotes a program, which interacts with an access control policy $P$. $P_{m}$ is the modified version of $P$. 
 $T$ denotes an initial test suite for $C$. Our first step involves the regression test 
 selection. We select $T'$ $\subseteq$ $T$ where $T'$ is a set of test cases. $T'$ execute on $C$ and reveal changed policy 
 behaviors between $P$ and $P_{m}$. In the second step, we measure rule coverage of changed policy behaviors of $P$ and $P_{m}$ with $T'$. 
@@ -107,19 +107,19 @@ We next describe our proposed three test selection techniques and test augmentat
 
 \subsection{Test Selection based on Mutation Analysis}
 Our first proposed test selection technique uses mutation analysis to select test cases as follows. 
-The approach needs a preliminary step which is necessary to establish a rule-test correlation.
+The technique needs a preliminary step which is necessary to establish a rule-test correlation.
 We next describe rule-test correlation and test selection steps.
 
-\textbf{Rule-Test Correlation Setup.} Given a policy $P$, we create its rule-decision-change (RDC) mutant policy $Pr_i$ by changing decision (e.g., Permit to Deny) of one single rule $r_i$ in $P$.
+\textbf{Rule-Test Correlation Setup.} Given a policy $P$, we create its rule-decision-change (RDC) mutant policy $Pr_i$ by changing decision (e.g., Permit to Deny) of each rule $r_i$ in $P$ in turn.
 An example of a mutated policy is shown in Figure~\ref{fig:rdcexample}. In this policy, 
 original Rule 1's decision Permit is changed to Deny. The technique finds affected test cases for this rule decision change. 
-We execute test cases $T$ on program code for $P$ and $Pr_i$. To detect changed policy behaviors, 
+We execute test cases $T$ on program for $P$ and $Pr_i$. To detect changed policy behaviors, 
 the technique monitors responses of evaluated requests formulated from test cases $T$. The test cases, which evaluate different 
 policy decisions against $P$ and $P'$, enable to map rule $r_i$ to test cases $t \in T$. The preliminary step ends by establishing 
 a correlation between each rule in $P$ and corresponding tests $t \in T$ that trigger this rule.
 
 \textbf{Test Selection.} 
-The selection of test cases for regression on $P$ and its modified policy $P_m$ starts by conducting change impact analysis 
+The selection of test cases for regression testing on $P$ and its modified policy $P_m$ starts by conducting change impact analysis 
 of $P$ and $P_m$ to find which rules' decision are changed. 
 Once these rules are identified, we use the mapping established in the preliminary step to select the subset of 
 test cases which are correlated with changed rules.
@@ -166,7 +166,7 @@ instead of all the rules in the policy. We next describe rule-test correlation s
 \end{algorithmic}
 
 \textbf{Rule-Test Correlation Setup.} Given a policy $P$,
-Thus we execute test cases $T$ on program code that interacts with $P$. Our technique monitors which rules in a policy are evaluated with
+Thus we execute test cases $T$ on program that interacts with $P$. Our technique monitors which rules in a policy are evaluated with
 requests formulated from test cases $T$. Then, we establish correlation between test cases and evaluated (i.e., covered) rules in $P$. 
 
 %\textbf{Test Selection.} 
@@ -212,7 +212,7 @@ correlation for newly added rules $R_n$ where $R_n$ $\notin$ $R$ in $P_m$ as the
 To reduce such correlation setup efforts in the previous techniques, we develop
 a technique, which does not require rule-test correlation setup.
 Instead of correlation, our technique records test cases and their issued requests as a preliminary step.
-More specifically, our technique executes test cases $T$ on program code for $P$ and records all requests issued to policy decision point (PDP) for each test case. For test selection, our technique evaluates all issued requests against $P$ and $P_m$ and selects the test subset of
+More specifically, our technique executes test cases $T$ on a program for $P$ and records all requests issued to policy decision point (PDP) for each test case. For test selection, our technique evaluates all issued requests against $P$ and $P_m$ and selects the test subset of
 requests (with corresponding system test cases) that engender different decisions for two different policy versions.
 
 %While our previous two techniques require correlation rule-test setup. 
@@ -229,7 +229,7 @@ to reveal their access control policies.
 
 \subsection{Test Augmentation}
 \label{subsec:testaugmentation}
-While test-selection techniques are useful for selecting test cases for program code impacted by policy changes, these test cases may not sufficiently cover all the rules in the policy impacted by the changes.
+While test-selection techniques are useful for selecting test cases for a program impacted by policy changes, these test cases may not sufficiently cover all the rules in the policy impacted by the changes.
 We develop a test augmentation technique, which complements our test-selection techniques by generating additional test cases to 
 cover not-covered-impacted-rules $N_r$ by existing test cases.
 
