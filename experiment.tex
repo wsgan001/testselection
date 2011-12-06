@@ -41,27 +41,29 @@ We carried out our evaluation on a desktop PC, running Windows 7 with Intel Core
 %We have implemented test selection techniques and mutant generation in Java.
 %We generate mutants by changing rules
 %in access control policies.
+
+The regression simulator simulates policy evolution by changing/adding/removing rules in policies.
+%We do not simulate regression in test code in subjects. For evaluation,
+For each policy change, the regression simulator first randomly chooses one of regression types from \CodeIn{RMR}, \CodeIn{RA},
+and \CodeIn{RDC} and a rule, and changes the rule with a selected type.
+%injects selected regression changes into a policy.
+We configured that the regression simulator injects 5, 10, 15, 20, and 25 changes in a policy, respectively.
+Our evaluation is repeated for 12 times in order to avoid the impact of randomness of changes.
+
 For our test selection approach, we use test selection based on mutation analysis ($Mut$-$Selection$),
 test selection based on coverage analysis ($Cov$-$Selection$), and
 test selection based on recorded request evaluation ($Req$-$Selection$)
 described in Section~\ref{sec:approach}.
-
-For regression, we simulate policy evolution by changing/adding/removing rules in access control policies.
-We do not simulate regression in test code in subjects. For evaluation,
-our implementation randomly chooses one of regression types, which are \CodeIn{RMR}, \CodeIn{RA},
-and \CodeIn{CRE}, and feeds such change in the rule. We configured that our implementation
-to inject 5, 10, 15, 20, and 25 changes in a policy, respectively.
-%We conducted our evaluation for 10 times to 
-Our evaluation is repeated for 12 times in order to avoid the impact of randomness of changes.
-
 To measure the effectiveness of our three techniques,
-we measure how many test cases are reduced for regression testing.
-To measure the efficiency of our three techniques, we conducted evaluation as follows. 
-We compared elapsed time to analyze test-rule correlation analysis,
-change impact analysis, and test selection by each technique.
-For the first two techniques, we require test-rule correlation analysis
-and change impact analysis, which should be done before actual test selection.
-The objective of this evaluation is to investigate how our three test selection techniques impact performance for subjects.
+we measure how many test cases are selected for regression testing.
+
+We next compare the efficiency of our three techniques.
+The objective of this evaluation is to investigate how our three test selection techniques impact performance.
+We measure elapsed time to analyze test-rule correlation analysis,
+change impact analysis, and test selection for each technique.
+For $Mut$-$Selection$ and $Cov$-$Selection$, note that we require test-rule correlation analysis
+and change impact analysis, which should be done before actual test selection process.
+
 To measure the effectiveness of our test augmentation technique,
 we measure test coverage with selected and new augmented test cases.
 
@@ -194,18 +196,18 @@ no rules (i.e., implicit rules) are specified to handle such requests explicitly
 \end{table*}%
 
 \subsection{Objectives and Measures}
-In the evaluation, we intend to answer the following research questions:
+In the evaluation, we intend to address the following research questions:
 \begin{itemize}
 
 
-	\item RQ1: How many of test cases in a test suite (from an existing test suite) selected by our test selection techniques? This question helps to show that our techniques can reduce a significant number of test cases in an existing test suit.
+	\item RQ1: How many test cases in a test suite (from an existing test suite) are selected by our test selection techniques? This question helps to show that our techniques can reduce a significant number of test cases in an existing test suite.
 	We also show how many changed policy behaviors are covered with our selected test cases.
 	
 %	\item RQ2: Do our protest selections are safe? This question helps to show that our techniques select all tests, which shows only and all test cases to reveal changed behaviors in access control policies.
 	
-	\item RQ2: What are elapsed time for our techniques to conduct test selection by given subjects? This question helps to compare performance of our techniques by measuring efficiency with regards to elapsed time.
+	\item RQ2: How much time do our techniques take to conduct test selection by given subjects? This question helps to compare performance of our techniques by measuring their efficiency.
 			
-	\item RQ3: How higher we can achieve additional policy coverage ratio by our test augmentation technique?  This question helps to show that our technique can generate/augment test suite to cover 100\% of changed policy behaviors. We also compare our approach with random test generation technique to show how effectively our approach augment test suite to cover not-coverted changed policy behaviors.
+	\item RQ3: How high is the additional policy coverage ratio that is achieved by our test augmentation technique?  This question helps to show that our technique can generate/augment test suite to cover 100\% of changed policy behaviors. We also compare our approach with random test generation technique to show how effectively our approach augment test suite to cover not-coverted changed policy behaviors.
 				
 \end{itemize}
 
@@ -293,7 +295,7 @@ We denote our modified version of a policy as ``Regression - N'' where
 $N$ denotes the number of changes injected into the policy.
 ``\# CT'' is equal or less than $N$ because our injected changes may not introduce
 policy behavior changes at the final modified version of the policy. For example, if one changes
-one rule with $CRE$ and again changes the rule with $CRE$. As the results, the rule does not impact
+one rule with $RDC$ and again changes the rule with $RDC$. As the results, the rule does not impact
 on policy changes.
 
 
@@ -383,7 +385,7 @@ These threats
 could be reduced by further experimentation on a wider type of policy-based software systems and
 larger number of policies.
 In particular, our proposed regression model based on \CodeIn{RMR}, \CodeIn{RA},
-and \CodeIn{CRE} modifies policy elements such as subject, resource, action, and condition attributes.
+and \CodeIn{RDC} modifies policy elements such as subject, resource, action, and condition attributes.
 Additional regression model to modify various policy attributes could
 simulate various policy modification.
 The threats to internal validity are instrumentation effects
