@@ -165,8 +165,7 @@ instead of all the rules in the policy. We next describe rule-test correlation s
 \end{algorithm}
 \end{algorithmic}
 
-\textbf{Rule-Test Correlation Setup.} Given a policy $P$,
-Thus we execute test cases $T$ on program that interacts with $P$. Our technique monitors which rules in a policy are evaluated with
+\textbf{Rule-Test Correlation Setup.} Given a policy $P$, we execute test cases $T$ on program that interacts with $P$. Our technique monitors which rules in a policy are evaluated with
 requests formulated from test cases $T$. Then, we establish correlation between test cases and evaluated (i.e., covered) rules in $P$. 
 
 %\textbf{Test Selection.} 
@@ -175,7 +174,7 @@ requests formulated from test cases $T$. Then, we establish correlation between 
 %Once these rules are identified, we use the mapping established in the preliminary step to select the subset of 
 %test cases which are correlated with changed rules.
 \textbf{Test Selection.}
-Once the mapping test-rule is established, we proceed test selection step described in the first approach with
+Once the mapping test-rule is established, we proceed with the test selection step described in the first approach with
 the results of change impact analysis of $P$ and $P_m$. The results include information to show which rules' decision have changed.
 This test selection maps test cases with those rules to constitute the subset of existing test cases.
 
@@ -234,8 +233,7 @@ We develop a test augmentation technique, which complements our test-selection t
 cover not-covered-impacted-rules $N_r$ by existing test cases.
 
 Our augmentation technique first analyzes change impact analysis between $P$ and $P'$ to find rules impacted by policy changes.
-The technique finds $N_r$ by evaluating selected test cases and monitoring which 
-rules are evaluated during test case execution.
+The technique finds $N_r$ by evaluating selected test cases and monitoring the rules that are evaluated during test case execution.
 %our selected test cases and $P$ and $P'$. 
 For $N_r$, we next generate requests, which can cover $N_r$.
 We then analyze existing test cases to create test cases, which issue the requests

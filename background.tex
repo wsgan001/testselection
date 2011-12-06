@@ -130,7 +130,7 @@ error otherwise.
 
 Figure~\ref{fig:example} shows a policy specified
 in XACML. The policy consists of three XACML rules used in our real-life library access
-control policy subject, called $LSM$~\cite{mouelhi09:tranforming}.
+control policy subject, called $LMS$~\cite{mouelhi09:tranforming}.
 Note that we simplified XML formats to reduce
 space for this example.
 Lines 3-12 describe a rule that \CodeIn{borrower} is permitted to \CodeIn{borroweractivity} (e.g., borrowing books) \CodeIn{book} in \CodeIn{working days}.
@@ -169,17 +169,14 @@ selected tests to detect potential errors that may be induced by changes.
 %\end{itemize}
 %\subsubsection{Regression testing in the context of software policy-based systems}
 
-To the best of our knowledge, there is no prior research
-work on regression testing with regards to policy changes in policy-based software systems.
-To help developers reduce cost in testing for such systems,
-we propose novel test selection and augmentation approach. 
+To the best of our knowledge, there is no prior research work on regression testing that considers policy changes in policy-based software systems. 
+To help developers reduce cost in testing such systems, we propose novel test selection and augmentation approach. 
 %We next describe our regression testing by policy changes.
 %while existing work (e.g., \cite{Rothermel:1996:ART:235681.235682})
 %considers only program changes.
 %\textbf{Regression testing in the context of software policy-based systems.}
 %In this paper, we consider regression testing in the context of policy-based software systems.
-In order to test policy-based software system,
-developers deploy test cases that trigger the rules in the policy.
+In order to test policy-based software system, we deploy test cases that trigger the rules in the policy.
 Our approach selects test cases by verifying that the changed parts of 
 the policy do not reveal unexpected behaviors in a given system.
 Whenever a policy $P$ is updated to a new policy $P'$,

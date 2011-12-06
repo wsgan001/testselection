@@ -30,7 +30,8 @@ the request-record component records all requests issued by test cases and evalu
 
 For our first two techniques, the test selection component requires change impact analysis to
 show changed policy behaviors of two versions of policies.
-The implementation leverages an existing access control policy verification tool called Margrave~\cite{fisler05:verification}. Margrave is a tool suite for analyzing access control policies written in XACML.
+The implementation leverages an existing access control policy verification tool called Margrave~\cite{fisler05:verification}. 
+Margrave is a tool suite for analyzing access control policies written in XACML.
 Given two versions of policies, $P$ and $P'$, 
 our implementation uses the generic APIs of Margrave to
 print out all the policy changes with their corresponding changed decisions in a summarized format.

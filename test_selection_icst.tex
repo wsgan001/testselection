@@ -468,9 +468,8 @@ For regression testing, rerunning all of existing system test cases could be cos
 To address this issue, we propose an efficient regression-test-selection approach, which selects every test case that may reveal a fault caused by policy changes. 
 Our approach includes three techniques: The first one is based on mutation analysis (that converts each rule's decision in turn and executes and finds test cases related to each rule), 
 The second one is based on coverage analysis (that records which rules are evaluated by executing each test case), and The third one is based on evaluated decisions of requests 
-issued from test cases.
-However, selected test cases may not evaluate (i.e., cover) all of modified policy behaviors,
-which are induced by rules impacted by policy change.
+issued from test cases. However, selected test cases may not evaluate (i.e., cover) all of modified policy behaviors,
+which are induced by rules impacted by policy changes.
 To address this issue, we propose a test augmentation technique.
 The technique modifies existing test cases 
 to generate additional test cases
