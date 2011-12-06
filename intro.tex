@@ -1,58 +1,58 @@
 \section{Introduction} \label{sec:introduction}
  
-Access control is one of the privacy and security mechanisms that authorizes only legitimate users for access to critical information. 
-Access control is governed by access control policies (policies in short), each of which includes a set of rules to specify 
-which subjects are permitted or denied to access which resources in which conditions. To facilitate specify and maintain policies separately from entangled code, 
-system developers specify and enforce policies independently from actual functionality (i.e., business logic) of a system.
+Access control is one of the privacy and security mechanisms for granting only legitimate users with access to critical information. 
+Access control is governed by access control policies (policies in short), each of which includes a sequence of rules to specify 
+which subjects are permitted or denied to access which resources under which conditions. To facilitate specifying and maintaining policies separately from entangled code, 
+system developers specify and enforce policies separated from actual functionality (i.e., business logic) of a system.
 
 In the system, program code, which represents the actual functionality,
-interacts with a policy through a security component, called policy decision point (PDP).
-Consider that the program code consists of methods $Ms$ including policy enforcement points (PEPs).
-PEPs are functionalities that require decisions (e.g., permit or deny) whether a given subject can have access on critical information.
+interacts with a policy through a security component, called Policy Decision Point (PDP).
+Consider that the program code consists of methods $Ms$ including Policy Enforcement Points (PEPs).
+PEPs are functionalities that require decisions (e.g., permit or deny) whether a given subject can have access on protected information.
 
-Typically, PEPs in $Ms$ formulate an access request that specifies that a subject would like to have access on 
-critical information. The PEPs next submit the request to a PDP, which evaluates the request against the policy
-and determines whether the request should be permitted or denied. Finally, the PDP formulates and sends the
-decision to PEPs to proceed.
+Typically, PEPs in $Ms$ formulate an access request that specifies that a subject would like to have a specific type of access (e.g., read or write) on specific protected information. 
+The PEPs next submit the request to a PDP, which evaluates the request against the policy loaded on the PDP and determines whether the request should be permitted or denied. Finally, 
+the PDP formulates and sends the
+decision back to the PEPs to proceed.
 
-As security requirements of software often change during development and maintenance,
+As security requirements of software often change during software development and maintenance,
 developers may modify policies to comply with requirements. In order to increase confidence that the modification of policies is correct and
 does not introduce unexpected behavior, developers periodically conduct regression testing.
 For example, new security requirements include new security concerns to be added into a policy.
 Developers may change policies without changing program code related to actual system functionality.
 In such a situation, validating and verifying program code and policies together after policy changes
-increases confidence of correct behaviors of a given system.
+increases confidence of correct behaviors of the given system.
 
 
 In this paper, we focus on the regression testing problem in the context of policy evolution.
 For policy evolution, regression testing is important because policy behavior changes may
-result in unexpected behaviors of program code, these behaviors can even be undesirable.
+result in unexpected behaviors of program code, these behaviors can be undesirable.
 The typical regression testing for program code interacting with a policy is as follows.
-Given a program code and a policy $P$, the developers prepare initial system test cases, where
+Given a program and a policy $P$, the developers prepare initial system test cases, where
 each test case maps to rules (in the policy) exercised by the test case. Given $P$ and its modified
 policy $P'$, the developers compare impacts of $P$ and $P'$ to
 reveal different policy behaviors, which are ``dangerous'' portions to be validated with
-test cases. For validating this ``dangerous'' portion, the developers often select only test cases (from test cases for $P$), which exercise the dangerous
+test cases. For validating these ``dangerous'' portions, the developers often select only test cases (from test cases for $P$), that exercise the dangerous
 portions of $P'$.
 
 
 For regression testing, instead of writing new system test cases, developers often write initial system test cases and 
 reuse the test cases in practice. The naive regression testing strategy is to rerun all system test cases. However,
  this strategy is costly and time-consuming, especially for large-scale systems. Moreover, if the number of the initial 
-system test cases is large, this strategy may require a significant time for developers to conduct testing. In order to
+system test cases is large, this strategy may require significant time for developers to conduct testing. In order to
  reduce the cost of regression testing, developers often adopt regression test selection, which selects and executes only
  test cases to expose different behaviors across different versions of the system. This approach also requires substantial
- costs to select and execute such system tests from the initial test cases that could reveal faults introduced by the changes. 
-If regression-test-selection cost is smaller than rerunning all of initial system test cases, test selection helps reduce 
-time-consuming task in validating whether the modification is correct. 
+ costs to select and execute such system test cases from the initial test cases that could reveal faults introduced by the changes. 
+If the cost of regression test selection is smaller than rerunning all of initial system test cases, test selection helps reduce 
+overall cost in validating whether the modification is correct. 
 
 In order to address the issue, we propose a regression-test-selection approach, which selects every test case that may 
 reveal different behaviors in program code impacted by policy changes.
 In general, our approach automatically compares an original 
 policy $P$ and its modified policy $P'$ to detect different policy behaviors. In the policy context, different policy 
-behaviors refer that, given a request, its evaluated decisions (for $P$ and $P'$, respectively) are different.
-These different policy behaviors are dangerous portions to be validated. As a policy consists of rules, we refer such dangerous portions as rules impacted by policy changes. 
-We next find test cases to reveal such policy changes.
+behaviors refer to that, given a request, its evaluated decisions (for $P$ and $P'$, respectively) are different.
+These different policy behaviors are dangerous portions to be validated. As a policy consists of rules, we refer to dangerous portions as rules impacted by policy changes. 
+We next find test cases impacted by policy changes.
 
 
 %------------------------- 
@@ -63,17 +63,18 @@ We next find test cases to reveal such policy changes.
 
 Our approach includes three techniques.
 The first one is based on mutation analysis (that converts each rule's decision in turn and executes 
-and finds test cases related to each rule), the second one is based on coverage analysis (that records 
+and finds test cases related to each rule), The second one is based on coverage analysis (that records 
 which rules are evaluated by executing each test case), and the third one is based on evaluated 
-decisions of requests issued from test cases. Our approach next selects only test cases to execute program code impacted by policy changes.
+decisions of requests issued from test cases. Our approach next selects only test cases that execute program code impacted by policy changes.
 
 While test-selection techniques are useful for selecting test cases for program code impacted by policy changes, these test cases may not sufficiently cover all the rules in the policy impacted by the changes.
 We develop a test-augmentation technique, which complements our test-selection techniques.
-We first use the regression-test-selection approach before using the test-augmentation technique to achieve
-additional policy coverage for not-covered-impacted-rules $N_r$ by existing test cases.
+We first use a regression-test-selection technique before using the test-augmentation technique to achieve
+additional policy coverage for not-covered but impacted rules $N_r$ by existing test cases.
 % by generating additional test cases to 
 %cover not-covered-impacted-rules $N_r$ by existing test cases. 
-Our technique modifies existing test cases to generate test cases, which issue requests to cover $N_r$ with minimal test cases changes. For example, attribute change (e.g., subject role change from $Student$ to $Professor$) may cover $N_r$. We then verify that augmented test cases increase covering $N_r$.
+Our technique modifies existing test cases to generate test cases, which issue requests to cover $N_r$ with minimal test cases changes. For example, an attribute change (e.g., subject role change from $Student$ to $Professor$) may cover $N_r$. We then verify that augmented test cases increase
+ coverage of $N_r$.
 
 
 %structural test generation before using combinatorial test generation to augment the generated test inputs for achieving the
@@ -90,9 +91,10 @@ This paper makes five main contributions:
   \item We develop a test selection approach to select every test case from existing test cases to test program code impacted by policy changes. Our approach
   uses three techniques; the first one is based on mutation analysis, the second one is based on coverage analysis, and the third one is based on evaluated 
 decisions of requests issued from test cases. 
-  \item We develop a test augmentation technique to generate additional new test cases to cover not-covered-impacted-rules with selected test cases by the preceding techniques.
+  \item We develop a test augmentation technique to generate additional new test cases to cover not-covered but impacted rules with selected test cases by the preceding techniques.
 
-  \item We evaluate our approach on three real world Java programs interacting with policies. Our evaluation results show that our test selection techniques reduce up to 51\%$\sim$97\% of test reduction for a modified version with given 5$\sim$25 policy changes.
+  \item We evaluate our approach on three real world Java programs interacting with policies. Our evaluation results show that our test selection techniques achieve
+ up to 51\%$\sim$97\% of test reduction for a modified version with given 5$\sim$25 policy changes.
   %82\%-97\% and 51\%-83\% of test reduction for a modified version with 5 and 25 policy changes, respectively.
   
 %  Our evaluation results show that our test selection techniques achieve
