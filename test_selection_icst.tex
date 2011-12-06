@@ -452,9 +452,13 @@
 \maketitle
 
 %DSN Submitted Abstract
-%As security requirements of software often change, developers may modify access control policies (policies in short) according to evolving requirements. In order to increase confidence that the modification of policies is correct, developers conduct regression testing. However, rerunning all of existing system test cases is often costly and time-consuming. To address this issue, we develop a regression-test-selection approach, which selects every test case that may reveal faults caused by policy changes. However, existing test cases may not cover all of rules in policies impacted by policy changes. To address this issue, we develop a test augmentation technique by generating additional test cases to cover not-covered-impacted-rules by existing test cases. We evaluate our approach on three Java programs each interacting with policies. Our evaluation results show that our test selection techniques reduce a significant number of test reductions efficiently and our test augmentation technique is effective to generate additional test cases. 
+
 
 \begin{abstract}
+
+As security requirements of software often change, developers may modify access control policies (policies in short) according to evolving requirements. In order to increase confidence that the modification of policies is correct, developers conduct regression testing. However, rerunning all of existing system test cases is often costly and time-consuming. To address this issue, we develop a regression-test-selection approach, which selects every test case that may reveal faults caused by policy changes. However, existing test cases may not cover all of rules in policies impacted by policy changes. To address this issue, we develop a test augmentation technique by generating additional test cases to cover not-covered-impacted-rules by existing test cases. We evaluate our approach on three Java programs each interacting with policies. Our evaluation results show that our test selection techniques reduce a significant number of test reductions efficiently and our test augmentation technique is effective to generate additional test cases. 
+
+\Comment{
 As security requirements of software often change during development and maintenance, developers may modify policies according to evolving requirements.
 %For example, new security requirements include new security concerns to be added into a policy.
 %Developers may change policies without changing program code related to actual system functionality.
@@ -478,7 +482,11 @@ Our evaluation results show that our test selection techniques reduce up to 51\%
 %5 rules change.
 %find XX test cases from existing test cases, which covers only XX\% of impacted rules on average. 
 Our evaluation results show that our test augmentation technique generates additional test cases to cover 100\% of the impacted rules.
+}
 \end{abstract}
+
+%Paper Category: regular paper
+%an approximate word count: XX
 
 \begin{IEEEkeywords}
 access control policy evolution; regression testing; test selection; test augmentation; reliability
@@ -499,6 +507,9 @@ access control policy evolution; regression testing; test selection; test augmen
 
 %\bibliographystyle{latex8}
 \bibliographystyle{plain}
+%\bibliographystyle{IEEEabrv}
+%\bibliographystyle{IEEEabrv}
+%\bibliographystyle{IEEEtran}
 \bibliography{yangtse,yangtse2}
 \end{document}
 
