@@ -10,23 +10,22 @@ given a randomly selected rule in a policy $P$, the regression simulator changes
 the decision of the rule.
 For $RA$, the regression simulator adds a randomly generated
 rule with random attributes collected from $P$ in a random place.
-The simulator injects (i.e., mutate) more than one type of changes to $P$ for simulating
+The simulator injects (i.e., mutates) more than one type of changes to $P$ for simulating
 regression on $P$.
-Given $n$ number of change requests, the regression simulator analyzes a policy and injects $n$ changes
+Given $n$ number of requests, the regression simulator analyzes a policy and injects $n$ changes
 into the policy. Among three policy change types, $RA$ is the most flexible
 because rules can be composed of any combination of randomly selected attributes.
 
 We next describe test-rule correlation and request recording step in the test selection
 component. 
 For test selection technique based on mutation analysis technique,
-our test-selection component first mutates a rule with RDC in turn.
+our test-selection component first mutates a rule with RDC in turn. 
 Then, the component executes all of test cases for each mutated policy, and
 finds test-rule correlation by monitoring 
 whether existing test cases expose different behaviors of an original policy and its mutated policy.
 For test selection technique based on coverage analysis technique,
-the component finds test-rule correlation by executing all of test cases once and monitoring
-which rules are evaluated for a given test case.
-For the test selection technique based on recorded request evaluation,
+the component finds test-rule correlation by executing all of test cases at once and monitoring
+which rules are evaluated for a given test case. For the test selection technique based on recorded request evaluation,
 the component logs all requests issued from given test cases.
 
 For change impact analysis, the component leverages an existing policy verification tool called Margrave~\cite{fisler05:verification}. 
@@ -34,14 +33,14 @@ Given two versions of policies, $P$ and $P'$,
 the component uses the generic APIs of Margrave to
 print out all the modified policy behaviors.
 Our first and second test-selection techniques analyze the results of Margrave and
-find which rules $R_i$ impacted by policy changes.
+find the rules $R_i$ impacted by policy changes.
 Our third test-selection technique does not require change impact analysis. The
-component evaluates requests against $P$ and $P'$ to reveal different evaluated decision.
+component evaluates requests against $P$ and $P'$ to reveal different evaluated decisions.
 
-The test argumentation component compares
+The test augmentation component compares
 not-covered policy behaviors $rs_1$ (i.e., represented by requests) with requests $rs_2$ issued
 from existing test cases. The component analyzes the comparison results and classifies
-the results into one of our predefined test-argumentation types. 
+the results into one of our predefined test-augmentation types. 
  
 
 
