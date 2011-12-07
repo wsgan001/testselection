@@ -1,47 +1,46 @@
 \section{Implementation} \label{sec:implementation}
 
-Our implementation (written in Java) includes five components: regression simulator, test-rule correlation, request-record, test selection,
-and test augmentation. To simulate regression in access control policies, 
-we used three types of mutants injected in the policies; RMR (Rule Removal), RA (Rule Addition), and RDC (Rule Decision Change)
-mutants. The regression simulator analyzes a policy and injects one
-of such changes. For RMR, given a randomly selected rule in a policy $P$,
-the regression simulator removes the rule. For RDC, given a randomly selected rule in a policy $P$, the regression simulator changes
-the decision of the rule. For $RA$, the regression simulator adds a randomly generated rule with random attributes collected from $P$ in a random place.
-The simulator can inject more than one type of changes to $P$ for simulating regression on $P$.
+Our implementation (written in Java) includes three components: regression simulator, test selection,
+and test augmentation. To simulate regression in a policy, 
+we used three types of policy change types; $RMR$ (Rule Removal), $RA$ (Rule Addition), and $RDC$ (Rule Decision Change). For $RMR$, given a randomly selected rule in a policy $P$,
+the regression simulator removes the rule. For RDC,
+given a randomly selected rule in a policy $P$, the regression simulator changes
+the decision of the rule.
+For $RA$, the regression simulator adds a randomly generated
+rule with random attributes collected from $P$ in a random place.
+The simulator injects (i.e., mutate) more than one type of changes to $P$ for simulating
+regression on $P$.
+Given $n$ number of change requests, the regression simulator analyzes a policy and injects $n$ changes
+into the policy. Among three policy change types, $RA$ is the most flexible
+bu injecting rules composed of any combination of attributes.
 
-For test selection based on mutation analysis technique,
-our test test-rule correlation mutates a given policy using RDC, executes all of test cases for each mutated policy, and monitors changed
-behaviors by comparing test results of the test cases with an original policy or its mutated policy.
-The component also automatically compares the testing results (on the policy and the mutated policies) and logs killed mutant information if the results are inconsistent. We use
-such killed mutant information for rule-test correlation.
-For test selection based on coverage analysis technique, we execute all of test cases once and monitors
-which rules are evaluated for each test case execution. We use such coverage information for rule-test correlation.
-For the test selection based on recorded request evaluation,
-the request-record component records all requests issued by test cases and evaluated rules in a policy.
+We next describe test-rule correlation and request recording step in the test selection
+componet. 
+For test selection technique based on mutation analysis technique,
+our test-selection component first mutates a rule with RDC in turn.
+Then, the component executes all of test cases for each mutated policy, and
+finds test-rule correlation by monitoring 
+whether existing test cases expose different behaviors of an original policy and its mutated policy.
+For test selection technique based on coverage analysis technique,
+the component finds test-rule correlation by executing all of test cases once and monitoring
+which rules are evaluated for a given test case.
+For the test selection technique based on recorded request evaluation,
+the component logs all requests issued from given test cases.
 
-For our first two techniques, the test selection component requires change impact analysis to
-show changed policy behaviors of two versions of policies.
-The implementation leverages an existing access control policy verification tool called Margrave~\cite{fisler05:verification}. 
-Margrave is a tool suite for analyzing access control policies written in XACML.
+For change impact analysis, the component leverages an existing policy verification tool called Margrave~\cite{fisler05:verification}. 
 Given two versions of policies, $P$ and $P'$, 
-our implementation uses the generic APIs of Margrave to
-print out all the policy changes with their corresponding changed decisions in a summarized format.
-Our first two techniques analyze the results of Margrave and
-find which rules $R_i$ impacted by policy changes. We then find all of test cases $R_t$
-impacted by $R_i$.
-
-For the test selection based on recorded request evaluation,
-the component does not require change impact analysis. The test selection
-component log recorded requests to reveal different evaluated decision against $P$ and $P'$.
+the component uses the generic APIs of Margrave to
+print out all the modified policy behaviors.
+Our first and second test-selection techniques analyze the results of Margrave and
+find which rules $R_i$ impacted by policy changes.
+Our third test-selection technique does not require change impact analysis. The
+component evaluate requests against $P$ and $P'$ to reveal different evaluated decision.
 
 The test argumentation component compares
-not-covered policy behaviors $r_1$s (i.e., represented by requests) with requests $r_2$s
-issued from existing test cases. The test argumentation computes
-similarity between $r_1$ and $r_2$ to decide applicability of modification for test
-argumentation. Given recommended test cases with high similarity score,
-we manually modify the test cased to cover not-covered policy behaviors. 
-If not applicable for modification, the component
-generates a test cases to issue such requests to cover not-covered policy behaviors. 
+not-covered policy behaviors $r_1$s (i.e., represented by requests) with requests $r_2$s issued
+from existing test cases. The component analyzes this comparison result and classifies
+the result into one of our predefined test-argumentation types. 
+ 
 
 
 
