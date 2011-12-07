@@ -5,26 +5,17 @@ and test augmentation. To simulate regression in access control policies,
 we used three types of mutants injected in the policies; RMR (Rule Removal), RA (Rule Addition), and RDC (Rule Decision Change)
 mutants. The regression simulator analyzes a policy and injects one
 of such changes. For RMR, given a randomly selected rule in a policy $P$,
-the regression simulator removes the rule. For CRE,
-given a randomly selected rule in a policy $P$, the regression simulator changes
-the decision of the rule.
-For $RA$, the regression simulator adds a randomly generated
-rule with random attributes collected from $P$ in a random place.
-The simulator can inject more than one type of changes to $P$ for simulating
-regression on $P$.
+the regression simulator removes the rule. For RDC, given a randomly selected rule in a policy $P$, the regression simulator changes
+the decision of the rule. For $RA$, the regression simulator adds a randomly generated rule with random attributes collected from $P$ in a random place.
+The simulator can inject more than one type of changes to $P$ for simulating regression on $P$.
 
 For test selection based on mutation analysis technique,
-our test test-rule correlation mutates a given policy using CRE
-, executes all of test cases for each mutated policy, and monitors changed
+our test test-rule correlation mutates a given policy using RDC, executes all of test cases for each mutated policy, and monitors changed
 behaviors by comparing test results of the test cases with an original policy or its mutated policy.
-The component also automatically compares the testing results (on the policy and the mutated
-policies) and logs killed mutant information if the results are inconsistent. We use
+The component also automatically compares the testing results (on the policy and the mutated policies) and logs killed mutant information if the results are inconsistent. We use
 such killed mutant information for rule-test correlation.
-For test selection based on coverage analysis technique,
-we execute  all of test cases once and monitors
-which rules are evaluated for each test case execution.We use such
-coverage information for rule-test correlation.
-
+For test selection based on coverage analysis technique, we execute all of test cases once and monitors
+which rules are evaluated for each test case execution. We use such coverage information for rule-test correlation.
 For the test selection based on recorded request evaluation,
 the request-record component records all requests issued by test cases and evaluated rules in a policy.
 
