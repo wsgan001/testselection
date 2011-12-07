@@ -226,21 +226,86 @@ to reveal their access control policies.
 
 
 
+\begin{figure}[t]
+    \centering
+        \includegraphics[width=3.5in]{testaugument.eps}
+        \vspace{-5pt}
+    \caption{\label{fig:testexecution}Security testing execution process in a policy-based software system}
+    \vspace{-10pt}
+%    \vspace{+3pt}
+\end{figure}
+
 \subsection{Test Augmentation}
 \label{subsec:testaugmentation}
 While test-selection techniques are useful for selecting test cases for a program impacted by policy changes, these test cases may not sufficiently cover all the rules in the policy impacted by the changes.
 We develop a test augmentation technique, which complements our test-selection techniques by generating additional test cases to 
-cover not-covered-impacted-rules $N_r$ by existing test cases.
+cover impacted rules $N_r$ not-covered with selected test cases.
 
-Our augmentation technique first analyzes change impact analysis between $P$ and $P'$ to find rules impacted by policy changes.
-The technique finds $N_r$ by evaluating selected test cases and monitoring the rules that are evaluated during test case execution.
-%our selected test cases and $P$ and $P'$. 
-For $N_r$, we next generate requests, which can cover $N_r$.
-We then analyze existing test cases to create test cases, which issue the requests
-to cover $N_r$ with minimal changes in test cases.
-For example, attribute change (e.g., subject element change from $Student$ to $Professor$) may cover $N_r$. We then verify that augmented test cases increase coverage of $N_r$.
-%[TBD]
+%not-covered-impacted-rules $N_r$ by existing test cases.
 
+Our augmentation technique first analyzes changes between $P$ and $P'$ to find rules impacted by policy changes.
+Note that we first use a regression-test-selection technique before using the test-augmentation technique to achieve
+additional policy coverage for $N_r$ by existing test cases.
+%. From a crash trace A°ÊB°ÊC°ÊD shown in Figure 
+%3
+
+Figure~\ref{fig:testexecution} illustrates behaviors of security test cases.
+A dependency graph in Figure~\ref{fig:testexecution} represents a typical
+scenario to trigger application code to issue a request.
+The graph (\CodeIn{Subject} and \CodeIn{Context})$\rightarrow$1$\rightarrow$2$\rightarrow$...
+represents that subject and context (i.e., condition) elements are defined by variables that
+the developers change and 1, 2, 3, ... shows actual behaviors of test cases (e.g., call methods in application
+code and check test oracles).
+For test augmentation, we are interested in modifying such variables in the test code
+to help issue $NR_{req}$.
+In the graph, we notice that we generate test cases by modifying
+subject elements, condition elements , and both subject elements and condition elements together, respectively.
+Each modification type corresponds to test augmentation types, \CodeIn{M-Sub}, \CodeIn{M-Cond}, and \CodeIn{M-SubCond}, respectively.
+\CodeIn{M-Others} denotes an argumentation type, which
+may change at least action and resource elements.
+
+Our test-augmentation technique analyzes and recommends existing test cases, which trigger
+application code to issue requests $NR_{req}$ cover $NR$.
+More specifically, given $NR_{req}$, our technique classifies existing test cases into \CodeIn{M-Sub}, \CodeIn{M-Cond}, and \CodeIn{M-SubCond},
+or \CodeIn{M-Others}. Note that classification priority is given to \CodeIn{M-Sub}, CodeIn{M-Cond}, and \CodeIn{M-SubCond},
+or \CodeIn{M-Others} in order.
+While \CodeIn{M-Sub}, \CodeIn{M-Cond}, and \CodeIn{M-SubCond} require developers modify existing
+test cases, \CodeIn{M-Others} require the developers to create new test cases issuing requests
+directly evaluated by the PDP without through the PEP. The reason is because the test cases in our subjects are
+designed to use variables to define subject elements and condition element. Therefore,
+we achieve our goal by modifying such variables. However, for \CodeIn{M-Others}, the augmentation technique require the
+developers to create new test cases manually.
+
+ 
+
+\Comment{
+we may augment test cases based on following different types of modification/generation.
+``M-Sub'' refers to generate test cases by modifying
+subject elements in test cases. For example, Given test cases, by changing subject elements (e.g,
+BORROWER instead of SECRETARY),
+the test cases cover the changed behaviors, which was not-covered in existing test cases
+shown in Table~\ref{tab:augment-results}.
+Similarly, ``M-Cond'' refers to generate test cases by modifying
+condition elements in test cases.
+When two of the preceding modification could not
+find test cases to modify, our technique finds
+``M-SubCond'', which refers to generate test cases by modifying
+subject elements and condition elements together.
+At the last column, ``Others'' denotes an argumentation type, which
+may at least change action and resource elements.
+}
+\Comment{
+While test-selection techniques are useful for selecting test cases for program code impacted by policy changes, these test cases may not sufficiently cover all the rules in the policy impacted by the changes.
+To address this issue, we propose a test-augmentation technique, which complements our test-selection techniques.
+Note that we first use a regression-test-selection technique before using the test-augmentation technique to achieve
+additional policy coverage for not-covered but impacted rules $NR$ by existing test cases.
+Our test-augmentation technique analyzes and recommends existing test cases, which can issue requests $NR_{req}$ cover $NR$
+after manual modification of the test cases.
+In the technique, we use prioritization to classify test cases into various sets based on their modification likelihood
+to issue $NR_{req}$.
+High likelihood may lead to less number of test case modification to issue $NR_{req}$.
+Given test cases with high likelihood, we manually modify and augment the test cases to increase coverage of $NR$.
+}
 %\textbf{Distance-based complexity: Besides the simple graph 
 %complexity, we extract distance-based complexity measures 
 %based on the shortest distance between all pairs of crash 
