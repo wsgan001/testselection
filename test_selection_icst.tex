@@ -456,8 +456,14 @@
 
 \begin{abstract}
 
-As security requirements of software often change, developers may modify access control policies (policies in short) according to evolving requirements. In order to increase confidence that the modification of policies is correct, developers conduct regression testing. However, rerunning all of existing system test
- cases is often costly and time-consuming. To address this issue, we develop a regression-test-selection approach, which selects every system test case that may reveal faults caused by policy changes. However, existing test cases may not cover all of rules in policies impacted by policy changes. To address this issue, we develop a test augmentation technique by generating additional test cases to cover not-covered-impacted-rules by existing test cases. We evaluate our approach on three Java programs each interacting with policies. Our evaluation results show that our test selection techniques reduce a significant number of test reductions efficiently and our test augmentation technique is effective to generate additional test cases. 
+As security requirements of software often change, developers may modify access control policies (policies in short) according to evolving requirements. To increase confidence that the modification of policies is correct, developers conduct regression testing. However, rerunning all of existing system test
+cases could be costly and time-consuming. To address this issue, we develop a regression-test-selection approach, which selects every system test case that may reveal faults caused by policy changes. However, selected test cases may not
+evaluate (i.e., cover) all of modified policy behaviors, which
+are induced by rules impacted by policy change.
+To address this issue, we develop a test augmentation technique by generating additional test cases to cover not-covered but impacted rules with existing test cases.
+%We evaluate our approach on three Java programs each interacting with policies.
+Our evaluation results show that our test selection techniques reduce a significant number of system test
+cases efficiently and our test augmentation technique is effective to generate additional test cases. 
 
 \Comment{
 As security requirements of software often change during software development and maintenance, developers may modify policies according to evolving requirements.
@@ -468,8 +474,9 @@ For regression testing, rerunning all of existing system test cases could be cos
 To address this issue, we propose an efficient regression-test-selection approach, which selects every test case that may reveal a fault caused by policy changes. 
 Our approach includes three techniques: The first one is based on mutation analysis (that converts each rule's decision in turn and executes and finds test cases related to each rule), 
 The second one is based on coverage analysis (that records which rules are evaluated by executing each test case), and The third one is based on evaluated decisions of requests 
-issued from test cases. However, selected test cases may not evaluate (i.e., cover) all of modified policy behaviors,
-which are induced by rules impacted by policy changes.
+issued from test cases.
+However, selected test cases may not evaluate (i.e., cover) all of modified policy behaviors,
+which are induced by rules impacted by policy change.
 To address this issue, we propose a test augmentation technique.
 The technique modifies existing test cases 
 to generate additional test cases
@@ -485,16 +492,12 @@ Our evaluation results show that our test augmentation technique generates addit
 }
 \end{abstract}
 
-%\category{D.3.4}{Programming Languages}{Processors}
-%\category{E.4}{Coding And Information Theory}{Data Compaction and Compression}
-
-%\terms{Languages, Performance, Experimentation, Algorithms}
-
-
 \begin{IEEEkeywords}
 access control policy evolution; regression testing; test selection; test augmentation; reliability
 \end{IEEEkeywords}
-
+\indent{\small{\textbf{\textit{1. Submission paper category} - regular paper in DCCS track}}}\\
+\indent{\small{\textbf{\textit{2. Approximate word count} - 7,500 word count}}}\\
+\indent{\small{\textbf{\textit{3. We declared that the material has been cleared through the affiliations of the author(s).}}}}
 
 \IEEEpeerreviewmaketitle
 \input{intro} % 80% done
