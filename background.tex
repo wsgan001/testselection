@@ -158,33 +158,23 @@ in $P'$''.
 
 The main objectives of regression testing is to reduce the costs from rerunning initial test cases and to maximize the capability of 
 selected tests to detect potential errors that may be induced by changes.
-%\subsubsection{Regression testing: Test selection and augmentation}
-%Regression test selection techniques involves two issues:
-%\begin{itemize}
-%\item The first issue is the regression test selection problem which aims at minimizing the number of tests that have to be considered 
-%Rothermel et al. have provided in their work a survey on techniques that have been used in this field. 
-%The regression test selection technique is called safe when the selected tests among the initial test suite enable to detect 100\% of the faults.
-%\item The second aspect is test-suite augmentation which checks the adequacy of existing tests for the incoming changes
-%and aims at adding new tests to the initial Test Suite to cover introduced modifications.
-%\end{itemize}
-%\subsubsection{Regression testing in the context of software policy-based systems}
+To the best of our knowledge, there is no previous research work on regression testing that considers policy changes in policy-based software systems. 
+The global scenario that illustrates regression testing process for such systems is presented in Figure XXX and consists in identifying the changed rules
+ between a policy $P$ and its modified version $P'$ and to select only the portion of tests that exercise theses changed rules. For the rules impacted by policy 
+changes but not covered by existing test cases, the test augmentation technique generates additional test cases to achieve 100\% coverage of changed policy.
+In the next section, we present our three test selection techniques and our test augmentation technique.
 
-To the best of our knowledge, there is no prior research work on regression testing that considers policy changes in policy-based software systems. 
-To help developers reduce cost in testing such systems, we propose novel test selection and augmentation approach. 
-%We next describe our regression testing by policy changes.
-%while existing work (e.g., \cite{Rothermel:1996:ART:235681.235682})
-%considers only program changes.
-%\textbf{Regression testing in the context of software policy-based systems.}
-%In this paper, we consider regression testing in the context of policy-based software systems.
-In order to test policy-based software system, we deploy test cases that trigger the rules in the policy.
-Our approach selects test cases by verifying that the changed parts of 
-the policy do not reveal unexpected behaviors in a given system.
-Whenever a policy $P$ is updated to a new policy $P'$,
-existing test cases impacted by the policy changes need to be tested to validate that the policy changes do not introduce a negative impact on the initial implementation of a system.
 \FixJeeHyun{The figure \ref {} illustrates the overall scenario of regression testing applied to policy-based software systems\\
 ADD schema}
 
 
-
+\begin{figure}[t]
+    \centering
+        \includegraphics[width=2in]{regressiontesting.eps}
+       \vspace{-4pt}
+    \caption{\label{fig:example}process}
+   \vspace{-10pt}
+%    \vspace{+3pt}
+\end{figure}
 
 
