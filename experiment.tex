@@ -52,21 +52,17 @@
 %\end{table*}%
 
 
-\section{Experiment}\label{sec:experiment}
+\section{Experiments}\label{sec:experiment}
 
 
-This section presents the experiment that we conducted to evaluate our proposed
+This section presents the experiments that we conducted to evaluate our proposed
 selection and augmentation techniques of regression system tests for policy
 evolution. We carried out our evaluation on a PC, running Windows 7 with Intel Core i5, 2410 Mhz processor, and 4 GB of RAM. 
 Given a program code interacting with a policy $P$, the regression simulator implements its modified
-policy $P'$ by changing/adding/removing random rules in $P$.
-Our test-selection techniques selects test cases that may reveal different behaviors in program code impacted
-by policy changes between $P$ and $P$'.
-We measure effectiveness and efficiency of our test selection
-techniques in terms of the number of selected test cases and elapsed time, respectively.
-We then apply our proposed test-augmentation technique to generate additional test cases
-for augmentation.
-In this section, we first describe the subjects, objective and measures, and instrumentation. We next present and discuss the evaluation results
+policy $P'$ by changing/adding/removing random rules in $P$. Our test-selection techniques select test cases that may reveal different behaviors in program code impacted
+by policy changes between $P$ and $P$'. We measure effectiveness and efficiency of our test selection techniques in terms of the number of selected 
+test cases and elapsed time, respectively. We then apply our proposed test-augmentation technique to generate additional test cases
+for augmentation. In this section, we first describe the subjects, objectives, measures, and instrumentation. We next present and discuss the evaluation results
 and finally describe threats to validity.
 
 
@@ -79,7 +75,7 @@ Sun's PDP \cite{sun05:xacml} is
 used to load a policy and evaluate requests issued from test cases in the programs.
 From our three subjects,
 Library Management System (\CodeIn{LMS}) provides web services to borrow/return/manage books in a library.
-Virtual Meeting System (\CodeIn{VMS}) provides for web conference services to organize online meetings.
+Virtual Meeting System (\CodeIn{VMS}) provides web conference services to organize online meetings.
 Auction Sale Management System (\CodeIn{ASMS}) provides web services to manage online auction.
 A seller initiates an auction by submitting a description of an item she/he would like to sell with its expected minimum price. Users then participate in bidding process by
 bidding the item. Before the bidding, users should have enough money in her/his account.
@@ -95,16 +91,12 @@ bidding the item. Before the bidding, users should have enough money in her/his 
 Table~\ref{tab:subj} summarizes the basic statistics of our subjects.
 The first column shows the subject names.
 Columns 2-4 show the lines of code, and the numbers of system test cases and security test cases.
-%Within each column group, we show the subject names,
-%the lines of code, and the numbers of system test cases and security test cases as well as policy coverage.
-%Columns 5-7 show the numbers of covered rules with test cases, not-covered rules with test cases, and the percentage
-%of coverage, respectively.
-Security test cases indicate system test cases that issue at least one request to the PDP.
+Security test cases refer to system test cases that issue at least one request to the PDP.
 Table~\ref{tab:subj} shows that our subjects include about 64 system test cases and 43 security
 test cases on average.
 In particular, \CodeIn{VMS} is equipped with only 10 security system test (out of 52 system test cases), which
 is smaller than those of other subjects.
-of security system test cases than other policies.
+%of security system test cases than other policies.
 %Each security system test case issues at least one request.
 
 
@@ -114,7 +106,7 @@ Columns 2-4 show the numbers of subjects, actions, resources, and conditions wit
 Column 5 shows the number of rules for each policy.
 Columns 6-7 show the numbers of covered rules with test cases, not-covered rules with test cases, and the percentage
 of coverage within policy coverage column group, respectively.
-The largest one is \CodeIn{ASMS}, which consists of 129 rules.
+The largest policy is related to \CodeIn{ASMS}, which consists of 129 rules.
 %\CodeIn{ASMS} consists of the largest number of rules one consists of 129 rules.
 For coverage, we measure which rules are
 evaluated (i.e., covered) with existing test cases under test.
@@ -237,8 +229,7 @@ In the evaluation, we intend to address the following research questions:
 				
 \end{itemize}
 
-To help answer these questions, we collect several metrics to
-to show effectiveness and efficiency of our test selection techniques and
+To help answer these questions, we collect few test metrics to show the effectiveness and the efficiency of our test selection techniques and
 our test augmentation technique. 
 The following metrics are
 measured for each subject under test interacting with each modified policy
@@ -248,14 +239,14 @@ and each technique.
 %the number of tests generated by the chosen test-generation
 %technique. For testing access control policies, a test is synonymous with request
 	\item \textit{Test reduction percentage.}  Given a policy and its modified
-	policy, the test reduction percentage is the number of selected test cases for regression testing divided by number of security test cases.
+	policy, the test reduction percentage is the number of selected test cases for regression testing divided by the number of security test cases.
 		\item \textit{Modified policy behavior count.}  Given a policy and its modified
 	policy, the modified policy behavior count is the number of impacted rules by policy changes.
 	\item \textit{Modified policy behavior coverage count.}  Given a policy and its modified
 	policy, the modified policy behavior coverage count is the number of
 	impacted rules covered with existing test cases.
 	\item \textit{Modified policy coverage percentage.}  Given a policy and its modified
-	policy, the modified policy behavior coverage percentage is the modified policy behavior coverage count divided the total number of impacted rules.
+	policy, the modified policy behavior coverage percentage is the modified policy behavior coverage count divided by the total number of impacted rules.
 	\item \textit{Elapsed time.}  The elapsed time is time (measured in milliseconds) elapsed for each step during the test selection process.
 	\item \textit{Augmented test case count.}  The augmented test case count is the number of augmented test cases by each augmentation type.
 	
@@ -285,8 +276,8 @@ and each technique.
 \subsection{Instrumentation}
 For each policy change, the regression simulator first randomly chooses one of regression types from \CodeIn{RMR}, \CodeIn{RA},
 and \CodeIn{RDC} and a rule, and changes the rule with a selected type.
-We configured that the regression simulator injects 5, 10, 15, 20, and 25 changes in a policy, respectively.
-Our evaluation is repeated for 12 times in order to avoid the impact of randomness of changes.
+We configured the regression simulator to inject 5, 10, 15, 20, and 25 changes in a policy, respectively.
+Our evaluation is repeated 12 times in order to avoid the impact of randomness of changes.
 
 For our test selection approach, we use test selection based on mutation analysis ($Mut$-$Selection$),
 test selection based on coverage analysis ($Cov$-$Selection$), and
@@ -296,8 +287,7 @@ To measure the effectiveness of our three techniques,
 we measure how many test cases are selected for regression testing.
 
 We next compare the efficiency of our three techniques.
-The objective of this evaluation is to investigate how our three test selection techniques impact performance.
-We measure elapsed time to conduct test-rule correlation,
+The objective of this evaluation is to investigate how our three test selection techniques impact performance. We measure elapsed time to conduct test-rule correlation,
 change impact analysis, and test selection for each technique.
 For $Mut$-$Selection$ and $Cov$-$Selection$, note that we require test-rule correlation analysis
 and change impact analysis, which should be done before actual test selection process.
@@ -316,11 +306,11 @@ We observe that our techniques achieve 51\%$\sim$97\% of test reduction for a mo
 Such test reduction may reduce a significant cost in terms of test execution time
 for regression testing. We also observe that all of our test techniques show the same
 set of selected test cases. This observation shows that all of our techniques are
-effective to select every test case impacted policy changes.
+effective to select every test case impacted by policy changes.
 
 Upon further examination
 of the results, we find correlation between policy coverage and test reduction.
-We notice that \CodeIn{VMS} often shows the highest test reduction compared \CodeIn{LMS} and \CodeIn{ASMS}.
+We notice that \CodeIn{VMS} often shows the highest test reduction compared to \CodeIn{LMS} and \CodeIn{ASMS}.
 While the policy $P_{vms}$ used in \CodeIn{VMS} consists of 106 rules, $P_{vms}$ achieves low policy coverage.
 $P_{vms}$ achieves only 12\% of policy coverage with 10 security test cases.
 This indicates that more than 90 rules are not covered. Due to its low policy coverage, there would be low probability
@@ -411,9 +401,7 @@ in terms of elapsed time.
 Table~\ref{tab:cov-results} shows the coverage results of selected test cases for the three subjects and
 the number of changes injected into the policy.
 Given a policy $P$,
-``Regression - N'' denotes a group of modified policies $N$ denotes the number of changes injected into $P$.
-The tables shows
-
+``Regression - N'' denotes a group of modified policies where $N$ denotes the number of changes injected into $P$. 
 For each subject and ``Regression - N'',
 the table shows modified policy behavior count (``\# CT''),  modified policy behavior coverage count (``\# Cov''), and modified policy coverage percentage (``\% Cov'').
 %changed policy behaviors (``\# CT''), test
@@ -424,9 +412,7 @@ reflect some of injected policy changes. The reason is because injected policy
 changes may not change policy behaviors semantically.
 One example is that policy behaviors do not change
 when $RDC$ are injected to the same rule twice.
-We observe that
-the modified policy coverage percentage across all subjects 
-are quite similar. Our techniques achieve 31.71\%$\sim$36.23\% of modified policy coverage percentage.
+We observe that the modified policy coverage percentages across all subjects are quite similar. Our techniques achieve 31.71\%$\sim$36.23\% of modified policy coverage percentage.
 Unfortunately the
 modified policy coverage percentage is still low when considering revealing
 faults caused by policy changes.
@@ -497,19 +483,19 @@ Table~\ref{tab:augment-results} shows the results of test augmentation for the t
 %When developers know which policy behaviors to cover, the developers could generate
 %test cases with requests to cover the policy behaviors. 
 For each subject, the table shows the percentage of
-generated test cases for each argumentation type defined in Section~\ref{subsec:testaugmentation}.
+generated test cases for each augmentation type defined in Section~\ref{subsec:testaugmentation}.
 %$[\frac{a}{b}]$ 
 While we generate/modify test cases to cover 100\% percentage of not-covered but impacted rules,
-``M-Sub'', ``M-Cond'', and ``M-SubCond'' refers to generate test cases by modifying
+``M-Sub'', ``M-Cond'', and ``M-SubCond'' refer to generate test cases by modifying
 subject elements, condition elements, and both subject elements and condition elements together, respectively in test cases.
 %In our subjects, for these argumentation types, developers can modify existing test cases
 %to increase coverage of not-covered but impacted rule. 
-`Others'' denotes an argumentation type, which
+`Others'' denotes an augmentation type, which
 may at least change action and resource elements.
-While ``M-Sub'', ``M-Cond'', and ``M-SubCond'' require developers modify existing
+While ``M-Sub'', ``M-Cond'', and ``M-SubCond'' require developers to modify existing
 test cases, ``Others'' require the developers to create new test cases issuing requests
-directly evaluated by the PDP without through the PEP. The reason is because the test cases in our subjects are
-designed to use variables to define subject elements and condition element. Therefore,
+directly evaluated by the PDP without passing through the PEP. The reason is because the test cases in our subjects are
+designed to use variables to define subject elements and condition elements. Therefore,
 we achieve our goal by modifying such variables. However, for `Others'', we create
 new test cases.
 
@@ -544,7 +530,7 @@ The higher percentage of policy coverage for each subject with existing test cas
 the higher percentage of test cases that
 are classified to ``M-Sub'', ``M-Cond'', or ``M-SubCond''.
 There is high probability that the subject with high policy coverage
-find test cases  for modification than that with low policy coverage.
+finds test cases  for modification than that with low policy coverage.
 
 %fo the subject has test cases with high policy coverage, 
 %
@@ -558,24 +544,19 @@ These threats
 could be reduced by further experimentation on a wider type of policy-based software systems and
 larger number of policies.
 In particular, our proposed regression model based on \CodeIn{RMR}, \CodeIn{RA},
-and \CodeIn{RDC} modifies policy elements such as subject, resource, action, and condition attributes.
-Additional regression model to modify various policy attributes could
-simulate various policy modification.
+and \CodeIn{RDC} modifies policy elements such as subject, resource, action, and condition attributes. 
+Additional regression model to modify various policy attributes could simulate various policy modification.
 The threats to internal validity are instrumentation effects
 that can bias our results such as faults in Sun's PDP, faults in Margrave, and
 faults in our implementation.
 
 
 \section{Discussion}\label{sec:discussion}
-We believe that our approach can be applied to select
-test cases in programs each interacting
-with policies written in languages (such as EPAL~\cite{epal} and Alloy~\cite{jackson01:micromodularity}) other than XACML.
-For policies written in other languages, we could evaluate test cases or requests issued from test cases
-to set up test-rule correlation or capture requests. 
-As our approach requires change impact analysis (against a policy and
-its modified policy) provided by the existing policy change impact tool to adopt
-XACML policies, we could convert the policies to XACML policies
-while maintaining policies semantics for change impact analysis.
+We believe that our approach can be applied to select test cases in programs interacting
+with policies written in languages other than XACML (such as EPAL~\cite{epal} and Alloy~\cite{jackson01:micromodularity}). 
+For policies written in other languages, we could evaluate test cases or requests issued from test cases to set up test-rule correlation or capture requests. 
+As our approach requires change impact analysis step (against a policy and its modified policy) which is handled by 
+the existing policy change impact tool, we could convert the policies to XACML policies to perform change impact analysis.
 
 
 %such conversion enables our approach to also be applicable to policies languages other than XACML and with veri?cation
