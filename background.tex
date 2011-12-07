@@ -2,6 +2,9 @@
   
 \section{Background}
 \label{sec:background}
+This section presents the background information for policy-based software systems, XACML policies, regression testing
+as well as definitions.
+
 \subsection{Policy-based Software Systems: PEP-PDP separation}
 Policy-based software systems are regulated by access control policies that specify the different actions that subjects are allowed to perform on system resources. 
 The policy is enforced by one or multiple Policy Enforcement Points (PEP) at the application level. A given PEP receives a subject access request and 
@@ -156,25 +159,96 @@ following:
 techniques attempt to make use of a subset of $T$ to gain sufficient confidence in the correctness of $P'$ with respect to behaviors from $P$ retained 
 in $P'$''.
 
-The main objectives of regression testing is to reduce the costs from rerunning initial test cases and to maximize the capability of 
-selected tests to detect potential errors that may be induced by changes.
+The main objectives of regression testing is to reduce the cost of rerunning initial test cases and to maximize the capability of 
+selected test cases to detect potential faults induced by changes.
 To the best of our knowledge, there is no previous research work on regression testing that considers policy changes in policy-based software systems. 
-The global scenario that illustrates regression testing process for such systems is presented in Figure XXX and consists in identifying the changed rules
- between a policy $P$ and its modified version $P'$ and to select only the portion of tests that exercise theses changed rules. For the rules impacted by policy 
-changes but not covered by existing test cases, the test augmentation technique generates additional test cases to achieve 100\% coverage of changed policy.
-In the next section, we present our three test selection techniques and our test augmentation technique.
+The global scenario that illustrates regression testing process for such systems is presented in Figure~\ref{fig:process}.
+In the scenario, our test-selection technique identifies the changed policy behaviors (
+i.e., rules impacted by policy changes)
+ between a policy $P$ and its modified version $P'$ and selects only the portion of test cases $T'$ to reveal different behaviors
+impacted by policy changes. If there exists the changed policy behaviors not-covered with $T'$, our test augmentation technique generates additional test cases $T''$  to achieve 100\% coverage of the changed policy behaviors.
+%In the next section, we present our three test selection techniques and our test augmentation technique.
 
-\FixJeeHyun{The figure \ref {} illustrates the overall scenario of regression testing applied to policy-based software systems\\
-ADD schema}
+In this paper, we classify system test cases into two types illustrated in Figure~\ref{fig:systemtestcases}.
+The first one is a set of functional system test cases, which
+are produced based on functional requirements, but do not involve
+in testing security requirements such as triggering application code to generate
+and evaluate requests against a policy under test.
+The second one is a set of security system test cases, which
+involve in triggering application code to generate
+and evaluate requests against a policy under test.
+Security system test cases may include test oracles
+to determine whether program behaviors interacting with a policy
+are correct.
 
 
+%\FixJeeHyun{The figure \ref {} illustrates the overall scenario of regression testing applied to policy-based software systems\\
+%ADD schema}
+%
+%
 \begin{figure}[t]
     \centering
-        \includegraphics[width=2in]{regressiontesting.eps}
+        \includegraphics[width=3.5in]{regressiontesting.eps}
        \vspace{-4pt}
-    \caption{\label{fig:example}process}
+    \caption{\label{fig:process}Regression Testing Process}
    \vspace{-10pt}
 %    \vspace{+3pt}
 \end{figure}
+\begin{figure}[t]
+    \centering
+    \vspace{+5pt}
+        \includegraphics[width=2.5in]{systemtestcases.eps}
+       \vspace{-4pt}
+    \caption{\label{fig:systemtestcases}System test cases}
+   \vspace{-10pt}
+    \vspace{+3pt}
+\end{figure}
+
+%\subsection{Definitions}
+%
+%Security policy testing (SP testing): it denotes the activity
+%of generating and executing test cases that
+%are derived specifically from a SP. The objective of
+%SP testing is to reveal as many security flaws as
+%possible.
+%Test case: In the paper, we define a test case as a triplet:
+%intent, input test sequence, oracle function.
+%
+%To help answer these questions, we collect several metrics to
+%to show effectiveness and efficiency of our test selection techniques and
+%our test augmentation technique. 
+%The following metrics are
+%measured for each subject under test interacting with each modified policy
+%and each technique.
+%\begin{itemize}
+%%	\item \textit{Selected test case count}.  The test count is the size of the request set or
+%%the number of tests generated by the chosen test-generation
+%%technique. For testing access control policies, a test is synonymous with request
+%	\item \textit{Functional system test cases.} 
+%	The test cases exercise functional requirements of a software system.
+%	By opposition with security system test cases, we call these test cases
+%	
+%	System/functional testing . the activity which consists
+%of generating and executing test cases which are
+%produced based on the uses cases and the business
+%models (e.g. analysis class diagram and dynamic
+%views) of the system. By opposition with security
+%tests, we call these tests functional.
+%
+%
+%	 Given a policy and its modified
+%	policy, the test reduction percentage is the number of selected test cases for regression testing divided by number of security test cases.
+%		\item \textit{Modified policy behavior count.}  Given a policy and its modified
+%	policy, the modified policy behavior count is the number of impacted rules by policy changes.
+%	\item \textit{Modified policy behavior coverage count.}  Given a policy and its modified
+%	policy, the modified policy behavior coverage count is the number of
+%	impacted rules covered with existing test cases.
+%	\item \textit{Modified policy coverage percentage.}  Given a policy and its modified
+%	policy, the modified policy behavior coverage percentage is the modified policy behavior coverage count divided the total number of impacted rules.
+%	\item \textit{Elapsed time.}  The elapsed time is time (measured in milliseconds) elapsed for each step during the test selection process.
+%	\item \textit{Augmented test case count.}  The augmented test case count is the number of augmented test cases by each augmentation type.
+%	
+%\end{itemize}
+
 
 
