@@ -27,14 +27,19 @@ increases confidence of correct behaviors of the given system.
 In this paper, we focus on the regression testing problem in the context of policy evolution.
 For policy evolution, regression testing is important because policy behavior changes may
 result in unexpected behaviors of program code, these behaviors can be undesirable.
+Prior test selection research work ~\cite{Rothermel:1996:ART:235681.235682,Graves:2001:ESR:367008.367020,Elbaum:2000:PTC:347324.348910}
+deals with changes in program code. However, this work does not consider code-related components such as policies that interact with the program code.
+To the best of our knowledge,
+our paper is the first one for automatic test-selection approach in context of policy
+evolution.
+
 The typical regression testing for program code interacting with a policy is as follows.
 Given a program and a policy $P$, the developers prepare initial system test cases, where
 each test case maps to rules (in the policy) exercised by the test case. Given $P$ and its modified
 policy $P'$, the developers compare impacts of $P$ and $P'$ to
 reveal different policy behaviors, which are ``dangerous'' portions to be validated with
-test cases. For validating these ``dangerous'' portions, the developers often select only test cases (from test cases for $P$), that exercise the dangerous
+test cases. For validating these ``dangerous'' portions, the developers often select only test cases (from test cases for $P$) that exercise the dangerous
 portions of $P'$.
-
 
 For regression testing, instead of writing new system test cases, developers often write initial system test cases and 
 reuse the test cases in practice. The naive regression testing strategy is to rerun all system test cases. However,
@@ -46,13 +51,19 @@ system test cases is large, this strategy may require significant time for devel
 If the cost of regression test selection is smaller than rerunning all of initial system test cases, test selection helps reduce 
 overall cost in validating whether the modification is correct. 
 
+
 In order to address the issue, we propose a regression-test-selection approach, which selects every test case that may 
 reveal different behaviors in program code impacted by policy changes.
 In general, our approach automatically compares an original 
 policy $P$ and its modified policy $P'$ to detect different policy behaviors. In the policy context, different policy 
 behaviors refer to that, given a request, its evaluated decisions (for $P$ and $P'$, respectively) are different.
-These different policy behaviors are dangerous portions to be validated. As a policy consists of rules, we refer to dangerous portions as rules impacted by policy changes. 
-We next find test cases impacted by policy changes.
+These different policy behaviors are dangerous portions to be validated.
+As a policy consists of rules, these different policy behaviors are induced by rules impacted by policy changes.
+
+%modified policy behaviors,
+%which are induced by rules impacted by policy change.
+%As a policy consists of rules, we refer to dangerous portions as rules impacted by policy changes. 
+%We next find test cases impacted by policy changes.
 
 
 %------------------------- 
@@ -61,20 +72,41 @@ We next find test cases impacted by policy changes.
 %three automated test-selection techniques and one : 
 %-------------------------
 
-Our approach includes three techniques.
+Our test-selection approach includes three techniques.
 The first one is based on mutation analysis (that converts each rule's decision in turn and executes 
-and finds test cases related to each rule), The second one is based on coverage analysis (that records 
+and finds test cases related to each rule). The second one is based on coverage analysis (that records 
 which rules are evaluated by executing each test case), and the third one is based on evaluated 
 decisions of requests issued from test cases. Our approach next selects only test cases that execute program code impacted by policy changes.
 
 While test-selection techniques are useful for selecting test cases for program code impacted by policy changes, these test cases may not sufficiently cover all the rules in the policy impacted by the changes.
-We develop a test-augmentation technique, which complements our test-selection techniques.
-We first use a regression-test-selection technique before using the test-augmentation technique to achieve
-additional policy coverage for not-covered but impacted rules $N_r$ by existing test cases.
-% by generating additional test cases to 
-%cover not-covered-impacted-rules $N_r$ by existing test cases. 
-Our technique modifies existing test cases to generate test cases, which issue requests to cover $N_r$ with minimal test cases changes. For example, an attribute change (e.g., subject role change from $Student$ to $Professor$) may cover $N_r$. We then verify that augmented test cases increase
- coverage of $N_r$.
+To address this issue, we propose a test-augmentation technique, which complements our test-selection techniques.
+Note that we first use a regression-test-selection technique before using the test-augmentation technique to achieve
+additional policy coverage for not-covered but impacted rules $NR$ by existing test cases.
+Our test-augmentation technique analyzes and recommends existing test cases
+based on their modification likelihood to issue $NR_{req}$ for covering $NR$.
+%after manual modification of the test cases.
+%In the technique, we use prioritization to classify test cases into various sets based on their modification likelihood
+%to issue $NR_{req}$.
+High likelihood may lead to less number of test case modification to issue $NR_{req}$.
+Given test cases with high modification likelihood, we manually modify and augment the test cases to increase coverage of $NR$.
+
+\Comment{
+While test-selection techniques are useful for selecting test cases for program code impacted by policy changes, these test cases may not sufficiently cover all the rules in the policy impacted by the changes.
+To address this issue, we propose a test-augmentation technique, which complements our test-selection techniques.
+Note that we first use a regression-test-selection technique before using the test-augmentation technique to achieve
+additional policy coverage for not-covered but impacted rules $NR$ by existing test cases.
+Our test-augmentation technique analyzes and recommends existing test cases, which can issue requests $NR_{req}$ cover $NR$
+after manual modification of the test cases.
+In the technique, we use prioritization to classify test cases into various sets based on their modification likelihood
+to issue $NR_{req}$.
+High likelihood may lead to less number of test case modification to issue $NR_{req}$.
+Given test cases with high likelihood, we manually modify and augment the test cases to increase coverage of $NR$.
+}
+
+%For augmented test cases,
+%we then verify that augmented test cases increase coverage of $N_r$.
+%For example, an attribute change (e.g., subject role change from $Student$ to $Professor$) may cover $N_r$.
+
 
 
 %structural test generation before using combinatorial test generation to augment the generated test inputs for achieving the
