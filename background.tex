@@ -86,8 +86,7 @@ XACML supports various policy models such as Role Based Access Control (RBAC)~\c
 Control (OrBAC)~\cite{kalam03:orBac}. For RBAC and OrBAC, various job functions are associated to roles (e.g., staff or employee) that a user possesses. 
 Permissions or denials to take an action on certain objects are assigned to specific roles (instead of users). OrBAC supports 
 extra features such as role, activity (i.e., action), and view (i.e., object) hierarchy.
-Figure~\ref{fig:example} is an OrBAC policy example where 
-roles such as ``Secretary'' and ``Borrower'' are associated with subject attributes and policy decisions are made through 
+Figure~\ref{fig:example} is an OrBAC policy example where roles such as ``Secretary'' and ``Borrower'' are associated with subject attributes and policy decisions are made through 
 specific roles.
 
 Let $Conditions$ be the set of the environmental context
@@ -166,13 +165,12 @@ The global scenario that illustrates regression testing process for such systems
 In the scenario, our test-selection technique identifies the changed policy behaviors (
 i.e., rules impacted by policy changes)
  between a policy $P$ and its modified version $P'$ and selects only the portion of test cases $T'$ to reveal different behaviors
-impacted by policy changes. If there exists the changed policy behaviors not-covered with $T'$, our test augmentation technique generates additional test cases $T''$  to achieve 100\% coverage of the changed policy behaviors.
+impacted by policy changes. If there exists changed policy behaviors not-covered with $T'$, our test augmentation technique generates additional test cases $T''$  to achieve 100\% coverage of the changed policy behaviors.
 %In the next section, we present our three test selection techniques and our test augmentation technique.
 
 In this paper, we classify system test cases into two types illustrated in Figure~\ref{fig:systemtestcases}.
 The first one is a set of functional system test cases, which
-are produced based on functional requirements, but do not involve
-in testing security requirements such as triggering application code to generate
+are produced based on functional requirements, but are not involved in testing security requirements such as triggering application code to generate
 and evaluate requests against a policy under test.
 The second one is a set of security system test cases, which
 involve in triggering application code to generate
