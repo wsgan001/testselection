@@ -2,14 +2,14 @@
   \centering
   	\caption{Subjects used in our evaluation}
   	\vspace{-8pt}    
-    \begin{tabular}{|l|r|r|r||r|r|r|}
+    \begin{tabular}{|l|r|r|r|}
     \hline
-    	\multirow{2}{*}{Subjects} & \multirow{2}{*}{LOC} & \multicolumn{2}{|c||}{ \# Test Methods} & \multicolumn{3}{|c|}{AC Rule Coverage} \\\cline{3-7}
-    
-          &  & \# Total & \# Security Tests & \# Cov & \# Not-Cov& \% Cov\\\hline\hline
-    LMS   & 3749  & 46    & 29    & 42    & 0     & 100 \\\hline
-    VMS   & 3734  & 52    & 10    & 13    & 106   & 12 \\\hline
-    ASMS  & 7836  & 93    & 91    & 109   & 21    & 83 \\\hline
+    %	\multirow{2}{*}{Subjects} & \multirow{2}{*}{LOC} & \multirow{2}{*}{\# Test Cases} & \multirow{2}{*}{ \# Security Test Cases}  \\\cline{5-7}
+    Subject & LOC & \# Test Cases & \# Security Test Cases \\\hline\hline
+    LMS   & 3749  & 46    & 29     \\\hline
+    VMS   & 3734  & 52    & 10     \\\hline
+    ASMS  & 7836  & 93    & 91     \\\hline\hline
+    Average & 5106  & 64    & 43     \\\hline
 		\end{tabular}%
   \label{tab:subj}%
 %\end{table}%
@@ -17,135 +17,158 @@
 %\begin{table*}[tbp]
 
 \vspace{+10pt}
-
-  \centering
+\centering
   \caption{Policy statistics used in our subjects}
   	\vspace{-8pt}   
-    \begin{tabular}{|l|r|r|r|r||r|r|r|}
+    \begin{tabular}{|l|r|r|r|r||r||r|r|r|}
  		\hline
- 		     \multirow{2}{*}{Subject} & \multicolumn{4}{|c||}{Attributes} & \multicolumn{3}{|c|}{\# AC Rules} \\\cline{2-8}
+ 		     \multirow{2}{*}{Subject} & \multicolumn{4}{|c||}{Attributes} & \multirow{2}{*}{\# Rules} & \multicolumn{3}{|c|}{Policy Coverage}  \\\cline{2-5}\cline{7-9}
  		     
-     & ~\# Subjects~ & ~\# Actions~ & ~\# Resources~ & ~\# Conditions~ & ~\# Explicit~ & ~\# Implicit~ & ~\# Total~ \\\hline\hline
-    LMS   & 6     & 10    & 3     & 4     & 42    & 678   & 720 \\\hline
-    VMS   & 7     & 15    & 3     & 3     & 106   & 839   & 945 \\\hline
-    ASMS~  & 8     & 11    & 5     & 4     & 129   & 1631  & 1760 \\\hline
- 
+     & ~\# Sub~ & ~\# Act~ & ~\# Res~ & ~\# Cond~ & & \# Cov & \# Not-Cov& \% Cov \\\hline\hline
+    LMS   & 6     & 10    & 3     & 4     & 42    & 42    & 0     & 100 \\\hline
+    VMS   & 7     & 15    & 3     & 3     & 106   & 13    & 106   & 12 \\\hline
+    ASMS~  & 8     & 11    & 5     & 4     & 129   & 109   & 21    & 83 \\\hline\hline
+ 		Average & 7     & 12    & 4     & 4     & 93    & 55    & 42    & 65 \\\hline
+
     \end{tabular}%
   \label{tab:subjectpolicies}%
 \end{table*}%
 
-
-\section{Experiment}\label{sec:experiment}
-
-We carried out our evaluation on a desktop PC, running Windows 7 with Intel Core i5, 2410 Mhz processor, and 4 GB of RAM. 
-%We have implemented test selection techniques and mutant generation in Java.
-%We generate mutants by changing rules
-%in access control policies.
-
-The regression simulator simulates policy evolution by changing/adding/removing rules in policies.
-%We do not simulate regression in test code in subjects. For evaluation,
-For each policy change, the regression simulator first randomly chooses one of regression types from \CodeIn{RMR}, \CodeIn{RA},
-and \CodeIn{RDC} and a rule, and changes the rule with a selected type.
-%injects selected regression changes into a policy.
-We configured that the regression simulator injects 5, 10, 15, 20, and 25 changes in a policy, respectively.
-Our evaluation is repeated for 12 times in order to avoid the impact of randomness of changes.
-
-For our test selection approach, we use test selection based on mutation analysis ($Mut$-$Selection$),
-test selection based on coverage analysis ($Cov$-$Selection$), and
-test selection based on recorded request evaluation ($Req$-$Selection$)
-described in Section~\ref{sec:approach}.
-To measure the effectiveness of our three techniques,
-we measure how many test cases are selected for regression testing.
-
-We next compare the efficiency of our three techniques.
-The objective of this evaluation is to investigate how our three test selection techniques impact performance.
-We measure elapsed time to analyze test-rule correlation analysis,
-change impact analysis, and test selection for each technique.
-For $Mut$-$Selection$ and $Cov$-$Selection$, note that we require test-rule correlation analysis
-and change impact analysis, which should be done before actual test selection process.
-
-To measure the effectiveness of our test augmentation technique,
-we measure test coverage with selected and new augmented test cases.
-
-%We compare also selected tests by our three techniques to
-%compare that all of these techniques return the same tests for regression.
-
-
-
-%\textbf{Detection: -- selection detection two Type} evaluated result inconsistency and number of reqs (in case of dependency) or failure trace info
-  
-%
-%
-%\begin{figure}[t]
-%    \centering
-%        \includegraphics[width=2.0in]{test-rule.eps}
-%        \vspace{-5pt}
-%    \caption{\label{fig:framework} ACPT overview}
-%    \vspace{-10pt}
-%%    \vspace{+3pt}
-%\end{figure}
-
-%\begin{figure}[t]
-%    \centering
-%        \includegraphics[width=2.0in]{testselection.eps}
-%        \vspace{-5pt}
-%    \caption{\label{fig:framework} ACPT overview}
-%    \vspace{-10pt}
-%%    \vspace{+3pt}
-%\end{figure}
-
-
-
-
-
-% Table generated by Excel2LaTeX from sheet 'Test Reduction'
-%\begin{table*}[tbp]
 %  \centering
-%  \caption{Add caption}
-%    \begin{tabular}{|r|r|r|r|r|r|rrrrrrrrrr}
-%    \multicolumn{1}{c}{\multirow{2}[4]{*}{Subjects}} & \multicolumn{3}{c}{Regression - 5} & \multicolumn{3}{c}{Regression - 10} & \multicolumn{3}{c}{Regression - 15} & \multicolumn{3}{c}{Regression - 20} & \multicolumn{3}{c}{Regression - 25} & \\
-%    \multicolumn{1}{c}{} & \# Counter & \# Covered & \% Covered & \# Counter & \# Covered & \% Covered & \# Counter & \# Covered & \% Covered & \# Counter & \# Covered & \% Covered & \# Counter & \# Covered & \% Covered \\
-%    LMS   & 5.00  & 2.42  & 48.33 & 9.00  & 4.75  & 52.78 & 13.00 & 6.25  & 48.08 & 17.42 & 7.75  & 44.50 & 20.67 & 8.83  & 42.74 \\
-%    VMS   & 4.92  & 0.42  & 8.47  & 9.25  & 0.67  & 7.21  & 13.83 & 1.33  & 9.64  & 18.92 & 1.08  & 5.73  & 23.75 & 1.75  & 7.37 \\
-%    ASMS  & 5.00  & 1.92  & 38.33 & 9.75  & 4.75  & 48.72 & 14.42 & 7.33  & 50.87 & 18.67 & 9.42  & 50.45 & 23.33 & 12.08 & 51.79 \\
+%  \caption{Policy statistics used in our subjects}
+%  	\vspace{-8pt}   
+%    \begin{tabular}{|l|r|r|r|r||r|r|r|}
+% 		\hline
+% 		     \multirow{2}{*}{Subject} & \multicolumn{4}{|c||}{Attributes} & \multicolumn{3}{|c|}{\# Policy Rules} \\\cline{2-8}
+% 		     
+%     & ~\# Subjects~ & ~\# Actions~ & ~\# Resources~ & ~\# Conditions~ & ~\# Explicit~ & ~\# Implicit~ & ~\# Total~ \\\hline\hline
+%    LMS   & 6     & 10    & 3     & 4     & 42    & 678   & 720 \\\hline
+%    VMS   & 7     & 15    & 3     & 3     & 106   & 839   & 945 \\\hline
+%    ASMS~  & 8     & 11    & 5     & 4     & 129   & 1631  & 1760 \\\hline\hline
+% 		Average & 7     & 12    & 4     & 4     & 93    & 1049  & 1142 \\\hline
+%
 %    \end{tabular}%
-%  \label{tab:addlabel}%
+%  \label{tab:subjectpolicies}%
 %\end{table*}%
 
 
+\section{Experiment}\label{sec:experiment}
+
+
+This section presents the experiment that we conducted to evaluate our proposed
+selection and augmentation techniques of regression system tests for policy
+evolution. We carried out our evaluation on a PC, running Windows 7 with Intel Core i5, 2410 Mhz processor, and 4 GB of RAM. 
+Given a program code interacting with a policy $P$, the regression simulator implements its modified
+policy $P'$ by changing/adding/removing random rules in $P$.
+Our test-selection techniques selects test cases that may reveal different behaviors in program code impacted
+by policy changes between $P$ and $P$'.
+We measure effectiveness and efficiency of our test selection
+techniques in terms of the number of selected test cases and elapsed time, respectively.
+We then apply our proposed test-augmentation technique to generate additional test cases
+for augmentation.
+In this section, we first describe the subjects, objective and measures, and instrumentation. We next present and discuss the evaluation results
+and finally describe threats to validity.
+
 
 \subsection{Subjects}
-The subjects include three real-life Java programs each, which
-interacts with access control policies \cite{mouelhi09:tranforming}. We next describe
-our three subjects.
-\begin{itemize}	
-\item Library Management System (LMS) provides web services to manage books in a public library.
-\item Virtual Meeting System (VMS) provides web conference services. VMS allows users to organize
-online meetings in a distributed platform.
-\item Auction Sale Management System (ASMS) allows users to buy or sell items on line. A seller initiates an auction by submitting a description of an item she wants to sell with its expected minimum price. Users then participate in bidding process by
-bidding the item. For the bidding on the item, users have enough money in her account before bidding.
-\end{itemize}
 
-%Table~\ref{tab:subj} shows information in our subjects.
-Our subjects use a Sun PDP \cite{sun05:xacml} to evaluate requests against a policy.
-Sun PDP is popularly used PDP to evaluate requests.
-Table~\ref{tab:subj} summarizes the basic statistics of our subjects. The first column shows the subject names.
-Columns 2-5 show the lines of code (``LOC''), the numbers of total test cases (``\# Total''), security test cases (``\# Security Tests''),
-rules covered with existing test cases (``\# Cov''), rules not-covered with existing test cases (``\# Not-Cov''), and the percentage
-of rule coverage (``\% Cov''), respectively. For coverage, we refer rules are explicitly specified rules.
-In addition, over all of existing test cases, we distinguish security test cases, which issue
-more than one request to the PDP from test cases without interaction of policies.
+We collected three real-life Java programs \cite{mouelhi09:tranforming} each
+interacting with policies written in XACML.
+Given a policy, 
+Sun's PDP \cite{sun05:xacml} is
+used to load a policy and evaluate requests issued from test cases in the programs.
+From our three subjects,
+Library Management System (\CodeIn{LMS}) provides web services to borrow/return/manage books in a library.
+Virtual Meeting System (\CodeIn{VMS}) provides for web conference services to organize online meetings.
+Auction Sale Management System (\CodeIn{ASMS}) provides web services to manage online auction.
+A seller initiates an auction by submitting a description of an item she/he would like to sell with its expected minimum price. Users then participate in bidding process by
+bidding the item. Before the bidding, users should have enough money in her/his account.
 
-Table~\ref{tab:subjectpolicies} summarizes the basic statistics of policies in our subjects.
+%\begin{itemize}	
+%\item Library Management System (LMS) provides web services to borrow/return/manage books in a library.
+%\item Virtual Meeting System (VMS) provides for web conference services to organize online meetings.
+%\item Auction Sale Management System (ASMS) provides web services to manage online auction.
+%A seller initiates an auction by submitting a description of an item she/he would like to sell with its expected minimum price. Users then participate in bidding process by
+%bidding the item. Before the bidding, users should have enough money in her/his account.
+%\end{itemize}
+
+Table~\ref{tab:subj} summarizes the basic statistics of our subjects.
 The first column shows the subject names.
-Columns 2-5 show the numbers of subjects, actions, resources, conditions, explicitly specified rules, implicit
- rules, and total rules for each policy.
-The largest one consists of 129 rules.
-For explicitly specified rules, developers first write rules for denying or permitting access
-explicitly. Implicit rules refer to rules that are evaluated in a given policy, while the developers do not write such rules.
-For example, In Figure~\ref{fig:example}, Line 34
-specifies a rule. This rule denies all the requests $R_d$ that do not match with its preceding rules while
-no rules (i.e., implicit rules) are specified to handle such requests explicitly.
+Columns 2-4 show the lines of code, and the numbers of system test cases and security test cases.
+%Within each column group, we show the subject names,
+%the lines of code, and the numbers of system test cases and security test cases as well as policy coverage.
+%Columns 5-7 show the numbers of covered rules with test cases, not-covered rules with test cases, and the percentage
+%of coverage, respectively.
+Security test cases indicate system test cases that issue at least one request to the PDP.
+Table~\ref{tab:subj} shows that our subjects include about 64 system test cases and 43 security
+test cases on average.
+In particular, \CodeIn{VMS} is equipped with only 10 security system test (out of 52 system test cases), which
+is smaller than those of other subjects.
+of security system test cases than other policies.
+%Each security system test case issues at least one request.
+
+
+Table~\ref{tab:subjectpolicies} summarizes the basic statistics of policies used in our subjects.
+The first column shows the subject names.
+Columns 2-4 show the numbers of subjects, actions, resources, and conditions within attribute column group, respectively.
+Column 5 shows the number of rules for each policy.
+Columns 6-7 show the numbers of covered rules with test cases, not-covered rules with test cases, and the percentage
+of coverage within policy coverage column group, respectively.
+The largest one is \CodeIn{ASMS}, which consists of 129 rules.
+%\CodeIn{ASMS} consists of the largest number of rules one consists of 129 rules.
+For coverage, we measure which rules are
+evaluated (i.e., covered) with existing test cases under test.
+We observe that \CodeIn{LMS}, \CodeIn{VMS}, and \CodeIn{ASMS}
+achieve 100\%, 12\%, and 83\% policy coverage with given test cases, respectively. 
+\CodeIn{LMS}, \CodeIn{VMS}, and \CodeIn{ASMS} may represent subjects
+with high, low, and medium policy coverage, respectively.
+Moreover, while \CodeIn{VMS} consists of 106 rules, \CodeIn{VMS} is equipped with only 10 security system test cases
+that result in low policy coverage.
+
+
+%, rules, implicit
+% rules, and total rules for each policy.
+%The largest one consists of 129 rules.
+%For explicitly specified rules, developers first write rules for denying or permitting access
+%explicitly. Implicit rules refer to rules that are evaluated in a given policy, while the developers do not write such rules.
+%For example, In Figure~\ref{fig:example}, Line 34
+%specifies a rule. This rule denies all the requests $R_d$ that do not match with its preceding rules while
+%no rules (i.e., implicit rules) are specified to handle such requests explicitly.
+%We observe that \CodeIn{LMS}, \CodeIn{VMS}, and \CodeIn{ASMS}
+%achieve 100\%, 12\%, and 83\% policy coverage with given test cases, respectively. 
+%\CodeIn{LMS}, \CodeIn{VMS}, and \CodeIn{ASMS} may represent subjects
+%with high, low, and medium policy coverage, respectively.
+%Moreover, while \CodeIn{VMS} consists of 106 rules, \CodeIn{VMS} is equipped with only 10 security system test cases
+%(out of 52 system test cases) that issue at least one request.
+
+
+
+
+
+
+% Performing equivalent mutation detection is
+%costly, taking approximately 45 minutes for the whole experiment.
+%When considering the low percentage of detection, potential for
+%false positives, and high computational cost, we feel other means
+%of equivalent-mutant detection are needed
+
+%In addition, over all of existing test cases, we distinguish security test cases, which issue
+%more than one request to the PDP from test cases without interaction of policies.
+
+
+
+%program code, which represents the actual
+%functionality, interacts with a policy through a security
+%component, called Policy Decision Point (PDP).
+%
+%Our subjects include 
+%
+%The PEPs next submit the request to a PDP, which
+%evaluates the request against the policy loaded on the PDP
+%
+%include a separately specified policy loaded with the Sun PDP~\cite{sun05:xacml};
+%Sun's PDP is popularly used PDP to evaluate requests against XACML policies.
+
 
 \begin{table*}[htbp]
   \centering
@@ -200,17 +223,45 @@ In the evaluation, we intend to address the following research questions:
 \begin{itemize}
 
 
-	\item RQ1: How many test cases in a test suite (from an existing test suite) are selected by our test selection techniques? This question helps to show that our techniques can reduce a significant number of test cases in an existing test suite.
+	\item RQ1: How high percentage of test cases (from an existing test suite) are reduced by our test selection techniques? This question helps to show that our techniques can 
+	reduce the cost of regression testing.
+%	reduce a significant number of test cases for regression testing.
 	We also show how many changed policy behaviors are covered with our selected test cases.
 	
 %	\item RQ2: Do our protest selections are safe? This question helps to show that our techniques select all tests, which shows only and all test cases to reveal changed behaviors in access control policies.
 	
 	\item RQ2: How much time do our techniques take to conduct test selection by given subjects? This question helps to compare performance of our techniques by measuring their efficiency.
 			
-	\item RQ3: How high is the additional policy coverage ratio that is achieved by our test augmentation technique?  This question helps to show that our technique can generate/augment test suite to cover 100\% of changed policy behaviors. We also compare our approach with random test generation technique to show how effectively our approach augment test suite to cover not-coverted changed policy behaviors.
+	\item RQ3: How high is the additional policy coverage ratio that is achieved by our test augmentation technique?  This question helps to show that our technique can generate augmented test cases to cover 100\% of changed policy behaviors.
+%We also compare our approach with random test generation technique to show how effectively our approach augment test suite to cover not-coverted changed policy behaviors.
 				
 \end{itemize}
 
+To help answer these questions, we collect several metrics to
+to show effectiveness and efficiency of our test selection techniques and
+our test augmentation technique. 
+The following metrics are
+measured for each subject under test interacting with each modified policy
+and each technique.
+\begin{itemize}
+%	\item \textit{Selected test case count}.  The test count is the size of the request set or
+%the number of tests generated by the chosen test-generation
+%technique. For testing access control policies, a test is synonymous with request
+	\item \textit{Test reduction percentage.}  Given a policy and its modified
+	policy, the test reduction percentage is the number of selected test cases for regression testing divided by number of security test cases.
+		\item \textit{Modified policy behavior count.}  Given a policy and its modified
+	policy, the modified policy behavior count is the number of impacted rules by policy changes.
+	\item \textit{Modified policy behavior coverage count.}  Given a policy and its modified
+	policy, the modified policy behavior coverage count is the number of
+	impacted rules covered with existing test cases.
+	\item \textit{Modified policy coverage percentage.}  Given a policy and its modified
+	policy, the modified policy behavior coverage percentage is the modified policy behavior coverage count divided the total number of impacted rules.
+	\item \textit{Elapsed time.}  The elapsed time is time (measured in milliseconds) elapsed for each step during the test selection process.
+	\item \textit{Augmented test case count.}  The augmented test case count is the number of augmented test cases by each augmentation type.
+	
+\end{itemize}
+ 
+%policy under test, each request set, and each mutation operator.
 %\subsection{Metrics}
 %
 %We use following 4 metrics in our evaluation.
@@ -220,9 +271,6 @@ In the evaluation, we intend to address the following research questions:
 %	\item Elapsed time of test-rule correlation, change impact analysis, and test selection.
 %	\item Number of test cases generated by the test augmentation technique. 
 %\end{itemize}
-
-
-
 
 \begin{figure}[htbp]
     \centering
@@ -234,26 +282,76 @@ In the evaluation, we intend to address the following research questions:
 %    \vspace{+3pt}
 \end{figure}
 
+\subsection{Instrumentation}
+For each policy change, the regression simulator first randomly chooses one of regression types from \CodeIn{RMR}, \CodeIn{RA},
+and \CodeIn{RDC} and a rule, and changes the rule with a selected type.
+We configured that the regression simulator injects 5, 10, 15, 20, and 25 changes in a policy, respectively.
+Our evaluation is repeated for 12 times in order to avoid the impact of randomness of changes.
 
+For our test selection approach, we use test selection based on mutation analysis ($Mut$-$Selection$),
+test selection based on coverage analysis ($Cov$-$Selection$), and
+test selection based on recorded request evaluation ($Req$-$Selection$)
+described in Section~\ref{sec:approach}.
+To measure the effectiveness of our three techniques,
+we measure how many test cases are selected for regression testing.
+
+We next compare the efficiency of our three techniques.
+The objective of this evaluation is to investigate how our three test selection techniques impact performance.
+We measure elapsed time to conduct test-rule correlation,
+change impact analysis, and test selection for each technique.
+For $Mut$-$Selection$ and $Cov$-$Selection$, note that we require test-rule correlation analysis
+and change impact analysis, which should be done before actual test selection process.
+
+%To measure the effectiveness of our test augmentation technique,
+For test augmentation,
+we count the number of new augmented test cases by each augmentation type.
 
 \subsection{Results}
 To answer $RQ1$, 
-we measure how many test cases are reduced for regression testing.
+we measure test reduction percentage.
 The goal of this research question is to show the reduction in the number of test cases that
-are selected using our techniques. The reduction in the number
-of test cases is the same across our three techniques.
-Figure~\ref{fig:reduction} shows the results of test reduction for the three subjects.
-We observe that 82\%$\sim$97\% of test reduction for a modified version with 5 policy changes.
-We observe that 51\%$\sim$83\% of test reduction for a modified version with 25 policy changes.
+are selected using our techniques.
+Figure~\ref{fig:reduction} shows the results of test reduction percentage for the three subjects and modified policies.
+We observe that our techniques achieve 51\%$\sim$97\% of test reduction for a modified policy with 5$\sim$25 modified policy behaviors.
 Such test reduction may reduce a significant cost in terms of test execution time
-for regression testing. We found that all of our test techniques show the same
-set of selected test cases to show that all of our techniques can detect every
-test case impacted policy changes.
+for regression testing. We also observe that all of our test techniques show the same
+set of selected test cases. This observation shows that all of our techniques are
+effective to select every test case impacted policy changes.
 
-To answer $RQ2$, we measure how many test cases are reduced for regression testing.
-The goal of this research question is to compare performance of our three
-test selection techniques.
-Table~\ref{tab:performance-results} shows the results, which is elapsed time for the three subjects and
+Upon further examination
+of the results, we find correlation between policy coverage and test reduction.
+We notice that \CodeIn{VMS} often shows the highest test reduction compared \CodeIn{LMS} and \CodeIn{ASMS}.
+While the policy $P_{vms}$ used in \CodeIn{VMS} consists of 106 rules, $P_{vms}$ achieves low policy coverage.
+$P_{vms}$ achieves only 12\% of policy coverage with 10 security test cases.
+This indicates that more than 90 rules are not covered. Due to its low policy coverage, there would be low probability
+to find test cases (among existing test cases) for covering impacted rules by policy changes.
+On the contrary, the policy $P_{lms}$ used in \CodeIn{LMS} achieves high policy coverage and the lowest
+test reduction percentage. Therefore, $P_{lms}$ may find more test
+cases to exercise impacted rules than $P_{vms}$. 
+
+ 
+
+
+%The reason is because \CodeIn{VMS} has only 10 security test cases and achieve only 12 policy coverage percentage.
+%for 106
+%It is difficult to 
+
+%for policy and rule elements, Cirg is at least as good as random
+%generation at achieving high structural coverage. We unexpectedly
+%notice that Cirg exhibits worse policy and rule coverage than the
+%random technique on the mod-fedora policy. Upon further examination
+%of that policy we find that two of the policies within the
+%policy set are identical. Furthermore, each of these policies contains
+%exactly one rule. As a result, there was no change-impact
+%when that rule was removed and so Cirg did not generate a request
+%to cover that rule or its containing policy.
+%We observe that 51\%$\sim$83\% of test reduction for a modified version with 25 policy changes.
+
+
+To answer $RQ2$, we measure elapsed time.
+The goal of this research question is to compare efficiency of our three
+test-selection techniques.
+Table~\ref{tab:performance-results} shows the evaluation results for the three subjects and
 each technique.
 For $Mut$-$Selection$ and $Cov$-$Selection$, the table shows the elapsed time of
 test-rule correlation (``Test-Rule''), change-impact-analysis (``CIA''), and test
@@ -261,12 +359,36 @@ selection (``Test Selection''), respectively.
 For $Req$-$Selection$, the table shows the elapsed time of
 request recording (``Req-Collection''), and test
 selection (``Test Selection'').
-Note that ``Test-Rule'' and ``Req-Collection'' are preliminary step that could
-be done before test selection. 
-We observe that $Cov$-$Selection$ (11,714 milliseconds on average) a significant
-elapsed time compared to $Mut$-$Selection$ (on average 69505 milliseconds) in terms of test-rule correlation.
-Moreover, we observe that a total elapsed time of $Req$-$Selection$ is 43 and 8 times
+Note that ``Test-Rule'' and ``Req-Collection'' are preliminary steps, which
+can be done before test selection.
+Note that, as both $Mut$-$Selection$ and $Cov$-$Selection$ have the same
+change impact analysis step, ``CIA'' column shows the same elapsed
+time.
+ 
+We observe that test-rule correlation $TR_1$ of $Cov$-$Selection$ takes
+significantly more time than that $TR_2$ of $Mut$-$Selection$.
+$TR_1$ and $TR_2$ take 11,714 milliseconds and 69505 milliseconds on average, respectively.
+This result is expected as $TR_1$ executes existing test cases only once
+but $TR_2$ executes existing test cases for 2$\times$$n$ times where $n$
+is the number of rules in a policy under test.
+We calculate total elapsed time for each technique. We observe that the total elapsed time of $Req$-$Selection$ is 43 and 8 times
 faster than those of $Mut$-$Selection$  and $Cov$-$Selection$, respectively.
+As a result, $Req$-$Selection$ is the most efficient
+in terms of elapsed time.
+
+%these packet sets can
+%involve more structural entities than the other packet sets.
+%
+%Such results are the same as we expected
+%structural
+%coverage for the two random request sets is zero and, as expected,
+%the mutant-killing ratio is also zero.
+%
+%takes the highest elapsed time 
+%(11,714 milliseconds on average) a significant
+%elapsed time compared to $Mut$-$Selection$ (on average 69505 milliseconds) in terms of test-rule correlation.
+
+
 
 
 %$Mut$-$Selection$ and $Cov$-$Selection$ show
@@ -286,17 +408,49 @@ faster than those of $Mut$-$Selection$  and $Cov$-$Selection$, respectively.
 
 
 
-Table~\ref{tab:cov-results} shows the coverage results of selected test cases for the three subjects.
-For each subject, the table shows the number of
-changed policy behaviors (``\# CT''), test
-cases that were selected (``\# Cov''), and the percentage of test
-cases that were selected (``\% Cov'') for each version of its policy.
-We denote our modified version of a policy as ``Regression - N'' where
-$N$ denotes the number of changes injected into the policy.
-``\# CT'' is equal or less than $N$ because our injected changes may not introduce
-policy behavior changes at the final modified version of the policy. For example, if one changes
-one rule with $RDC$ and again changes the rule with $RDC$. As the results, the rule does not impact
-on policy changes.
+Table~\ref{tab:cov-results} shows the coverage results of selected test cases for the three subjects and
+the number of changes injected into the policy.
+Given a policy $P$,
+``Regression - N'' denotes a group of modified policies $N$ denotes the number of changes injected into $P$.
+The tables shows
+
+For each subject and ``Regression - N'',
+the table shows modified policy behavior count (``\# CT''),  modified policy behavior coverage count (``\# Cov''), and modified policy coverage percentage (``\% Cov'').
+%changed policy behaviors (``\# CT''), test
+%cases that were selected (``\# Cov''), and the percentage of test
+%cases that were selected (``\% Cov'') for each version of its policy.
+``\# CT'' is equal or less than $N$ because a modified policy may not
+reflect some of injected policy changes. The reason is because injected policy
+changes may not change policy behaviors semantically.
+One example is that policy behaviors do not change
+when $RDC$ are injected to the same rule twice.
+We observe that
+the modified policy coverage percentage across all subjects 
+are quite similar. Our techniques achieve 31.71\%$\sim$36.23\% of modified policy coverage percentage.
+Unfortunately the
+modified policy coverage percentage is still low when considering revealing
+faults caused by policy changes.
+%changed program behaviors impacted by all of modified policy behaviors.
+This observation indicates that test-augmentation
+is needed to cover not-covered but impacted rules. 
+
+%the high structural
+%coverage.
+%
+%We observe that 
+%As we me
+
+%For example, if $RDC$ are applied to the same rule twice,
+%the policy behaviors are 
+%
+%the same semantically.
+
+%if one changes
+%one rule with $RDC$ and again changes the rule with $RDC$.
+% may not re
+%introduce
+%policy behavior changes at the final modified version of the policy.  As the results, the rule does not impact
+%on policy changes.
 
 
 
@@ -328,24 +482,39 @@ on policy changes.
 %[TBD:Results-test augmentation]
 
 To answer $RQ3$, we first identify
-changed policy behaviors (i.e., rules impacted by policy changes), which
-are not-covered with existing test cases.
-Note that existing test cases cannot reveal faults introduced by such policy behaviors.
-In Table~\ref{tab:cov-results}, we observe that our selected test cases
-cover 31.71$\sim$36.23\% of changed policy behaviors. The result show
-that about 70\% of changed policy behaviors (i.e., rules impacted by policy changes) are not-covered.
-We apply our test augmentation technique to add new test cases
-to cover such not-covered-rules.
-
+not-covered but impacted rules by policy changes
+and augment test cases to cover such impacted rules.
+%first identify
+%changed policy behaviors (i.e., rules impacted by policy changes), which
+%are not-covered with existing test cases.
+%Note that existing test cases cannot reveal faults introduced by such policy behaviors.
+%In Table~\ref{tab:cov-results}, we observe that our selected test cases
+%cover 31.71$\sim$36.23\% of changed policy behaviors. The result show
+%that about 70\% of changed policy behaviors (i.e., rules impacted by policy changes) are not-covered.
+%We apply our test augmentation technique to add new test cases
+%to cover such not-covered-rules.
 Table~\ref{tab:augment-results} shows the results of test augmentation for the three subjects.
-When developers know which policy behaviors to cover, the developers could generate
-test cases with requests to cover the policy behaviors. 
-
+%When developers know which policy behaviors to cover, the developers could generate
+%test cases with requests to cover the policy behaviors. 
 For each subject, the table shows the percentage of
-generated test cases for each argumentation type type defined in Section~\ref{subsec:testaugmentation}.
+generated test cases for each argumentation type defined in Section~\ref{subsec:testaugmentation}.
 %$[\frac{a}{b}]$ 
-While we generate/modify test cases to cover 100\% percentage of not-covered
-policy behaviors, we may augment test cases based on following different types of modification/generation.
+While we generate/modify test cases to cover 100\% percentage of not-covered but impacted rules,
+``M-Sub'', ``M-Cond'', and ``M-SubCond'' refers to generate test cases by modifying
+subject elements, condition elements, and both subject elements and condition elements together, respectively in test cases.
+%In our subjects, for these argumentation types, developers can modify existing test cases
+%to increase coverage of not-covered but impacted rule. 
+`Others'' denotes an argumentation type, which
+may at least change action and resource elements.
+While ``M-Sub'', ``M-Cond'', and ``M-SubCond'' require developers modify existing
+test cases, ``Others'' require the developers to create new test cases issuing requests
+directly evaluated by the PDP without through the PEP. The reason is because the test cases in our subjects are
+designed to use variables to define subject elements and condition element. Therefore,
+we achieve our goal by modifying such variables. However, for `Others'', we create
+new test cases.
+
+\Comment{
+we may augment test cases based on following different types of modification/generation.
 ``M-Sub'' refers to generate test cases by modifying
 subject elements in test cases. For example, Given test cases, by changing subject elements (e.g,
 BORROWER instead of SECRETARY),
@@ -359,24 +528,28 @@ find test cases to modify, our technique finds
 subject elements and condition elements together.
 At the last column, ``Others'' denotes an argumentation type, which
 may at least change action and resource elements.
+}
 
-In Table~\ref{tab:augment-results}, we observe that
-a total of 26\% of the augmented test cases are modified by
-existing test cases in columns 2,3, and 4. However,
-for more than 74\% of the augmented test cases are
-generated by scratch since we could not find similar
-test cases.
+Table~\ref{tab:augment-results} shows that we achieve
+about 26\% (13.85\%+4.98\%+6.86\% on average shown in columns 2,3, and 4, respectively) of the augmented test cases by modifying existing test
+cases. However, we generate more than 74\% of the augmented test cases by scratch since we could not find similar
+test cases to modify in context of our subjects. Total of each row is 100\%, which indicates that we
+generate  augmented test cases to cover 100\% of impacted rules.
 Figure~\ref{fig:augment-results} illustrated
 the same data shown in Table~\ref{tab:augment-results}.
 
-By comparing these results with those in Table~\ref{tab:cov-results}, we observe that there is indeed a correlation between coverage and 
-test augmentation.
-The higher percentage of rule coverage for each subject,
-the higher percentage of tests are augmented
-by the first three types with modifying subject
-or condition elements.
-The reason is that, if the subject has test cases with high rule coverage, it is likely
-to find similar test cases to modify than subjects with test cases with low rule coverage.
+By comparing these results with those in Table~\ref{tab:cov-results}, we observe that there is indeed a correlation between policy coverage and 
+test augmentation type.
+The higher percentage of policy coverage for each subject with existing test cases,
+the higher percentage of test cases that
+are classified to ``M-Sub'', ``M-Cond'', or ``M-SubCond''.
+There is high probability that the subject with high policy coverage
+find test cases  for modification than that with low policy coverage.
+
+%fo the subject has test cases with high policy coverage, 
+%
+%it is likely
+%to find similar test cases to modify than subjects with test cases with low rule coverage.
 
 \subsection{Threats to Validity}
 The threats to external validity primarily include the degree to
