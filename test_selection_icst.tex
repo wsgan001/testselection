@@ -455,15 +455,13 @@
 
 
 \begin{abstract}
-
-As security requirements of software often change, developers may modify access control policies (policies in short) according to evolving requirements. To increase confidence that the modification of policies is correct, developers conduct regression testing. However, rerunning all of existing system test
-cases could be costly and time-consuming. To address this issue, we develop a regression-test-selection approach, which selects every system test case that may reveal faults caused by policy changes. However, selected test cases may not
-evaluate (i.e., cover) all of modified policy behaviors, which
-are induced by rules impacted by policy change.
-To address this issue, we develop a test augmentation technique by generating additional test cases to cover not-covered but impacted rules with existing test cases.
-%We evaluate our approach on three Java programs each interacting with policies.
-Our evaluation results show that our test selection techniques reduce a significant number of system test
-cases efficiently and our test augmentation technique is effective to generate additional test cases. 
+As security requirements of software often change, developers may modify access control policies (policies in short) according to evolving requirements. 
+To increase confidence that the modification of policies is correct, developers conduct regression testing. However, rerunning all of existing system test 
+cases could be costly and time-consuming. To address this issue, we develop a regression-test-selection approach, which selects every system test case 
+that may reveal faults caused by policy changes. However, selected test cases may not evaluate (i.e., cover) all the rules impacted by policy changes. 
+To address this issue, we develop a test augmentation technique by generating additional test cases to cover the rules that are not covered by existing test cases.
+Our evaluation results show that our test selection techniques reduce a significant number of system test cases efficiently and our test 
+augmentation technique is effective to generate additional test cases. 
 
 \Comment{
 As security requirements of software often change during software development and maintenance, developers may modify policies according to evolving requirements.

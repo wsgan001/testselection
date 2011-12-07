@@ -38,18 +38,16 @@ Given a program and a policy $P$, the developers prepare initial system test cas
 each test case maps to rules (in the policy) exercised by the test case. Given $P$ and its modified
 policy $P'$, the developers compare impacts of $P$ and $P'$ to
 reveal different policy behaviors, which are ``dangerous'' portions to be validated with
-test cases. For validating these ``dangerous'' portions, the developers often select only test cases (from test cases for $P$) that exercise the dangerous
+test cases. For validating these ``dangerous'' portions, the developers often select the test cases (from test cases for $P$) that exercise the dangerous
 portions of $P'$.
 
-For regression testing, instead of writing new system test cases, developers often write initial system test cases and 
-reuse the test cases in practice. The naive regression testing strategy is to rerun all system test cases. However,
+For regression testing, instead of writing new system test cases, developers reuse the initial test cases in practice. The naive regression testing strategy is to rerun all system test cases. However,
  this strategy is costly and time-consuming, especially for large-scale systems. Moreover, if the number of the initial 
 system test cases is large, this strategy may require significant time for developers to conduct testing. In order to
  reduce the cost of regression testing, developers often adopt regression test selection, which selects and executes only
  test cases to expose different behaviors across different versions of the system. This approach also requires substantial
  costs to select and execute such system test cases from the initial test cases that could reveal faults introduced by the changes. 
-If the cost of regression test selection is smaller than rerunning all of initial system test cases, test selection helps reduce 
-overall cost in validating whether the modification is correct. 
+If the cost of regression test selection is smaller than rerunning all of initial system test cases, test selection helps reducing overall cost in validating whether the modification is correct. 
 
 
 In order to address the issue, we propose a regression-test-selection approach, which selects every test case that may 
@@ -78,17 +76,11 @@ and finds test cases related to each rule). The second one is based on coverage 
 which rules are evaluated by executing each test case), and the third one is based on evaluated 
 decisions of requests issued from test cases. Our approach next selects only test cases that execute program code impacted by policy changes.
 
-While test-selection techniques are useful for selecting test cases for program code impacted by policy changes, these test cases may not sufficiently cover all the rules in the policy impacted by the changes.
+While test-selection techniques are useful for selecting test cases for program code impacted by policy changes, these test cases may not 
+cover all the rules that are impacted by those policy changes.
 To address this issue, we propose a test-augmentation technique, which complements our test-selection techniques.
-Note that we first use a regression-test-selection technique before using the test-augmentation technique to achieve
-additional policy coverage for not-covered but impacted rules $NR$ by existing test cases.
-Our test-augmentation technique analyzes and recommends existing test cases
-based on their modification likelihood to issue $NR_{req}$ for covering $NR$.
-%after manual modification of the test cases.
-%In the technique, we use prioritization to classify test cases into various sets based on their modification likelihood
-%to issue $NR_{req}$.
-High likelihood may lead to less number of test case modification to issue $NR_{req}$.
-Given test cases with high modification likelihood, we manually modify and augment the test cases to increase coverage of $NR$.
+Note that we first use a regression-test-selection technique before using the test-augmentation technique that generates the additional test cases 
+that cover changed policy behavior not covered by existing test cases.
 
 \Comment{
 While test-selection techniques are useful for selecting test cases for program code impacted by policy changes, these test cases may not sufficiently cover all the rules in the policy impacted by the changes.
@@ -117,7 +109,7 @@ Given test cases with high likelihood, we manually modify and augment the test c
 
 
 
-This paper makes five main contributions:
+This paper makes three main contributions:
 
 \begin{itemize}
   \item We develop a test selection approach to select every test case from existing test cases to test program code impacted by policy changes. Our approach
@@ -126,18 +118,10 @@ decisions of requests issued from test cases.
   \item We develop a test augmentation technique to generate additional new test cases to cover not-covered but impacted rules with selected test cases by the preceding techniques.
 
   \item We evaluate our approach on three real world Java programs interacting with policies. Our evaluation results show that our test selection techniques achieve
- up to 51\%$\sim$97\% of test reduction for a modified version with given 5$\sim$25 policy changes.
-  %82\%-97\% and 51\%-83\% of test reduction for a modified version with 5 and 25 policy changes, respectively.
-  
-%  Our evaluation results show that our test selection techniques achieve
-%82\%-97\% and 51\%-83\% of test reduction for a modified version with 5 and 25 policy changes,
-%respectively.
-
-  \item Among our three techniques, our results show that the third technique is the most efficient compared with the first
+ up to 51\%$\sim$97\% of test reduction for a modified version with given 5$\sim$25 policy changes. Among our three techniques, our results show that the 
+third technique is the most efficient compared with the first
   and the second techniques in terms of elapsed time. The third technique is 43 and 8 times
-faster than the first and the second techniques, respectively.
-  
-  \item Our evaluation results show that our test augmentation technique generates additional test cases to cover 100\% of the impacted rules by policy changes.
+faster than the first and the second techniques, respectively. Our evaluation results show that our test augmentation technique generates additional test cases to cover 100\% of the impacted rules by policy changes.
 \end{itemize}
 
 The rest of the paper is organized as follows.
