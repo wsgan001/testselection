@@ -3,9 +3,9 @@
 
 
 Various techniques have been proposed on regression testing of software programs in software engineering and
-programming language communities~\cite{Rothermel:1996:ART:235681.235682, Graves:2001:ESR:367008.367020, cite{Elbaum:2000:PTC:347324.348910,santelices08sep}}.
+programming language communities~\cite{Rothermel:1996:ART:235681.235682, Graves:2001:ESR:367008.367020, Elbaum:2000:PTC:347324.348910,santelices08sep}.
 These techniques aim to select every test case to reveal different behaviors correctly after modification
-in program or to augment test cases.
+in program or augment test cases.
 These techniques are related to regression test selection \cite{Rothermel:1996:ART:235681.235682}, 
 \cite{Graves:2001:ESR:367008.367020}, test-suite prioritization \cite{Elbaum:2000:PTC:347324.348910}, and test-suite augmentation \cite{santelices08sep}. 
 Note that these techniques focus on changes at code level.
@@ -17,9 +17,10 @@ the test selection problem for policy evolution.
 Our work is the first one for automatic test-selection approach in context of policy
 evolution.
 
-Prior work that is closest to ours is Mouelhi et al. work~\cite{mouelhi09:tranforming}.
+Prior work that is closest to ours is Mouelhi et al.'s
+work~\cite{mouelhi09:tranforming}.
 They proposed a technique to transform functional test cases into security test cases. 
-These test cases are then used to verify correctness of access control mechanisms in policy-based systems.
+These test cases then be used to verify correctness of access control mechanisms in policy-based systems.
 They defined various mutation operators at the policy level.
 Given a policy and its mutated policy, the technique selects only impacted test cases to be transformed as security test cases
 (with additional manual task to add code for checking security).
@@ -28,9 +29,9 @@ our work focuses on test selection problem impacted by policy changes
 to reveal faults induced by policy changes.
 
 Another work closest to ours is Fisler et al.'s
-work~\cite{Fisler:2005:VCA:1062455.1062502}.
+work~\cite{fisler05:verification}.
 They developed a tool called ``Margrave'' that enables verifying properties against 
-policies written in XACML and conducting change impact analysis. Margrave is based on multi-terminal binary decision diagrams and allows several forms of 
+policies written in XACML and conduct change impact analysis. Margrave is based on multi-terminal binary decision diagrams and allows several forms of 
 constraints to be added as properties in the Scheme programming language.
 While Margrave is effective to detect changed policy behaviors between two versions
 of a policy specified in XACML at policy level, Margrave does not handle with situations where
@@ -40,7 +41,7 @@ program behaviors are changed by policy changes as our work focuses on.
 %code can often interact with policies, our work is useful
 
 To facilitate verifying and validating the correctness of policies, prior
-research work has been done in the area of policy testing, which generates and executes test cases against a policy.
+research work has been done in the area of policy testing, which generates and executing test requests against a policy.
 Martin et al.~\cite{martin06:defining} proposed a framework to detect policies faults by analyzing
 policy test suites that involve 
 requests-responses pairs. The framework is based on mutation operators~\cite{martin07:fault} that enable measuring fault detection capability. 

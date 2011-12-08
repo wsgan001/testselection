@@ -70,6 +70,8 @@ and finally describe threats to validity.
 
 We collected three real-life Java programs \cite{mouelhi09:tranforming} each
 interacting with policies written in XACML.
+These policies are based on OrBAC policy model
+illustrated as the example policy in Figure~\ref{fig:example}.
 Given a policy, 
 Sun's PDP \cite{sun05:xacml} is
 used to load a policy and evaluate requests issued from test cases in the programs.
@@ -195,7 +197,7 @@ that result in low policy coverage.
        \multirow{2}{*}{Subject}   & \multicolumn{3}{|c||}{Mut-Selection} & \multicolumn{3}{|c||}{Cov-Selection} & \multicolumn{2}{|c|}{Req-Selection} \\\cline{2-9}
 
 %          & Pre-computed & \multicolumn{2}{c}{Post-computed} & Pre-computed & \multicolumn{2}{c}{Post-computed} & Pre-computed & Post-computed \\\cline{2-7}
-          & TEST-Rule & CIA & Test Selection & TEST-Rule & CIA& Test Selection & Req Collection & Test Selection \\\hline\hline
+          & Rule-Test & CIA & Test Selection & Rule-Test & CIA& Test Selection & Req Collection & Test Selection \\\hline\hline
 %    LMS   & 70496 & 2083.333333 & 4.25  & 5214  & 2083.333 & 4.25  & 2096  & 1.933333 \\\hline
 %    VMS   & 19771 & 3333.333333 & 0.766667 & 7506  & 3333.333 & 0.766667 & 1873  & 1.866667 \\\hline
 %    ASMS  & 118248 & 4000  & 11.36667 & 22423 & 4000  & 11.36667 & 1064  & 20.7 \\\hline
@@ -240,13 +242,13 @@ and each technique.
 %technique. For testing access control policies, a test is synonymous with request
 	\item \textit{Test reduction percentage.}  Given a policy and its modified
 	policy, the test reduction percentage is the number of selected test cases for regression testing divided by the number of security test cases.
-		\item \textit{Modified policy behavior count.}  Given a policy and its modified
-	policy, the modified policy behavior count is the number of impacted rules by policy changes.
-	\item \textit{Modified policy behavior coverage count.}  Given a policy and its modified
-	policy, the modified policy behavior coverage count is the number of
+		\item \textit{Changed policy behavior count.}  Given a policy and its modified
+	policy, the changed policy behavior count is the number of impacted rules by policy changes.
+	\item \textit{Changed policy behavior coverage count.}  Given a policy and its modified
+	policy, the changed policy behavior coverage count is the number of
 	impacted rules covered with existing test cases.
-	\item \textit{Modified policy coverage percentage.}  Given a policy and its modified
-	policy, the modified policy behavior coverage percentage is the modified policy behavior coverage count divided by the total number of impacted rules.
+	\item \textit{Changed policy behavior coverage percentage.}  Given a policy and its modified
+	policy, the changed policy behavior coverage percentage is the changed policy behavior coverage count divided by the total number of impacted rules.
 	\item \textit{Elapsed time.}  The elapsed time is time (measured in milliseconds) elapsed for each step during the test selection process.
 	\item \textit{Augmented test case count.}  The augmented test case count is the number of augmented test cases by each augmentation type.
 	
@@ -268,7 +270,7 @@ and each technique.
         \includegraphics[width=3.0in]{reduction.eps}
         \vspace{-5pt}
     \caption{\label{fig:reduction} Regression test selection results (test reduction) for our subjects and each modified version. Y axis
-    denotes the percentage of test reduction. X axis denote the number of policy changes in modified policy of our subjects.}
+    denotes the percentage of test reduction. X axis denote the number of policy changes in the modified policy of our subjects.}
     \vspace{-10pt}
 %    \vspace{+3pt}
 \end{figure}
@@ -287,9 +289,9 @@ To measure the effectiveness of our three techniques,
 we measure how many test cases are selected for regression testing.
 
 We next compare the efficiency of our three techniques.
-The objective of this evaluation is to investigate how our three test selection techniques impact performance. We measure elapsed time to conduct test-rule correlation,
+The objective of this evaluation is to investigate how our three test selection techniques impact performance. We measure elapsed time to conduct rule-test correlation,
 change impact analysis, and test selection for each technique.
-For $Mut$-$Selection$ and $Cov$-$Selection$, note that we require test-rule correlation analysis
+For $Mut$-$Selection$ and $Cov$-$Selection$, note that we require rule-test correlation analysis
 and change impact analysis, which should be done before actual test selection process.
 
 %To measure the effectiveness of our test augmentation technique,
@@ -302,7 +304,7 @@ we measure test reduction percentage.
 The goal of this research question is to show the reduction in the number of test cases that
 are selected using our techniques.
 Figure~\ref{fig:reduction} shows the results of test reduction percentage for the three subjects and modified policies.
-We observe that our techniques achieve 51\%$\sim$97\% of test reduction for a modified policy with 5$\sim$25 modified policy behaviors.
+We observe that our techniques achieve 51\%$\sim$97\% of test reduction for a modified policy with 5$\sim$25 changed policy behaviors.
 Such test reduction may reduce a significant cost in terms of test execution time
 for regression testing. We also observe that all of our test techniques show the same
 set of selected test cases. This observation shows that all of our techniques are
@@ -344,18 +346,18 @@ test-selection techniques.
 Table~\ref{tab:performance-results} shows the evaluation results for the three subjects and
 each technique.
 For $Mut$-$Selection$ and $Cov$-$Selection$, the table shows the elapsed time of
-test-rule correlation (``Test-Rule''), change-impact-analysis (``CIA''), and test
+rule-test correlation (``Rule-Test''), change-impact-analysis (``CIA''), and test
 selection (``Test Selection''), respectively.
 For $Req$-$Selection$, the table shows the elapsed time of
 request recording (``Req-Collection''), and test
 selection (``Test Selection'').
-Note that ``Test-Rule'' and ``Req-Collection'' are preliminary steps, which
+Note that ``Rule-Test'' and ``Req-Collection'' are preliminary steps, which
 can be done before test selection.
 Note that, as both $Mut$-$Selection$ and $Cov$-$Selection$ have the same
 change impact analysis step, ``CIA'' column shows the same elapsed
 time.
  
-We observe that test-rule correlation $TR_1$ of $Cov$-$Selection$ takes
+We observe that rule-test correlation $TR_1$ of $Cov$-$Selection$ takes
 significantly more time than that $TR_2$ of $Mut$-$Selection$.
 $TR_1$ and $TR_2$ take 11,714 milliseconds and 69505 milliseconds on average, respectively.
 This result is expected as $TR_1$ executes existing test cases only once
@@ -403,7 +405,7 @@ the number of changes injected into the policy.
 Given a policy $P$,
 ``Regression - N'' denotes a group of modified policies where $N$ denotes the number of changes injected into $P$. 
 For each subject and ``Regression - N'',
-the table shows modified policy behavior count (``\# CT''),  modified policy behavior coverage count (``\# Cov''), and modified policy coverage percentage (``\% Cov'').
+the table shows changed policy behavior count (``\# CT''),  changed policy behavior coverage count (``\# Cov''), and changed policy coverage percentage (``\% Cov'').
 %changed policy behaviors (``\# CT''), test
 %cases that were selected (``\# Cov''), and the percentage of test
 %cases that were selected (``\% Cov'') for each version of its policy.
@@ -412,9 +414,9 @@ reflect some of injected policy changes. The reason is because injected policy
 changes may not change policy behaviors semantically.
 One example is that policy behaviors do not change
 when $RDC$ are injected to the same rule twice.
-We observe that the modified policy coverage percentages across all subjects are quite similar. Our techniques achieve 31.71\%$\sim$36.23\% of modified policy coverage percentage.
+We observe that the changed policy behavior coverage percentages across all subjects are quite similar. Our techniques achieve 31.71\%$\sim$36.23\% of changed policy behavior coverage percentage.
 Unfortunately the
-modified policy coverage percentage is still low when considering revealing
+changed policy behavior coverage percentage is still low when considering revealing
 faults caused by policy changes.
 %changed program behaviors impacted by all of modified policy behaviors.
 This observation indicates that test-augmentation
@@ -441,12 +443,12 @@ is needed to cover not-covered but impacted rules.
 
 
 % Table generated by Excel2LaTeX from sheet 'test augument'
-\begin{table}[htbp]
+\begin{table}[thbp]
   \centering
   \caption{Test case type ratios of augmented test cases for our subjects}
     \begin{tabular}{|l|r|r|r|r|}
 		\hline
-    Subjects & \% M-Sub & \% M-Cond & \% M-SubCond  & \% Others \\\hline\hline
+    Subjects & \% M-Sub & \% M-Cond & \% M-SubCond  & \% M-Others \\\hline\hline
     LMS   & 21.83 & 4.93  & 11.27 & 61.97 \\\hline
     VMS   & 3.41  & 0.38  & 1.89  & 94.32 \\\hline
     ASMS  & 16.30 & 9.63  & 7.41  & 66.67 \\\hline\hline
@@ -454,7 +456,7 @@ is needed to cover not-covered but impacted rules.
     \end{tabular}%
   \label{tab:augment-results}%
 \end{table}%
- \vspace{-20pt}
+ %\vspace{-20pt}
 \begin{figure}[htbp]
     \centering
         \includegraphics[width=3.0in]{augmenttypes.eps}
@@ -490,13 +492,13 @@ While we generate/modify test cases to cover 100\% percentage of not-covered but
 subject elements, condition elements, and both subject elements and condition elements together, respectively in test cases.
 %In our subjects, for these argumentation types, developers can modify existing test cases
 %to increase coverage of not-covered but impacted rule. 
-`Others'' denotes an augmentation type, which
+``M-Others'' denotes an augmentation type, which
 may at least change action and resource elements.
 While ``M-Sub'', ``M-Cond'', and ``M-SubCond'' require developers to modify existing
-test cases, ``Others'' require the developers to create new test cases issuing requests
+test cases, ``M-Others'' require the developers to create new test cases issuing requests
 directly evaluated by the PDP without passing through the PEP. The reason is because the test cases in our subjects are
 designed to use variables to define subject elements and condition elements. Therefore,
-we achieve our goal by modifying such variables. However, for `Others'', we create
+we achieve our goal by modifying such variables. However, for `M-Others'', we create
 new test cases.
 
 \Comment{
@@ -512,7 +514,7 @@ When two of the preceding modification could not
 find test cases to modify, our technique finds
 ``M-SubCond'', which refers to generate test cases by modifying
 subject elements and condition elements together.
-At the last column, ``Others'' denotes an argumentation type, which
+At the last column, ``M-Others'' denotes an argumentation type, which
 may at least change action and resource elements.
 }
 
@@ -543,9 +545,7 @@ which the subject programs, the policies and regression model are representative
 These threats
 could be reduced by further experimentation on a wider type of policy-based software systems and
 larger number of policies.
-In particular, our proposed regression model based on \CodeIn{RMR}, \CodeIn{RA},
-and \CodeIn{RDC} modifies policy elements such as subject, resource, action, and condition attributes. 
-Additional regression model to modify various policy attributes could simulate various policy modification.
+%composed of any combination of attribute elements.
 The threats to internal validity are instrumentation effects
 that can bias our results such as faults in Sun's PDP, faults in Margrave, and
 faults in our implementation.
@@ -553,11 +553,55 @@ faults in our implementation.
 
 \section{Discussion}\label{sec:discussion}
 We believe that our approach can be applied to select test cases in programs interacting
-with policies written in languages other than XACML (such as EPAL~\cite{epal} and Alloy~\cite{jackson01:micromodularity}). 
-For policies written in other languages, we could evaluate test cases or requests issued from test cases to set up test-rule correlation or capture requests. 
+with policies written in languages other than XACML.
+In practice, many formal specification languages such as EPAL~\cite{epal} and Alloy~\cite{jackson01:micromodularity}
+are used to specify policies. 
+For those policies written in other languages, we leverage
+a PDP that can load the policies to monitor rule-test correlation during running test cases.
 As our approach requires change impact analysis step (against a policy and its modified policy) which is handled by 
 the existing policy change impact tool, we could convert the policies to XACML policies to perform change impact analysis.
 
+Moreover, our approach relies on changed policy
+behaviors (reflected by rules impacted by policy changes) thus could be applied to other policy models beyond
+an OrBAC policy model~\cite{kalam03:orBac}.
+The reason is because, while different policy models may
+be different in terms of structures, semantics, and
+functionalities, we could detect change policy
+behaviors.
+Therefore, our approach could be effective to handle
+policies based on various policy models (such as RBAC~\cite{anderson04:rbacxacml,ferraiolo01:proposed}
+and OrBAC).
+
+In particular, our proposed regression model based on \CodeIn{RMR}, \CodeIn{RA},
+and \CodeIn{RDC} modifies policy elements such as subject, resource, action, and condition attributes. 
+Additional regression model to modify various policy attributes could simulate various policy modifications.
+While \CodeIn{RMR} and \CodeIn{RDC} may not feed specific changes
+of attribute elements in a rule, \CodeIn{RA} could be more flexible
+to simulate adding/changing any rules that the developers would like to modify
+in practice. For changing specific attribute elements in rules $rs$, we may replace $rs$ by removing
+$rs$ and add new rules $rs'$ reflected by the specific changes at the same location.
+Our regression model can simulate any kinds of policy changes using
+three policy modification types together.
+
+
+%attribute items (generated from a policy) for mining likely properties and thus could be applied to other types of access control policy beyond
+%XACML policies
+
+
+%use different
+%semantics and structure
+% different in terms of structures, semantics, and
+%functionalities
+
+% detect rule-based
+%
+%(RBAC)~\cite{anderson04:rbacxacml,ferraiolo01:proposed} and Organization-Based Access 
+%Control (OrBAC)
+%detect real faults in policies.
+%Real faults may consist of one or several simple faults as described in our evaluation, and may cause a policy¡¯s behaviors to deviate from the policy¡¯s normal
+%behaviors. Detecting real faults often depend on detecting such simple faults,
+%which are shown to be e?ectively detected by our proposed approach. Our approach relies on attribute items (generated from a policy) for mining likely properties and thus could be applied to other types of access control policy beyond
+%XACML policies
 
 %such conversion enables our approach to also be applicable to policies languages other than XACML and with veri?cation
 %tools other than Margrave.
@@ -580,8 +624,7 @@ the existing policy change impact tool, we could convert the policies to XACML p
 
 
 %\textbf{
-%One example is the conference policy; the structural
-%coverage for the two random request sets is zero and, as expected,
+%One example is the conference policy; the structural%coverage for the two random request sets is zero and, as expected,
 %the mutant-killing ratio is also zero. Similarly we observe that
 %the mutant-killing ratios across all subjects for the random and
 %selected random request sets are quite similar. Unfortunately the
