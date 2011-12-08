@@ -182,10 +182,8 @@ Algorithm~\ref{alg:coverageanalysis} describes our algorithm used for the techni
 An important benefit of this technique is to reduce cost in terms of mutation analysis and execution time. This technique does not 
 require generating mutants by changing rule's decision in turn. Moreover, the technique can significantly reduce execution time.
 While the technique can quickly select system tests in the second step, the technique requires rule-test correlation setup (in the preliminary step), 
-which could be costly in terms of execution time. Consider that requests $Rs$ are formulated from test cases interact 
-only n$_1$ rules (n$_1$ $\leq$ n) in a policy.
-We execute $T$ only once. Our technique requires addition of rule-test
-correlation for newly added rules $R_n$ where $R_n$ $\notin$ $R$ in $P_m$ as the same with the previous technique.
+which could be costly in terms of execution time. Considering that the requests $Rs$ are formulated from test cases and interact with only n$_1$ rules (n$_1$ $\leq$ n) in a policy, 
+we execute $T$ only once. Our technique requires addition of rule-test correlation for newly added rules $R_n$ where $R_n$ $\notin$ $R$ in $P_m$ as the same with the previous technique.
 
 
 \begin{algorithmic}
@@ -225,14 +223,13 @@ does not require the availability of access control policies. This can present a
 to reveal their access control policies.
 
 
-
 \begin{figure}[t]
-    \centering
-        \includegraphics[width=3.5in]{testaugument.eps}
-        \vspace{-5pt}
-    \caption{\label{fig:testexecution}Security testing execution process in a policy-based software system}
-    \vspace{-10pt}
-%    \vspace{+3pt}
+  \centering
+     \includegraphics[width=3.5in]{testaugument.eps}
+    \vspace{-4pt}
+ \caption{\label{fig:testexecution}Security testing execution process in a policy-based software system}
+  \vspace{-10pt}
+ \vspace{+3pt}
 \end{figure}
 
 \subsection{Test Augmentation}
@@ -246,7 +243,7 @@ cover impacted rules $N_r$ not-covered with selected test cases.
 Our augmentation technique first analyzes changes between $P$ and $P'$ to find rules impacted by policy changes.
 Note that we first use a regression-test-selection technique before using the test-augmentation technique to achieve
 additional policy coverage for $N_r$ by existing test cases.
-%. From a crash trace A¡æB¡æC¡æD shown in Figure 
+%. From a crash trace AÂ¡Ã¦BÂ¡Ã¦CÂ¡Ã¦D shown in Figure 
 %3
 
 Figure~\ref{fig:testexecution} illustrates behaviors of security test cases.
@@ -261,19 +258,19 @@ to help issue $NR_{req}$.
 In the graph, we notice that we generate test cases by modifying
 subject elements, condition elements , and both subject elements and condition elements together, respectively.
 Each modification type corresponds to test augmentation types, \CodeIn{M-Sub}, \CodeIn{M-Cond}, and \CodeIn{M-SubCond}, respectively.
-\CodeIn{M-Others} denotes an argumentation type, which
+\CodeIn{M-Others} denotes an augmentation type, which
 may change at least action and resource elements.
 
 Our test-augmentation technique analyzes and recommends existing test cases, which trigger
-application code to issue requests $NR_{req}$ cover $NR$.
+application code to issue requests $NR_{req}$ that cover $NR$.
 More specifically, given $NR_{req}$, our technique classifies existing test cases into \CodeIn{M-Sub}, \CodeIn{M-Cond}, and \CodeIn{M-SubCond},
 or \CodeIn{M-Others}. Note that classification priority is given to \CodeIn{M-Sub}, CodeIn{M-Cond}, and \CodeIn{M-SubCond},
 or \CodeIn{M-Others} in order.
-While \CodeIn{M-Sub}, \CodeIn{M-Cond}, and \CodeIn{M-SubCond} require developers modify existing
+While \CodeIn{M-Sub}, \CodeIn{M-Cond}, and \CodeIn{M-SubCond} require developers to modify existing
 test cases, \CodeIn{M-Others} require the developers to create new test cases issuing requests
-directly evaluated by the PDP without through the PEP. The reason is because the test cases in our subjects are
+directly evaluated by the PDP without going through the PEP. The reason is because the test cases in our subjects are
 designed to use variables to define subject elements and condition element. Therefore,
-we achieve our goal by modifying such variables. However, for \CodeIn{M-Others}, the augmentation technique require the
+we achieve our goal by modifying such variables. However, for \CodeIn{M-Others}, the augmentation technique requires the
 developers to create new test cases manually.
 
  
