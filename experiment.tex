@@ -562,26 +562,27 @@ As our approach requires change impact analysis step (against a policy and its m
 the existing policy change impact tool, we could convert the policies to XACML policies to perform change impact analysis.
 
 Moreover, our approach relies on changed policy
-behaviors (reflected by rules impacted by policy changes) thus could be applied to other policy models beyond
+behaviors (reflected by rules impacted by policy changes) and thus could be applied to other policy models beyond
 an OrBAC policy model~\cite{kalam03:orBac}.
-The reason is because, while different policy models may
+While different policy models (such as RBAC~\cite{anderson04:rbacxacml,ferraiolo01:proposed}
+and OrBAC) may
 be different in terms of structures, semantics, and
 functionalities, we could detect change policy
 behaviors.
 Therefore, our approach could be effective to handle
-policies based on various policy models (such as RBAC~\cite{anderson04:rbacxacml,ferraiolo01:proposed}
-and OrBAC).
+policies based on various policy models.
 
 In particular, our proposed regression model based on \CodeIn{RMR}, \CodeIn{RA},
 and \CodeIn{RDC} modifies policy elements such as subject, resource, action, and condition attributes. 
-Additional regression model to modify various policy attributes could simulate various policy modifications.
-While \CodeIn{RMR} and \CodeIn{RDC} may not feed specific changes
-of attribute elements in a rule, \CodeIn{RA} could be more flexible
-to simulate adding/changing any rules that the developers would like to modify
-in practice. For changing specific attribute elements in rules $rs$, we may replace $rs$ by removing
-$rs$ and add new rules $rs'$ reflected by the specific changes at the same location.
-Our regression model can simulate any kinds of policy changes using
+While additional regression model to modify various policy attributes could simulate various policy modifications,
+our regression model still can simulate any kinds of policy changes using
 three policy modification types together.
+\CodeIn{RMR} and \CodeIn{RDC} may not inject specific changes
+of attribute elements in a rule since these modifications apply to rules (instead of attribute elements in
+rules). However, \CodeIn{RA} could be more flexible
+to simulate adding/changing any attributes in rules that the developers would like to modify
+in practice. For example, to change specific attribute elements in rules $rs$, we may replace $rs$ by removing
+$rs$ and add new rules $rs'$ reflected by the specific changes at the same location.
 
 
 %attribute items (generated from a policy) for mining likely properties and thus could be applied to other types of access control policy beyond
