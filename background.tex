@@ -2,8 +2,7 @@
   
 \section{Background}
 \label{sec:background}
-This section presents the background information for policy-based software systems, XACML policies, regression testing
-as well as definitions.
+This section presents the background information for policy-based software systems, XACML policies, as well as regression testing.
 
 \subsection{Policy-based Software Systems: PEP-PDP separation}
 Policy-based software systems are regulated by access control policies that specify the different actions that subjects are allowed to perform on system resources. 
@@ -170,12 +169,15 @@ impacted by policy changes. If there exists changed policy behaviors not-covered
 
 In this paper, we classify system test cases into two types illustrated in Figure~\ref{fig:systemtestcases}.
 The first one is a set of functional system test cases, which
-are produced based on functional requirements, but are not involved in testing security requirements such as triggering application code to generate
-and evaluate requests against a policy under test.
-The second one is a set of security system test cases, which
+are produced based on functional requirements. However, these functional
+system test cases are not involved in testing security requirements (e.g., triggering application code to generate
+and evaluate requests against a policy under test).
+The second one is a set of security system test cases.
+Different from the functional system test cases,
+these security system test cases
 involve in triggering application code to generate
 and evaluate requests against a policy under test.
-Security system test cases may include test oracles
+Moreover, security system test cases may include test oracles
 to determine whether program behaviors interacting with a policy
 are correct.
 
