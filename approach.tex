@@ -135,7 +135,7 @@ changes in terms of correlated rules.
 
 
 \subsection{Test Selection based on Coverage Analysis}
-Our previous technique finds correlation of all of existing rules $N$ in a given policy with the test cases. To reduce
+Our preceding technique finds correlation of all of existing rules $N$ in a given policy with the test cases. To reduce
 such correlation setup efforts, we develop a technique to correlate only rules, which can be evaluated (i.e., covered)
 by test cases. Our intuition is that test cases may interact only with a small number of rules in a policy
 instead of all the rules in the policy. We next describe rule-test correlation step.
@@ -174,7 +174,7 @@ requests formulated from test cases $T$. Then, we establish correlation between 
 %Once these rules are identified, we use the mapping established in the preliminary step to select the subset of 
 %test cases which are correlated with changed rules.
 \textbf{Test Selection.}
-Once the mapping test-rule is established, we proceed with the test selection step described in the first approach with
+Once the mapping rule-test is established, we proceed with the test selection step described in the first approach with
 the results of change impact analysis of $P$ and $P_m$. The results include information to show which rules' decision have changed.
 This test selection maps test cases with those rules to constitute the subset of existing test cases.
 
@@ -183,7 +183,7 @@ An important benefit of this technique is to reduce cost in terms of mutation an
 require generating mutants by changing rule's decision in turn. Moreover, the technique can significantly reduce execution time.
 While the technique can quickly select system tests in the second step, the technique requires rule-test correlation setup (in the preliminary step), 
 which could be costly in terms of execution time. Considering that the requests $Rs$ are formulated from test cases and interact with only n$_1$ rules (n$_1$ $\leq$ n) in a policy, 
-we execute $T$ only once. Our technique requires addition of rule-test correlation for newly added rules $R_n$ where $R_n$ $\notin$ $R$ in $P_m$ as the same with the previous technique.
+we execute $T$ only once. Our technique requires addition of rule-test correlation for newly added rules $R_n$ where $R_n$ $\notin$ $R$ in $P_m$ as the same with the preceding technique.
 
 
 \begin{algorithmic}
@@ -206,7 +206,7 @@ we execute $T$ only once. Our technique requires addition of rule-test correlati
 \end{algorithmic}
 
 \subsection{Test Selection based on Recorded Request Evaluation}
-To reduce such correlation setup efforts in the previous techniques, we develop
+To reduce such correlation setup efforts in the preceding techniques, we develop
 a technique, which does not require rule-test correlation setup.
 Instead of correlation, our technique records test cases and their issued requests as a preliminary step.
 More specifically, our technique executes test cases $T$ on a program for $P$ and records all requests issued to policy decision point (PDP) for each test case. For test selection, our technique evaluates all issued requests against $P$ and $P_m$ and selects the test subset of
@@ -218,7 +218,7 @@ requests (with corresponding system test cases) that engender different decision
 Algorithm~\ref{alg:reqevaluation} describes our algorithm used for the technique.
 The current approach requires the execution of system test cases $T$ only once.
 % For additional test cases, we execute the tests only once. 
-Moreover, while the two previous techniques are white-box testing since access control policies are available, the present technique 
+Moreover, while the two preceding techniques are white-box testing since access control policies are available, the present technique 
 does not require the availability of access control policies. This can present a considerable advantage when developers don't want 
 to reveal their access control policies.
 
@@ -243,15 +243,13 @@ cover impacted rules $N_r$ not-covered with selected test cases.
 Our augmentation technique first analyzes changes between $P$ and $P'$ to find rules impacted by policy changes.
 Note that we first use a regression-test-selection technique before using the test-augmentation technique to achieve
 additional policy coverage for $N_r$ by existing test cases.
-%. From a crash trace A¡æB¡æC¡æD shown in Figure 
-%3
 
 Figure~\ref{fig:testexecution} illustrates behaviors of security test cases.
 A dependency graph in Figure~\ref{fig:testexecution} represents a typical
 scenario to trigger application code to issue a request.
 The graph (\CodeIn{Subject} and \CodeIn{Context})$\rightarrow$1$\rightarrow$2$\rightarrow$...
-represents that subject and context (i.e., condition) elements are defined by variables that
-the developers change and 1, 2, 3, ... shows actual behaviors of test cases (e.g., call methods in application
+presents that subject and context (i.e., condition) elements are defined by variables (that
+the developers could change) and nodes 1, 2, 3, ... represent actual behaviors of test cases (e.g., call methods in application
 code and check test oracles).
 For test augmentation, we are interested in modifying such variables in the test code
 to help issue $NR_{req}$.
@@ -264,7 +262,7 @@ may change at least action and resource elements.
 Our test-augmentation technique analyzes and recommends existing test cases, which trigger
 application code to issue requests $NR_{req}$ that cover $NR$.
 More specifically, given $NR_{req}$, our technique classifies existing test cases into \CodeIn{M-Sub}, \CodeIn{M-Cond}, and \CodeIn{M-SubCond},
-or \CodeIn{M-Others}. Note that classification priority is given to \CodeIn{M-Sub}, CodeIn{M-Cond}, and \CodeIn{M-SubCond},
+or \CodeIn{M-Others}. Note that classification priority is given to \CodeIn{M-Sub}, \CodeIn{M-Cond}, and \CodeIn{M-SubCond},
 or \CodeIn{M-Others} in order.
 While \CodeIn{M-Sub}, \CodeIn{M-Cond}, and \CodeIn{M-SubCond} require developers to modify existing
 test cases, \CodeIn{M-Others} require the developers to create new test cases issuing requests
