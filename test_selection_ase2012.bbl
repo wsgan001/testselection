@@ -1,0 +1,106 @@
+\begin{thebibliography}{10}
+
+\bibitem{epal}
+{IBM, Enterprise Privacy Authorization Language (EPAL), Version 1.2 }.
+\newblock http://www.w3.org/Submission/2003/SUBM-EPAL- 20031110, 2003.
+
+\bibitem{oasis05:xacml}
+{OASIS eXtensible Access Control Markup Language (XACML)}.
+\newblock \url{http://www.oasis-open.org/committees/xacml/}, 2005.
+
+\bibitem{sun05:xacml}
+{Sun's XACML implementation}.
+\newblock \url{http://sunxacml.sourceforge.net/}, 2005.
+
+\bibitem{kalam03:orBac}
+A.~{Abou El Kalam}, R.~E. Baida, P.~Balbiani, S.~Benferhat, F.~Cuppens,
+  Y.~Deswarte, A.~Mi\`ege, C.~Saurel, and G.~Trouessin.
+\newblock {Organization Based Access Control}.
+\newblock In {\em Proc. 4th IEEE International Workshop on Policies for
+  Distributed Systems and Networks}, 2003.
+
+\bibitem{anderson04:rbacxacml}
+A.~Anderson.
+\newblock {XACML} profile for role based access control ({RBAC}).
+\newblock OASIS Committee Draft 01, 2004.
+
+\bibitem{Elbaum:2000:PTC:347324.348910}
+S.~Elbaum, A.~G. Malishevsky, and G.~Rothermel.
+\newblock Prioritizing test cases for regression testing.
+\newblock In {\em Proc. 2000 ACM SIGSOFT International Symposium on Software
+  Testing and Analysis (ISSTA)}, pages 102--112, 2000.
+
+\bibitem{ferraiolo01:proposed}
+D.~F. Ferraiolo, R.~Sandhu, S.~Gavrila, D.~R. Kuhn, and R.~Chandramouli.
+\newblock Proposed {NIST} standard for role-based access control.
+\newblock {\em ACM Trans. Inf. Syst. Secur.}, 4(3):224--274, 2001.
+
+\bibitem{fisler05:verification}
+K.~Fisler, S.~Krishnamurthi, L.~A. Meyerovich, and M.~C. Tschantz.
+\newblock Verification and change-impact analysis of access-control policies.
+\newblock In {\em Proc. 27th International Conference on Software Engineering
+  (ICSE )}, pages 196--205, 2005.
+
+\bibitem{Graves:2001:ESR:367008.367020}
+T.~L. Graves, M.~J. Harrold, J.-M. Kim, A.~Porter, and G.~Rothermel.
+\newblock An empirical study of regression test selection techniques.
+\newblock {\em ACM Trans. Softw. Eng. Methodol.}, pages 184--208, 2001.
+
+\bibitem{hu07:conformance}
+V.~C. Hu, E.~Martin, J.~Hwang, and T.~Xie.
+\newblock Conformance checking of access control policies specified in {XACML}.
+\newblock In {\em Proc. 1st IEEE International Workshop on Security in Software
+  Engineering (IWSSE)}, 2007.
+
+\bibitem{jackson01:micromodularity}
+D.~Jackson, I.~Shlyakhter, and M.~Sridharan.
+\newblock A micromodularity mechanism.
+\newblock In {\em Proc. joint meeting of the European Software Engineering
+  Conference and the ACM SIGSOFT Symposium on the Foundations of Software
+  Engineering (ESEC/FSE)}, pages 62--73, 2001.
+
+\bibitem{martin07:automated}
+E.~Martin and T.~Xie.
+\newblock Automated test generation for access control policies via
+  change-impact analysis.
+\newblock In {\em Proc. 3rd International Workshop on Software Engineering for
+  Secure Systems (SESS)}, pages 5--11, 2007.
+
+\bibitem{martin07:fault}
+E.~Martin and T.~Xie.
+\newblock A fault model and mutation testing of access control policies.
+\newblock In {\em Proc. 16th International Conference on World Wide Web (WWW)},
+  pages 667--676, 2007.
+
+\bibitem{martin06:defining}
+E.~Martin, T.~Xie, and T.~Yu.
+\newblock Defining and measuring policy coverage in testing access control
+  policies.
+\newblock In {\em Proc. 8th International Conference on Information and
+  Communications Security (ICICS)}, pages 139--158, 2006.
+
+\bibitem{mouelhi09:tranforming}
+T.~Mouelhi, Y.~Le~Traon, and B.~Baudry.
+\newblock Transforming and selecting functional test cases for security policy
+  testing.
+\newblock In {\em Proc. 2nd International Conference on Software Testing,
+  Verification, and Validation (ICST 2009)}, 2009.
+
+\bibitem{Myers:1979:AST:539883}
+G.~J. Myers.
+\newblock {\em Art of Software Testing}.
+\newblock John Wiley \& Sons, Inc., New York, NY, USA, 1979.
+
+\bibitem{Rothermel:1996:ART:235681.235682}
+G.~Rothermel and M.~J. Harrold.
+\newblock Analyzing regression test selection techniques.
+\newblock {\em IEEE Trans. Softw. Eng.}, 22:529--551, August 1996.
+
+\bibitem{santelices08sep}
+R.~A. Santelices, P.~K. Chittimalli, T.~Apiwattanapong, A.~Orso, and M.~J.
+  Harrold.
+\newblock Test-suite augmentation for evolving software.
+\newblock In {\em Proc. IEEE/ACM International Conference on Automated Software
+  Engineering (ASE)}, pages 218--227, 2008.
+
+\end{thebibliography}
