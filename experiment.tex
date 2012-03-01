@@ -1,4 +1,4 @@
-\begin{table*}[htbp]
+\begin{table}[htbp]
   \centering
   	\caption{Subjects used in our evaluation}
   	%\vspace{-8pt}    
@@ -12,9 +12,9 @@
     Average & 5106  & 64    & 43     \\\hline
 		\end{tabular}%
   \label{tab:subj}%
-%\end{table}%
-%
-%\begin{table*}[tbp]
+\end{table}%
+
+\begin{table*}[tbp]
 
 \vspace{+10pt}
 \centering
@@ -56,7 +56,7 @@
 
 
 This section presents the experiments that we conducted to evaluate our proposed
-selection and augmentation techniques of regression system tests for policy
+selection and augmentation techniques of regression tests for security policy
 evolution. We carried out our evaluation on a PC, running Windows 7 with Intel Core i5, 2410 Mhz processor, and 4 GB of RAM. 
 Given a program code interacting with a policy $P$, the regression simulator implements its modified
 policy $P'$ by changing/adding/removing random rules in $P$. Our test-selection techniques select test cases that may reveal different behaviors in program code impacted
@@ -92,11 +92,11 @@ bidding the item. Before the bidding, users should have enough money in her/his 
 
 Table~\ref{tab:subj} summarizes the basic statistics of our subjects.
 The first column shows the subject names.
-Columns 2-4 show the lines of code, and the numbers of system test cases and security test cases.
-Security test cases refer to system test cases that issue at least one request to the PDP.
-Table~\ref{tab:subj} shows that our subjects include about 64 system test cases and 43 security
+Columns 2-4 show the lines of code, and the numbers of test cases and security test cases.
+Security test cases refer to test cases that issue at least one request to the PDP.
+Table~\ref{tab:subj} shows that our subjects include about 64 test cases and 43 security
 test cases on average.
-In particular, \CodeIn{VMS} is equipped with only 10 security system test (out of 52 system test cases), which
+In particular, \CodeIn{VMS} is equipped with only 10 security tests (out of 52 test cases), which
 is smaller than those of other subjects.
 %of security system test cases than other policies.
 %Each security system test case issues at least one request.
@@ -116,7 +116,7 @@ We observe that \CodeIn{LMS}, \CodeIn{VMS}, and \CodeIn{ASMS}
 achieve 100\%, 12\%, and 83\% policy coverage with given test cases, respectively. 
 \CodeIn{LMS}, \CodeIn{VMS}, and \CodeIn{ASMS} may represent subjects
 with high, low, and medium policy coverage, respectively.
-Moreover, while \CodeIn{VMS} consists of 106 rules, \CodeIn{VMS} is equipped with only 10 security system test cases
+Moreover, while \CodeIn{VMS} consists of 106 rules, \CodeIn{VMS} is equipped with only 10 security test cases
 that result in low policy coverage.
 
 
@@ -217,7 +217,7 @@ In the evaluation, we intend to address the following research questions:
 \begin{itemize}
 
 
-	\item RQ1: How high percentage of test cases (from an existing test suite) are reduced by our test selection techniques? This question helps to show that our techniques can 
+	\item RQ1: How high percentage of test cases (from an existing test suite) is reduced by our test selection techniques? This question helps to show that our techniques can 
 	reduce the cost of regression testing.
 %	reduce a significant number of test cases for regression testing.
 	We also show how many changed policy behaviors are covered with our selected test cases.
@@ -226,7 +226,7 @@ In the evaluation, we intend to address the following research questions:
 	
 	\item RQ2: How much time do our techniques take to conduct test selection by given subjects? This question helps to compare performance of our techniques by measuring their efficiency.
 			
-	\item RQ3: How high is the additional policy coverage ratio that is achieved by our test augmentation technique?  This question helps to show that our technique can generate augmented test cases to cover 100\% of changed policy behaviors.
+	\item RQ3: How high is the additional policy coverage ratio that is achieved by our test augmentation technique?  This question helps to show that our technique can generate augmented test cases to achieve additional coverage of changed policy behaviors.
 %We also compare our approach with random test generation technique to show how effectively our approach augment test suite to cover not-coverted changed policy behaviors.
 				
 \end{itemize}
@@ -242,15 +242,26 @@ and each technique.
 %technique. For testing access control policies, a test is synonymous with request
 	\item \textit{Test reduction percentage.}  Given a policy and its modified
 	policy, the test reduction percentage is the number of selected test cases for regression testing divided by the number of security test cases.
-		\item \textit{Changed policy behavior count.}  Given a policy and its modified
-	policy, the changed policy behavior count is the number of impacted rules by policy changes.
-	\item \textit{Changed policy behavior coverage count.}  Given a policy and its modified
-	policy, the changed policy behavior coverage count is the number of
+		\item \textit{The number of rules impacted by policy changes ($\# CT$).}  Given a policy and its modified
+	policy, this metric shows the number of rules impacted by policy changes.
+	\item \textit{The coverage of rules impacted by policy changes ($\# COV$).}  Given a policy and its modified
+	policy, this metric shows the number of
 	impacted rules covered with existing test cases.
-	\item \textit{Changed policy behavior coverage percentage.}  Given a policy and its modified
-	policy, the changed policy behavior coverage percentage is the changed policy behavior coverage count divided by the total number of impacted rules.
+	\item \textit{The percentage of coverage of rules impacted by policy changes ($\% COV$).}  Given a policy and its modified
+	policy, the percentage of coverage of rules impacted by policy changes is $\frac{\# COV}{\# CT}$.
+%		\item \textit{Changed policy behavior count.}  Given a policy and its modified
+%	policy, the changed policy behavior count is the number of impacted rules by policy changes.
+%	\item \textit{Changed policy behavior coverage count.}  Given a policy and its modified
+%	policy, the changed policy behavior coverage count is the number of
+%	impacted rules covered with existing test cases.
+%	\item \textit{Changed policy behavior coverage percentage.}  Given a policy and its modified
+%	policy, the changed policy behavior coverage percentage is the changed policy behavior coverage count divided by the total number of impacted rules.
 	\item \textit{Elapsed time.}  The elapsed time is time (measured in milliseconds) elapsed for each step during the test selection process.
 	\item \textit{Augmented test case count.}  The augmented test case count is the number of augmented test cases by each augmentation type.
+	
+	To assess effectiveness of test reduction (RQ1), we use a test reduction percentage metric with additional $\# CT$, $\# COV$, $\% COV$ metrics.
+	To assess efficiency of test selection (RQ2), we use elapsed time.
+	To assess effectiveness of test augmentation (RQ3), we use a augmented test case count metric.
 	
 \end{itemize}
  
@@ -448,11 +459,17 @@ is needed to cover not-covered but impacted rules.
   \caption{Test case type ratios of augmented test cases for our subjects}
     \begin{tabular}{|l|r|r|r|r|}
 		\hline
-    Subjects & \% M-Sub & \% M-Cond & \% M-SubCond  & \% M-Others \\\hline\hline
-    LMS   & 21.83 & 4.93  & 11.27 & 61.97 \\\hline
-    VMS   & 3.41  & 0.38  & 1.89  & 94.32 \\\hline
-    ASMS  & 16.30 & 9.63  & 7.41  & 66.67 \\\hline\hline
-    Average & 13.85 & 4.98  & 6.86  & 74.32 \\\hline
+    Subjects & \% M-Sub & \% M-Cond & \% M-SubCond \\\hline\hline
+    LMS   & 21.83 & 4.93  & 11.27  \\\hline
+    VMS   & 3.41  & 0.38  & 1.89  \\\hline
+    ASMS  & 16.30 & 9.63  & 7.41 \\\hline\hline
+    Average & 13.85 & 4.98  & 6.86  \\\hline
+    
+%    Subjects & \% M-Sub & \% M-Cond & \% M-SubCond  & \% M-Others \\\hline\hline
+%    LMS   & 21.83 & 4.93  & 11.27 & 61.97 \\\hline
+%    VMS   & 3.41  & 0.38  & 1.89  & 94.32 \\\hline
+%    ASMS  & 16.30 & 9.63  & 7.41  & 66.67 \\\hline\hline
+%    Average & 13.85 & 4.98  & 6.86  & 74.32 \\\hline
     \end{tabular}%
   \label{tab:augment-results}%
 \end{table}%
@@ -491,15 +508,24 @@ While we generate/modify test cases to cover 100\% percentage of not-covered but
 ``M-Sub'', ``M-Cond'', and ``M-SubCond'' refer to generate test cases by modifying
 subject elements, condition elements, and both subject elements and condition elements together, respectively in test cases.
 %In our subjects, for these argumentation types, developers can modify existing test cases
-%to increase coverage of not-covered but impacted rule. 
-``M-Others'' denotes an augmentation type, which
-may at least change action and resource elements.
-While ``M-Sub'', ``M-Cond'', and ``M-SubCond'' require developers to modify existing
-test cases, ``M-Others'' require the developers to create new test cases issuing requests
+%to increase coverage of not-covered but impacted rule.
+
+For those requests which are not classified to  ``M-Sub'', ``M-Cond'', or ``M-SubCond'',
+the requests may require the developers to create new test cases issuing requests
 directly evaluated by the PDP without passing through the PEP. The reason is because the test cases in our subjects are
 designed to use variables to define subject elements and condition elements. Therefore,
-we achieve our goal by modifying such variables. However, for `M-Others'', we create
-new test cases.
+we achieve our goal by modifying such variables. 
+%However, for `M-Others'', we create
+%new test cases.
+ 
+%``M-Others'' denotes an augmentation type, which
+%may at least change action and resource elements.
+%While ``M-Sub'', ``M-Cond'', and ``M-SubCond'' require developers to modify existing
+%test cases, ``M-Others'' require the developers to create new test cases issuing requests
+%directly evaluated by the PDP without passing through the PEP. The reason is because the test cases in our subjects are
+%designed to use variables to define subject elements and condition elements. Therefore,
+%we achieve our goal by modifying such variables. However, for `M-Others'', we create
+%new test cases.
 
 \Comment{
 we may augment test cases based on following different types of modification/generation.
@@ -520,11 +546,12 @@ may at least change action and resource elements.
 
 Table~\ref{tab:augment-results} shows that we achieve
 about 26\% (13.85\%+4.98\%+6.86\% on average shown in columns 2,3, and 4, respectively) of the augmented test cases by modifying existing test
-cases. However, we generate more than 74\% of the augmented test cases by scratch since we could not find similar
-test cases to modify in context of our subjects. Total of each row is 100\%, which indicates that we
-generate  augmented test cases to cover 100\% of impacted rules.
-Figure~\ref{fig:augment-results} illustrated
-the same data shown in Table~\ref{tab:augment-results}.
+cases. If we aim to achieve additional coverage, we could generate the augmented test cases by scratch since we could not find similar
+test cases to modify in context of our subjects. For such a task, we may need to find all relevant methods with required information to cover a certain rule, which is not trivial. Besides some of those rules may not be covered by any PEP code similar to dead code that is not reachable. 
+%Total of each row is 100\%, which indicates that we
+%generate  augmented test cases to cover 100\% of impacted rules.
+%Figure~\ref{fig:augment-results} illustrated
+%the same data shown in Table~\ref{tab:augment-results}.
 
 By comparing these results with those in Table~\ref{tab:cov-results}, we observe that there is indeed a correlation between policy coverage and 
 test augmentation type.

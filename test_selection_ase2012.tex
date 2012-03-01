@@ -26,7 +26,8 @@
 %
 % For tracking purposes - this is V3.1SP - APRIL 2009
 
-\documentclass{acm_proc_article-sp}
+%\documentclass{acm_proc_article-sp}
+\documentclass{sig-alternate}
 %########################### Begin - Custom Commands ###########################
 
 %\usepackage{latex8}
@@ -58,16 +59,19 @@
 \newcommand{\etal}{{\sl et al.\ }}
 
 
-\newcommand{\FixJeeHyun}[1]{}
+%\newcommand{\FixJeeHyun}[1]{}
 \newcommand{\CommentJeeHyun}[1]{}
+\newcommand{\review}[1]{#1}
+\newcommand{\FixJeeHyun}[1]{#1}
 %\newcommand{\redbold}[1]{ \textbf{\color{red}{#1}}
+%\newcommand{\review}[1]{\color{red}{#1}}
 %\newcommand{\FixJeeHyun}[1]{{\large\textbf{FIXJeeHyun}}\color{red}{#1}\color{black}{}{\large\textbf{FIXJeeHyun}}}
 %\newcommand{\CommentJeeHyun}[1]{{\large\textbf{COMMENTJeeHyun}}#1{\large\textbf{COMMENTJeeHyun}}}
 
 
 \begin{document}
 
-\title{Selection and Augmentation of Regression System Tests for Access Control Policy Evolution}
+\title{Selection and Augmentation of Regression System Tests for Security Policy Evolution}
 %\subtitle{[Extended Abstract]
 %\titlenote{A full version of this paper is available as
 %\textit{Author's Guide to Preparing ACM SIG Proceedings Using
@@ -178,11 +182,10 @@ $^3$\small{Security, Reliability and Trust Interdisciplinary Research Center, Sn
 
 \maketitle
 \begin{abstract}
-As security requirements of software often change, developers may modify access control policies (policies in short) according to evolving requirements. 
+As security requirements of software often change, developers may modify security policies such as access control policies (policies in short) according to evolving requirements. 
 To increase confidence that the modification of policies is correct, developers conduct regression testing. However, rerunning all of existing system test 
 cases could be costly and time-consuming. To address this issue, we develop a regression-test-selection approach, which selects every system test case 
-that may reveal faults caused by policy changes. However, selected test cases may not evaluate (i.e., cover) all the rules impacted by policy changes. 
-To address this issue, we develop a test augmentation technique by generating additional test cases to cover the rules that are not covered by existing test cases.
+that may reveal regression faults caused by policy changes. In addition, since existing test cases may not evaluate (i.e., cover) all the rules impacted by policy changes, we develop a test augmentation technique by generating additional test cases to cover the rules that are not covered by existing test cases.
 Our evaluation results show that our test selection techniques reduce a significant number of system test cases efficiently and our test 
 augmentation technique is effective to generate additional test cases. 
 
@@ -214,9 +217,9 @@ Our evaluation results show that our test augmentation technique generates addit
 \end{abstract}
 
 % A category with the (minimum) three required fields
-\category{H.4}{[TBD]Information Systems Applications}{Miscellaneous}
-%A category including the fourth, optional field follows...
-\category{D.2.8}{[TBD]Software Engineering}{Metrics}[complexity measures, performance measures]
+\category{H.4}{Information Systems Applications}{Miscellaneous}
+%%A category including the fourth, optional field follows...
+\category{D.2.8}{Software Engineering}{Metrics}[complexity measures, performance measures]
 
 \terms{Theory}
 

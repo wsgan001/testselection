@@ -103,4 +103,11 @@ R.~A. Santelices, P.~K. Chittimalli, T.~Apiwattanapong, A.~Orso, and M.~J.
 \newblock In {\em Proc. IEEE/ACM International Conference on Automated Software
   Engineering (ASE)}, pages 218--227, 2008.
 
+\bibitem{willmor05:safe}
+D.~Willmor and S.~M. Embury.
+\newblock A safe regression test selection technique for database-driven
+  applications.
+\newblock In {\em Proc. 21st IEEE International Conference on Software
+  Maintenance}, pages 421--430, 2005.
+
 \end{thebibliography}

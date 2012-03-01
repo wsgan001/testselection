@@ -243,6 +243,14 @@ additional policy coverage for $N_r$ by existing test cases.
 Our augmentation technique starts by identifying the changed portions between $P$ and $P'$ to find rules impacted by policy changes.
 Figure~\ref{fig:testexecution} illustrates security test cases behavior: 
 A dependency graph in Figure~\ref{fig:testexecution} represents a typical scenario to trigger application code to issue a request.
+
+As shown in Figure~\ref{fig:testcase-pep}, example test code may manipulate
+\CodeIn{Subject} and \CodeIn{Context} before invoking  PEP code. In Figure~\ref{fig:testcase-pep}, PEP
+code includes a static \CodeIn{Action} and \CodeIn{Resource} with regards to its method.
+For example, if we change \CodeIn{Context} (e.g., \CodeIn{Holidays} to \CodeIn{Workingdays}), this modified test case
+triggers  a requests that \CodeIn{Borrower} is permitted to do \CodeIn{borrowbook} activity during \CodeIn{Workingdays}.
+% shows simplified test case code and
+%PEP code examples extracted from $LMS$ subject~\cite{mouelhi09:tranforming}. 
 The graph (\CodeIn{Subject} and \CodeIn{Context})$\rightarrow$1$\rightarrow$2$\rightarrow$ shows that subject and context (i.e., condition) elements are defined by variables (that
 the developers could change) and nodes 1, 2, 3, ... represent actual behaviors of test cases (e.g., call methods in application
 code and check test oracles).
@@ -255,9 +263,12 @@ modifying subject elements, condition elements, or both subject elements and con
 
 Given $NR_{req}$, our technique classifies existing test cases into \CodeIn{M-Sub}, \CodeIn{M-Cond}, and \CodeIn{M-SubCond},
 or \CodeIn{M-Others} where \CodeIn{M-Others} refers to any modification different from \CodeIn{M-Sub}, \CodeIn{M-Cond}, and \CodeIn{M-SubCond}. 
-While \CodeIn{M-Sub}, \CodeIn{M-Cond}, and \CodeIn{M-SubCond} require to modify existing test cases, \CodeIn{M-Others} requires to create new test cases issuing requests
-directly evaluated by the PDP without going through the PEP. To summarize, \CodeIn{M-Sub}, \CodeIn{M-Cond}, and \CodeIn{M-SubCond} do not require new test cases generation
-whereas \CodeIn{M-Others} requires to generate test cases manually.
+\CodeIn{M-Sub}, \CodeIn{M-Cond}, and \CodeIn{M-SubCond} require to modify existing test cases. After modification,
+we remove test oracles in the test code since we may not have sufficient information about test oracles for a given test code.
+
+%, \CodeIn{M-Others} requires to create new test cases issuing requests
+%directly evaluated by the PDP without going through the PEP. To summarize, \CodeIn{M-Sub}, \CodeIn{M-Cond}, and \CodeIn{M-SubCond} do not require new test cases generation
+%whereas \CodeIn{M-Others} requires to generate test cases manually.
 
  
 
@@ -289,3 +300,100 @@ to issue $NR_{req}$.
 High likelihood may lead to less number of test case modification to issue $NR_{req}$.
 Given test cases with high likelihood, we manually modify and augment the test cases to increase coverage of $NR$.
 }
+
+
+
+
+
+
+
+%
+%\subsection{Test Augmentation}
+%\label{subsec:testaugmentation}
+%While test-selection techniques are useful for selecting test cases for a program impacted by policy changes, these test cases may not sufficiently cover all the rules in the policy impacted by the changes.
+%We develop a test augmentation technique, which complements our test-selection techniques by generating additional test cases to 
+%cover impacted rules $N_r$ not-covered with selected test cases.
+%
+%%not-covered-impacted-rules $N_r$ by existing test cases.
+%
+%Our augmentation technique first analyzes changes between $P$ and $P'$ to find rules impacted by policy changes.
+%Note that we first use a regression-test-selection technique before using the test-augmentation technique to achieve
+%additional policy coverage for $N_r$ by existing test cases.
+%
+%Figure~\ref{fig:testexecution} illustrates behaviors of security test cases.
+%A dependency graph in Figure~\ref{fig:testexecution} represents a typical
+%scenario to trigger application code to issue a request.
+%The graph (\CodeIn{Subject} and \CodeIn{Context})$\rightarrow$1$\rightarrow$2$\rightarrow$...
+%presents that subject and context (i.e., condition) elements are defined by variables (that
+%the developers could change) and nodes 1, 2, 3, ... represent actual behaviors of test cases (e.g., call methods in application
+%code and check test oracles).
+%For test augmentation, we are interested in modifying such variables in the test code
+%to help issue $NR_{req}$.
+%In the graph, we notice that we generate test cases by modifying
+%subject elements, condition elements , and both subject elements and condition elements together, respectively.
+%Each modification type corresponds to test augmentation types, \CodeIn{M-Sub}, \CodeIn{M-Cond}, and \CodeIn{M-SubCond}, respectively.
+%\CodeIn{M-Others} denotes an augmentation type, which
+%may change at least action and resource elements.
+%
+%Our test-augmentation technique analyzes and recommends existing test cases, which trigger
+%application code to issue requests $NR_{req}$ that cover $NR$.
+%More specifically, given $NR_{req}$, our technique classifies existing test cases into \CodeIn{M-Sub}, \CodeIn{M-Cond}, and \CodeIn{M-SubCond},
+%or \CodeIn{M-Others}. Note that classification priority is given to \CodeIn{M-Sub}, \CodeIn{M-Cond}, and \CodeIn{M-SubCond},
+%or \CodeIn{M-Others} in order.
+%While \CodeIn{M-Sub}, \CodeIn{M-Cond}, and \CodeIn{M-SubCond} require developers to modify existing
+%test cases, \CodeIn{M-Others} require the developers to create new test cases issuing requests
+%directly evaluated by the PDP without going through the PEP. The reason is because the test cases in our subjects are
+%designed to use variables to define subject elements and condition element. Therefore,
+%we achieve our goal by modifying such variables. However, for \CodeIn{M-Others}, the augmentation technique requires the
+%developers to create new test cases manually.
+%
+% 
+%
+%\Comment{
+%we may augment test cases based on following different types of modification/generation.
+%``M-Sub'' refers to generate test cases by modifying
+%subject elements in test cases. For example, Given test cases, by changing subject elements (e.g,
+%BORROWER instead of SECRETARY),
+%the test cases cover the changed behaviors, which was not-covered in existing test cases
+%shown in Table~\ref{tab:augment-results}.
+%Similarly, ``M-Cond'' refers to generate test cases by modifying
+%condition elements in test cases.
+%When two of the preceding modification could not
+%find test cases to modify, our technique finds
+%``M-SubCond'', which refers to generate test cases by modifying
+%subject elements and condition elements together.
+%At the last column, ``Others'' denotes an argumentation type, which
+%may at least change action and resource elements.
+%}
+%\Comment{
+%While test-selection techniques are useful for selecting test cases for program code impacted by policy changes, these test cases may not sufficiently cover all the rules in the policy impacted by the changes.
+%To address this issue, we propose a test-augmentation technique, which complements our test-selection techniques.
+%Note that we first use a regression-test-selection technique before using the test-augmentation technique to achieve
+%additional policy coverage for not-covered but impacted rules $NR$ by existing test cases.
+%Our test-augmentation technique analyzes and recommends existing test cases, which can issue requests $NR_{req}$ cover $NR$
+%after manual modification of the test cases.
+%In the technique, we use prioritization to classify test cases into various sets based on their modification likelihood
+%to issue $NR_{req}$.
+%High likelihood may lead to less number of test case modification to issue $NR_{req}$.
+%Given test cases with high likelihood, we manually modify and augment the test cases to increase coverage of $NR$.
+%}
+%%\textbf{Distance-based complexity: Besides the simple graph 
+%%complexity, we extract distance-based complexity measures 
+%%based on the shortest distance between all pairs of crash 
+%%graph nodes using the Floyd-Warshalls algorithm  [7]. The 
+%%initial distance between two connected nodes is set to 1. 
+%%Then, we compute distance-based complexities such as 
+%%eccentricity, density and radius. For example, the eccentricity 
+%%of a node v is the greatest distance between v and any other 
+%%node. We aggregate all eccentricities with minimum 
+%%(=radius), maximum (=diameter) and average. Table III 
+%%describes selected features, while detailed measures are 
+%%described in [21].}
+
+
+
+
+
+
+
+
