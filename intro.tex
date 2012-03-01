@@ -26,7 +26,8 @@ increases confidence of correct behaviors of the given system.
 
 In this paper, we focus on the regression testing problem in the context of policy evolution.
 For policy evolution, regression testing is important because policy behavior changes may
-result in unexpected behaviors of program code, these behaviors can be undesirable.
+result in unexpected behaviors of program code, these behaviors can be undesirable. Suppose, for example, that there is some errors 
+in the access control mechanisms so that unauthorized access is gained to control system' resources, such errors can be used to bypass the security policy and may have a deep impact on the application's security.
 Prior test selection research work ~\cite{Rothermel:1996:ART:235681.235682,Graves:2001:ESR:367008.367020,Elbaum:2000:PTC:347324.348910}
 deals with changes in program code. However, this work does not consider code-related components such as policies that interact with the program code.
 To the best of our knowledge,
@@ -70,11 +71,11 @@ As a policy consists of rules, these different policy behaviors are induced by r
 %three automated test-selection techniques and one : 
 %-------------------------
 
-Our test-selection approach includes three techniques.
+Our test-selection approach compares three techniques related to access control testing:
 The first one is based on mutation analysis (that converts each rule's decision in turn and executes 
 and finds test cases related to each rule). The second one is based on coverage analysis (that records 
-which rules are evaluated by executing each test case), and the third one is based on evaluated 
-decisions of requests issued from test cases. Our approach next selects only test cases that execute program code impacted by policy changes.
+which rules are evaluated by executing each test case), and the third one is based on evaluated decisions of requests issued from test cases. 
+Our approach next selects only test cases that execute program code impacted by policy changes.
 
 While test-selection techniques are useful for selecting test cases for program code impacted by policy changes, these test cases may not 
 cover all the rules that are impacted by those policy changes.
